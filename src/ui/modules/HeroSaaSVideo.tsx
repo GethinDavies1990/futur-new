@@ -63,16 +63,18 @@ export default function HeroSaaSVideo({
 					<CTAList ctas={ctas} className="!mt-8 justify-center" />
 				</div>
 				<div className="py-10">
-					<video
-						className="anim-fade-to-t z-20 block h-full w-full rounded-xl border-1 border-gray-900 object-cover [animation-duration:1s] [mask:linear-gradient(to_top,transparent,#000_50%)] md:h-full"
-						autoPlay
-						loop
-						muted
-						playsInline
-					>
-						<source src="/hero-vid.mp4" type="video/mp4" />
-						<source src="/hero-vid.ogg" type="video/ogg" />
-					</video>
+					<div className="">
+						<video
+							className="anim-fade-to-t z-20 block h-full w-full rounded-xl border-1 border-gray-900 object-cover [animation-duration:1s] [mask:linear-gradient(to_top,transparent,#121212_50%)] md:h-full"
+							autoPlay
+							loop
+							muted
+							playsInline
+						>
+							<source src="/hero-vid.mp4" type="video/mp4" />
+							<source src="/hero-vid.ogg" type="video/ogg" />
+						</video>
+					</div>
 				</div>
 			</section>
 		</div>
