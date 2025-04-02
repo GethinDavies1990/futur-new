@@ -3,6 +3,7 @@ import { PortableText, stegaClean } from 'next-sanity'
 import { Img } from '@/ui/Img'
 import { VscSurroundWith } from 'react-icons/vsc'
 import { cn } from '@/lib/utils'
+import Image from 'next/image'
 
 export default function TestimonialListTitle({
 	pretitle,
@@ -21,7 +22,17 @@ export default function TestimonialListTitle({
 		<section className="section space-y-8 text-center">
 			{(pretitle || intro) && (
 				<header className="richtext">
-					<Pretitle>{pretitle}</Pretitle>
+					<div className="border-accent/50 from-accent/30 inline-flex items-center rounded-full border-1 bg-gradient-to-t to-transparent px-2 py-1">
+						<Pretitle className="mx-2 text-xs font-medium whitespace-nowrap text-white">
+							{pretitle}
+						</Pretitle>
+						<Image
+							src="/icons/star.svg"
+							width={16}
+							height={16}
+							alt="Star Svg"
+						/>
+					</div>
 					<PortableText value={intro} />
 				</header>
 			)}
@@ -40,17 +51,17 @@ export default function TestimonialListTitle({
 					(testimonial, key) =>
 						testimonial && (
 							<article
-								className="relative grid basis-[min(450px,70vw)]! place-content-center rounded-xl border border-gray-800 p-4"
+								className="relative grid basis-[min(450px,70vw)]! place-content-center rounded-xl border border-gray-800 py-8"
 								key={key}
 							>
-								<div className="absolute inset-0 -z-10 h-full w-full bg-black bg-[size:2rem_1rem]">
-									<div className="absolute top-0 right-0 bottom-0 left-0 bg-[radial-gradient(circle_300px_at_50%_100px,#fff,transparent)] opacity-20"></div>
+								<div className="absolute inset-0 -z-10 h-full w-full bg-[#121212] bg-[size:2rem_1rem]">
+									<div className="absolute top-0 right-0 bottom-0 left-0 bg-[radial-gradient(circle_150px_at_50%_50px,#fff,transparent)] opacity-15"></div>
 								</div>
 								<blockquote className="flex flex-col items-center gap-4">
 									{testimonial.author && (
 										<div className="inline-flex max-w-[25ch] items-center gap-2">
 											<Img
-												className="size-[40px] shrink-0 rounded-full object-cover"
+												className="size-[30px] shrink-0 rounded-full object-cover"
 												image={testimonial.author.image}
 												width={80}
 												alt={
@@ -87,7 +98,18 @@ export default function TestimonialListTitle({
 										</div>
 									)}
 								</blockquote>
-								<div className="absolute inset-x-0 -bottom-px h-16 bg-gradient-to-t from-black to-transparent"></div>
+								<div className="mt-2 flex items-center justify-center">
+									{[...Array(5)].map((_, index) => (
+										<Image
+											key={index}
+											src="/icons/star.svg"
+											width={20}
+											height={20}
+											alt="Star Svg"
+										/>
+									))}
+								</div>
+								<div className="absolute inset-x-0 -bottom-px h-18 bg-gradient-to-t from-[#121212] to-transparent"></div>
 							</article>
 						),
 				)}
