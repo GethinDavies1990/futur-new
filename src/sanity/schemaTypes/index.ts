@@ -51,6 +51,7 @@ import stepList from './modules/step-list'
 import tabbedContent from './modules/tabbed-content'
 import testimonialFeatured from './modules/testimonial.featured'
 import testimonialList from './modules/testimonial-list'
+import testimonialListTitle from './modules/testimonial.list.title'
 import heroSaasVideo from './modules/hero.saas.video'
 
 export const schemaTypes: SchemaTypeDefinition[] = [
@@ -106,4 +107,5 @@ export const schemaTypes: SchemaTypeDefinition[] = [
 	tabbedContent,
 	testimonialFeatured,
 	testimonialList,
+	testimonialListTitle,
 ]

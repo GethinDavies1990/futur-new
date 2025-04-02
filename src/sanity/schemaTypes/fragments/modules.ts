@@ -29,6 +29,7 @@ export default defineField({
 		{ type: 'step-list' },
 		{ type: 'tabbed-content' },
 		{ type: 'testimonial-list' },
+		{ type: 'testimonial.list.title' },
 		{ type: 'testimonial.featured' },
 	],
 	options: {

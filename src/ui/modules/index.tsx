@@ -23,6 +23,7 @@ import HeroSaaSVideo from './HeroSaaSVideo'
 
 import dynamic from 'next/dynamic'
 import { createDataAttribute } from 'next-sanity'
+import TestimonialListTitle from './TestimonialListTitle'
 
 const MODULE_MAP = {
 	'accordion-list': AccordionList,
@@ -48,6 +49,7 @@ const MODULE_MAP = {
 	'step-list': StepList,
 	'tabbed-content': TabbedContent,
 	'testimonial-list': TestimonialList,
+	'testimonial.list.title': TestimonialListTitle,
 	'testimonial.featured': TestimonialFeatured,
 	'hero.saas.video': HeroSaaSVideo,
 } as const

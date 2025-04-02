@@ -64,7 +64,7 @@ export default function HeroSaaSVideo({
 				</div>
 				<div className="py-10">
 					<video
-						className="border-accent anim-fade-to-t block h-full w-full rounded-xl border-1 object-cover [animation-duration:1s] [mask:linear-gradient(to_top,transparent,#000_50%)] md:h-full"
+						className="anim-fade-to-t z-20 block h-full w-full rounded-xl border-1 border-gray-900 object-cover [animation-duration:1s] [mask:linear-gradient(to_top,transparent,#000_50%)] md:h-full"
 						autoPlay
 						loop
 						muted
