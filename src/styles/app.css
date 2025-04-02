@@ -2,11 +2,16 @@
 @import './fonts.css';
 
 @theme {
-	--color-canvas: #fff;
-	--color-ink: #000;
-	--color-accent: #000;
+	--color-canvas: #000;
+	--color-ink: #fff;
+	--color-accent: #fc004c;
 
 	--max-height-fold: calc(100svh - var(--header-height));
+}
+
+@theme {
+	--font-montserrat: 'Montserrat', sans-serif;
+	--font-raleway: 'Raleway', sans-serif;
 }
 
 @custom-variant hover (&:hover);
@@ -14,7 +19,8 @@
 @variant header-open (body:has(#header-toggle:checked) &);
 @variant header-closed (body:has(#header-toggle:not(:checked)) &);
 
-@variant headings (& :is(h1, h2, h3, h4, h5, h6));
+@variant headings (& :is(h1, h2, h3, h4, h5, h6)) {
+}
 
 @layer base {
 	* {
@@ -134,31 +140,44 @@
 
 @utility h-base {
 	font-weight: bold;
+	font-family: var(--font-montserrat);
 }
 
 @utility h1 {
-	@apply h-base text-4xl;
+	@apply h-base text-7xl;
+	font-family: var(--font-raleway);
+	font-weight: 500;
 }
 @utility h2 {
-	@apply h-base text-3xl;
+	@apply h-base text-5xl;
+	font-family: var(--font-raleway);
+	font-weight: 500;
 }
 @utility h3 {
-	@apply h-base text-2xl;
+	@apply h-base text-3xl;
+	font-family: var(--font-raleway);
+	font-weight: 500;
 }
 @utility h4 {
-	@apply h-base text-xl;
+	@apply h-base text-2xl;
+	font-family: var(--font-raleway);
+	font-weight: 500;
 }
 @utility h5 {
-	@apply h-base text-lg;
+	@apply h-base text-xl;
+	font-family: var(--font-raleway);
+	font-weight: 500;
 }
 @utility h6 {
 	@apply h-base;
+	font-family: var(--font-raleway);
 }
 
 @utility technical {
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	font-weight: bold;
+	font-family: var(--font-montserrat);
 }
 
 @utility text-shadow {
@@ -175,22 +194,22 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	padding: 0.5em 1em;
+	padding: 0.2em 2em;
 	text-align: center;
 	text-shadow: none;
 	color: var(--color-ink);
 }
 
 @utility action {
-	@apply action-base bg-accent rounded border border-transparent text-balance text-white;
+	@apply action-base bg-accent shadow-accent/60 hover:shadow-accent rounded-full border border-transparent text-balance text-white shadow-lg transition-all duration-700 hover:border-white;
 }
 
 @utility action-outline {
-	@apply action-base border-accent/10 bg-canvas/50 rounded border text-balance;
+	@apply action-base border-accent bg-canvas/50 hover:bg-accent/30 frosted-glass rounded-full border text-balance transition-all duration-700;
 }
 
 @utility ghost {
-	@apply action-base frosted-glass hover:bg-accent/3 rounded;
+	@apply action-base frosted-glass hover:bg-accent rounded-full transition-all duration-700;
 }
 
 @utility link {
@@ -258,6 +277,7 @@
 
 @utility richtext {
 	@apply space-y-2 leading-relaxed;
+	font-family: var(--font-montserrat);
 
 	& :is(h1, h2, h3, h4, h5, h6) strong {
 		@apply text-gradient;

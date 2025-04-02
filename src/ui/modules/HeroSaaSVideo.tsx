@@ -5,26 +5,19 @@ import Code from './RichtextModule/Code'
 import CustomHTML from './CustomHTML'
 import Reputation from '@/ui/Reputation'
 import CTAList from '@/ui/CTAList'
-import { ResponsiveImg } from '@/ui/Img'
-import { cn } from '@/lib/utils'
+import Image from 'next/image'
 
-export default function HeroSaaS({
+export default function HeroSaaSVideo({
 	pretitle,
 	content,
 	ctas,
-	assets,
-	assetFaded,
 	...props
 }: Partial<{
 	pretitle: string
 	content: any
 	ctas: Sanity.CTA[]
-	assets: Sanity.Img[]
-	assetFaded?: boolean
 }> &
 	Sanity.Module) {
-	const asset = assets?.[0]
-
 	return (
 		<div className="">
 			{/* Main Hero Section */}
@@ -33,10 +26,15 @@ export default function HeroSaaS({
 				{...moduleProps(props)}
 			>
 				<div className="richtext mx-auto max-w-2xl text-balance">
-					<div className="frosted-glass shadow-accent inline-block rounded-full border-1 border-[#fc004c] bg-[#fc004c]/30 px-4 py-2 text-xs shadow-2xl">
-						<Pretitle className="font-montserrat font-medium text-white">
-							{pretitle}
-						</Pretitle>
+					<div className="frosted-glass shadow-accent inline-flex items-center rounded-full border-1 border-[#fc004c] bg-[#fc004c]/30 px-4 py-2 text-xs shadow-2xl">
+						<Pretitle className="font-medium text-white">{pretitle}</Pretitle>
+						<Image
+							src="/icons/circle-inter.svg"
+							width={12}
+							height={12}
+							alt="circle inter svg"
+							className="ml-2"
+						/>
 					</div>
 					<div className="">
 						<PortableText
@@ -64,28 +62,18 @@ export default function HeroSaaS({
 
 					<CTAList ctas={ctas} className="!mt-8 justify-center" />
 				</div>
-
-				{(() => {
-					switch (asset?._type) {
-						case 'img':
-							return (
-								<ResponsiveImg
-									img={asset}
-									pictureProps={{
-										className: cn(
-											'anim-fade-to-t w-full block [animation-duration:1s]',
-											assetFaded &&
-												'[mask:linear-gradient(to_top,transparent,#000_50%)]',
-										),
-									}}
-									width={2400}
-									draggable={false}
-								/>
-							)
-						default:
-							return null
-					}
-				})()}
+				<div className="py-10">
+					<video
+						className="border-accent anim-fade-to-t block h-full w-full rounded-xl border-1 object-cover [animation-duration:1s] [mask:linear-gradient(to_top,transparent,#000_50%)] md:h-full"
+						autoPlay
+						loop
+						muted
+						playsInline
+					>
+						<source src="/hero-vid.mp4" type="video/mp4" />
+						<source src="/hero-vid.ogg" type="video/ogg" />
+					</video>
+				</div>
 			</section>
 		</div>
 	)
