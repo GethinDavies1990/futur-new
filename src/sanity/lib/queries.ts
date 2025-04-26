@@ -88,7 +88,8 @@ _type == 'pricing-list' => {
 _type == 'services.list' => {
   services[]->{
     ...,
-    ctas[]{ ${CTA_QUERY} }
+    ctas[]{ ${CTA_QUERY} },
+		testimonial[]->,
   }
 },
 

@@ -9,8 +9,14 @@ export default function ServicesList({
 	pretitle,
 	intro,
 	services,
+	testimonials,
 	...props
-}: Partial<{ pretitle: string; intro: any; services: Sanity.Services[] }> &
+}: Partial<{
+	pretitle: string
+	intro: any
+	testimonials: Sanity.Testimonial[]
+	services: Sanity.Services[]
+}> &
 	Sanity.Module) {
 	return (
 		<section className="section space-y-8" {...moduleProps(props)}>
@@ -34,7 +40,7 @@ export default function ServicesList({
 					(services) =>
 						!!services && (
 							<article
-								className="richtext w-[400px] space-y-4 rounded border p-4 text-gray-300"
+								className="richtext w-[400px] space-y-4 rounded p-4 text-gray-300"
 								key={services._id}
 							>
 								<div className="mb-6 flex items-center justify-between">
@@ -77,6 +83,16 @@ export default function ServicesList({
 										<CTAList className="grid" ctas={services.ctas} />
 									</div>
 								</div>
+								{services.testimonial?.length > 0 && (
+									<div className="rounded-md bg-gray-200 p-6">
+										<div className="font-bold text-gray-600">
+											{services.testimonial[0].author?.name}
+										</div>
+										<div className="text-xs text-gray-500">
+											{services.testimonial[0].author?.title}
+										</div>
+									</div>
+								)}
 							</article>
 						),
 				)}

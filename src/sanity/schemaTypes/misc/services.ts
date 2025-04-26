@@ -50,6 +50,16 @@ export default defineType({
 			type: 'array',
 			of: [{ type: 'block' }],
 		}),
+		defineField({
+			name: 'testimonial',
+			type: 'array',
+			of: [
+				{
+					type: 'reference',
+					to: [{ type: 'testimonial' }],
+				},
+			],
+		}),
 	],
 	preview: {
 		select: {
