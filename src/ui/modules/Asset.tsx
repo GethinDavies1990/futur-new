@@ -16,7 +16,11 @@ export default function Asset({ asset }: { asset?: AssetType }) {
 
 const ASSET_MAP = {
 	img: ({ asset }: { asset: Sanity.Img }) => (
-		<ResponsiveImg img={asset} className="w-full" width={1200} />
+		<ResponsiveImg
+			img={asset}
+			className="w-full rounded-xl shadow-xl"
+			width={1200}
+		/>
 	),
 	code: ({ asset }: { asset: Sanity.Code }) => (
 		<Code

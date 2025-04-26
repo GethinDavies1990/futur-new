@@ -1,14 +1,13 @@
-import { defineArrayMember, defineField, defineType } from 'sanity'
+import { defineField, defineType } from 'sanity'
 import { TfiLayoutMediaLeft } from 'react-icons/tfi'
 import { reputationBlock } from '../misc/reputation'
-import { getBlockText } from 'sanitypress-utils'
 
 export default defineType({
 	name: 'content.section',
 	title: 'Content Section',
 	icon: TfiLayoutMediaLeft,
 	type: 'object',
-	groups: [{ name: 'content', default: true }, { name: 'asset' }],
+	groups: [{ name: 'content', default: true }],
 	fields: [
 		defineField({
 			name: 'pretitle',
@@ -28,48 +27,14 @@ export default defineType({
 			of: [{ type: 'cta' }],
 			group: 'content',
 		}),
-		defineField({
-			name: 'assets',
-			title: 'Assets',
-			type: 'array',
-			of: [
-				{ type: 'img' },
-				defineArrayMember({
-					title: 'Code block',
-					type: 'code',
-					options: {
-						withFilename: true,
-					},
-				}),
-				{ type: 'custom-html' },
-			],
-			validation: (Rule) => Rule.max(1),
-			group: 'asset',
-		}),
-		defineField({
-			name: 'assetOnRight',
-			type: 'boolean',
-			description: 'Display the asset to the right of the content on desktop',
-			initialValue: false,
-			group: 'asset',
-		}),
-		defineField({
-			name: 'assetBelowContent',
-			type: 'boolean',
-			description: 'Display the asset below the content on mobile',
-			initialValue: false,
-			group: 'asset',
-		}),
 	],
 	preview: {
 		select: {
-			content: 'content',
-			media: 'assets.0.image',
+			pretitle: 'pretitle',
 		},
-		prepare: ({ content, media }) => ({
-			title: getBlockText(content),
+		prepare: ({ pretitle }) => ({
+			title: pretitle || 'No Pretitle',
 			subtitle: 'Content Section',
-			media,
 		}),
 	},
 })

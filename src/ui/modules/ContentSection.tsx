@@ -4,39 +4,25 @@ import CTAList from '@/ui/CTAList'
 import Asset from './Asset'
 import CustomHTML from './CustomHTML'
 import Reputation from '@/ui/Reputation'
+import { RxShadow } from 'react-icons/rx'
 import { cn } from '@/lib/utils'
 
 export default function ContentSection({
 	pretitle,
 	content,
 	ctas,
-	assets,
-	assetOnRight,
-	assetBelowContent,
 }: Partial<{
 	pretitle: string
 	content: any
 	ctas: Sanity.CTA[]
-	assets: Array<Sanity.Img | Sanity.Code | Sanity.CustomHTML>
-	assetOnRight: boolean
-	assetBelowContent: boolean
 }>) {
-	const asset = assets?.[0]
-
 	return (
-		<section className="section grid items-center gap-8 md:grid-cols-2 md:gap-x-12">
-			<figure
-				className={cn(
-					asset?._type === 'img' && 'max-md:full-bleed',
-					assetOnRight && 'md:order-1',
-					assetBelowContent && 'max-md:order-last',
-				)}
-			>
-				<Asset asset={asset} />
-			</figure>
-
+		<section className="section headings:text-white grid items-start gap-8 text-gray-300 md:grid-cols-2 md:gap-x-12">
+			<div className="flex items-center">
+				<RxShadow className="text-accent mr-1" />
+				<Pretitle className="text-gray-300">{pretitle}</Pretitle>
+			</div>
 			<div className="richtext headings:text-balance mx-auto w-full max-w-lg">
-				<Pretitle>{pretitle}</Pretitle>
 				<PortableText
 					value={content}
 					components={{
