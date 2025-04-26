@@ -17,7 +17,13 @@ export default function CTAList({
 
 	return (
 		<div className={cn('flex flex-wrap items-center gap-[.5em]', className)}>
-			{ctas?.map((cta, key) => <CTA {...cta} icon={icons[key]} key={key} />)}
+			{ctas?.map((cta, key) => (
+				<CTA
+					{...cta}
+					icon={cta.style === 'pill-button' ? undefined : icons[key]}
+					key={key}
+				/>
+			))}
 		</div>
 	)
 }

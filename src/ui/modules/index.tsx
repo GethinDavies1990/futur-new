@@ -44,6 +44,7 @@ const MODULE_MAP = {
 	'logo-list': LogoList,
 	'person-list': dynamic(() => import('./PersonList')),
 	'pricing-list': dynamic(() => import('./PricingList')),
+	'services.list': dynamic(() => import('./ServicesList')),
 	'richtext-module': RichtextModule,
 	'schedule-module': ScheduleModule,
 	'search-module': SearchModule,

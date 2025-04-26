@@ -79,12 +79,19 @@ export const MODULES_QUERY = groq`
 	},
 	_type == 'logo-list' => { logos[]-> },
 	_type == 'person-list' => { people[]-> },
-	_type == 'pricing-list' => {
-		tiers[]->{
-			...,
-			ctas[]{ ${CTA_QUERY} }
-		}
-	},
+_type == 'pricing-list' => {
+  tiers[]->{
+    ...,
+    ctas[]{ ${CTA_QUERY} }
+  }
+},
+_type == 'services.list' => {
+  services[]->{
+    ...,
+    ctas[]{ ${CTA_QUERY} }
+  }
+},
+
 	_type == 'richtext-module' => {
 		'headings': select(
 			tableOfContents => content[style in ['h2', 'h3', 'h4', 'h5', 'h6']]{

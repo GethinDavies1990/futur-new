@@ -106,6 +106,18 @@ declare global {
 			content?: any
 		}
 
+		interface Services extends SanityDocument {
+			title: string
+			highlight?: string
+			price: {
+				base?: number
+				strikethrough?: number
+				suffix?: string
+			}
+			ctas?: CTA[]
+			content?: any
+		}
+
 		interface Reputation extends SanityDocument {
 			title?: string
 			subtitle?: string

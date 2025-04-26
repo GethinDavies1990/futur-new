@@ -198,6 +198,9 @@
 @utility action {
 	@apply action-base bg-accent shadow-accent/60 hover:shadow-accent cursor-pointer rounded-full border border-transparent text-balance text-white shadow-lg transition-all duration-700 hover:border-white;
 }
+@utility pill-button {
+	@apply bg-accent hover:bg-accent/50 cursor-pointer rounded-sm p-2 text-xs text-white transition duration-500;
+}
 
 @utility action-outline {
 	@apply action-base border-accent bg-canvas/50 hover:bg-accent/30 frosted-glass cursor-pointer rounded-full border text-balance transition-all duration-700;

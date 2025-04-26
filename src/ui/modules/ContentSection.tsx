@@ -17,7 +17,7 @@ export default function ContentSection({
 	ctas: Sanity.CTA[]
 }>) {
 	return (
-		<section className="section headings:text-white grid items-start gap-8 text-gray-300 md:grid-cols-2 md:gap-x-12">
+		<section className="section headings:text-white items- grid gap-8 text-gray-300 md:grid-cols-2 md:gap-x-12">
 			<div className="flex items-center">
 				<RxShadow className="text-accent mr-1" />
 				<Pretitle className="text-gray-300">{pretitle}</Pretitle>

@@ -21,6 +21,7 @@ export default defineType({
 					{ title: 'Outline', value: 'action-outline' },
 					'ghost',
 					'link',
+					'pill-button',
 				],
 			},
 		}),

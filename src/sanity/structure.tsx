@@ -32,6 +32,7 @@ export const structure = structureTool({
 					S.documentTypeListItem('logo').title('Logos'),
 					S.documentTypeListItem('person').title('People'),
 					S.documentTypeListItem('pricing').title('Pricing tiers'),
+					S.documentTypeListItem('services').title('Services'),
 					S.documentTypeListItem('reputation'),
 					S.documentTypeListItem('testimonial').title('Testimonials'),
 				]),

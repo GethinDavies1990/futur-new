@@ -16,6 +16,7 @@ import person from './misc/person'
 import pricing from './misc/pricing'
 import reputation from './misc/reputation'
 import testimonial from './misc/testimonial'
+import services from './misc/services'
 
 // objects
 import cta from './objects/cta'
@@ -54,6 +55,7 @@ import testimonialList from './modules/testimonial-list'
 import testimonialListTitle from './modules/testimonial.list.title'
 import Video from './modules/video'
 import contentSection from './modules/content.section'
+import servicesList from './modules/services.list'
 
 export const schemaTypes: SchemaTypeDefinition[] = [
 	// documents
@@ -70,6 +72,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
 	logo,
 	person,
 	pricing,
+	services,
 	reputation,
 	testimonial,
 
@@ -101,6 +104,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
 	logoList,
 	personList,
 	pricingList,
+	servicesList,
 	richtextModule,
 	scheduleModule,
 	searchModule,
