@@ -52,7 +52,7 @@ import tabbedContent from './modules/tabbed-content'
 import testimonialFeatured from './modules/testimonial.featured'
 import testimonialList from './modules/testimonial-list'
 import testimonialListTitle from './modules/testimonial.list.title'
-import heroSaasVideo from './modules/hero.saas.video'
+import Video from './modules/video'
 
 export const schemaTypes: SchemaTypeDefinition[] = [
 	// documents
@@ -94,7 +94,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
 	flagList,
 	hero,
 	heroSaas,
-	heroSaasVideo,
+	Video,
 	heroSplit,
 	logoList,
 	personList,

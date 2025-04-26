@@ -5,21 +5,21 @@ import SkipToContent from '@/ui/SkipToContent'
 import Announcement from '@/ui/Announcement'
 import Header from '@/ui/header'
 import Footer from '@/ui/footer'
-import { Montserrat, Raleway } from 'next/font/google'
+import { Fustat, Figtree } from 'next/font/google'
 import VisualEditingControls from '@/ui/VisualEditingControls'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import '@/styles/app.css'
 
-const montserrat = Montserrat({
+const fustat = Fustat({
 	subsets: ['latin'],
-	weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+	weight: ['200', '300', '400', '500', '600', '700', '800'],
 	preload: true,
 })
 
-const raleway = Raleway({
+const figtree = Figtree({
 	subsets: ['latin'],
-	weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+	weight: ['300', '400', '500', '600', '700', '800', '900'],
 	preload: true,
 })
 
@@ -31,10 +31,11 @@ export default async function RootLayout({
 	return (
 		<Root>
 			{/* <GoogleTagManager gtmId="" /> */}
-			<body className="relative h-full w-full bg-[#121212] text-white">
-				{/* Background Effect */}
+			<body className="relative h-full w-full bg-black text-white">
+				{/* Background Effects */}
 
-				<div className="absolute top-0 right-0 bottom-0 left-0 -z-10 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+				{/* Radial gradient background */}
+				<div className="absolute top-[5%] left-1/2 -z-10 h-[1000px] w-[1000px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_400px_at_50%_300px,#fbfbfb36,#000)]" />
 
 				<NuqsAdapter>
 					<SkipToContent />
@@ -44,7 +45,6 @@ export default async function RootLayout({
 						{children}
 					</main>
 					<Footer />
-
 					<VisualEditingControls />
 				</NuqsAdapter>
 

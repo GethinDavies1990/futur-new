@@ -1,5 +1,6 @@
 import moduleProps from '@/lib/moduleProps'
 import { PortableText } from 'next-sanity'
+import { RxShadow } from 'react-icons/rx'
 import Pretitle from '@/ui/Pretitle'
 import Code from './RichtextModule/Code'
 import CustomHTML from './CustomHTML'
@@ -7,7 +8,7 @@ import Reputation from '@/ui/Reputation'
 import CTAList from '@/ui/CTAList'
 import Image from 'next/image'
 
-export default function HeroSaaSVideo({
+export default function Video({
 	pretitle,
 	content,
 	ctas,
@@ -30,13 +31,7 @@ export default function HeroSaaSVideo({
 						<Pretitle className="text-xs font-medium text-white">
 							{pretitle}
 						</Pretitle>
-						<Image
-							src="/icons/circle-inter.svg"
-							width={12}
-							height={12}
-							alt="circle inter svg"
-							className="ml-2"
-						/>
+						<RxShadow />
 					</div>
 					<div className="">
 						<PortableText
@@ -64,7 +59,7 @@ export default function HeroSaaSVideo({
 
 					<CTAList ctas={ctas} className="!mt-8 justify-center" />
 				</div>
-				<div className="py-10">
+				<div className="py-60">
 					<div className="">
 						<video
 							className="anim-fade-to-t z-20 block h-full w-full rounded-xl border-1 border-gray-900 object-cover [animation-duration:1s] [mask:linear-gradient(to_top,transparent,#121212_50%)] md:h-full"

@@ -4,8 +4,8 @@ import { reputationBlock } from '../misc/reputation'
 import { getBlockText } from 'sanitypress-utils'
 
 export default defineType({
-	name: 'hero.saas.video',
-	title: 'Hero (SaaS) Video',
+	name: 'video',
+	title: 'Video',
 	icon: TfiLayoutCtaCenter,
 	type: 'object',
 	groups: [
@@ -57,7 +57,7 @@ export default defineType({
 		},
 		prepare: ({ content, media }) => ({
 			title: getBlockText(content),
-			subtitle: 'Hero (SaaS) Video',
+			subtitle: 'Video',
 			media,
 		}),
 	},

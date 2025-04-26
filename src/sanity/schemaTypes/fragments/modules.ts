@@ -17,7 +17,7 @@ export default defineField({
 		{ type: 'flag-list' },
 		{ type: 'hero' },
 		{ type: 'hero.saas' },
-		{ type: 'hero.saas.video' },
+		{ type: 'video' },
 		{ type: 'hero.split' },
 		{ type: 'logo-list' },
 		{ type: 'person-list' },
@@ -49,7 +49,7 @@ export default defineField({
 				},
 				{
 					name: 'hero',
-					of: ['hero', 'hero.saas', 'hero.saas.video', 'hero.split'],
+					of: ['hero', 'hero.saas', 'hero.split'],
 				},
 				{
 					name: 'lists',

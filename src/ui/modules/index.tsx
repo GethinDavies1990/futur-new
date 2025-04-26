@@ -19,7 +19,7 @@ import StepList from './StepList'
 import TabbedContent from './TabbedContent'
 import TestimonialList from './TestimonialList'
 import TestimonialFeatured from './TestimonialFeatured'
-import HeroSaaSVideo from './HeroSaaSVideo'
+import Video from './Video'
 
 import dynamic from 'next/dynamic'
 import { createDataAttribute } from 'next-sanity'
@@ -51,7 +51,7 @@ const MODULE_MAP = {
 	'testimonial-list': TestimonialList,
 	'testimonial.list.title': TestimonialListTitle,
 	'testimonial.featured': TestimonialFeatured,
-	'hero.saas.video': HeroSaaSVideo,
+	video: Video,
 } as const
 
 export default function Modules({
