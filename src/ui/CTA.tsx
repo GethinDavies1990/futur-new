@@ -22,7 +22,7 @@ export default function CTA({
 			<>
 				{/* 👈 render icon if it exists */}
 				{children || link?.label || link?.internal?.title || link?.external}
-				{Icon && <span className="text-xl">{Icon}</span>}{' '}
+				{Icon && <span className="text-lg">{Icon}</span>}{' '}
 			</>
 		),
 		...rest,

@@ -20,6 +20,7 @@ import TabbedContent from './TabbedContent'
 import TestimonialList from './TestimonialList'
 import TestimonialFeatured from './TestimonialFeatured'
 import Video from './Video'
+import ContentSection from './ContentSection'
 
 import dynamic from 'next/dynamic'
 import { createDataAttribute } from 'next-sanity'
@@ -33,6 +34,7 @@ const MODULE_MAP = {
 	breadcrumbs: Breadcrumbs,
 	callout: Callout,
 	'card-list': CardList,
+	'content.section': ContentSection,
 	'creative-module': dynamic(() => import('./CreativeModule')),
 	'custom-html': CustomHTML,
 	'flag-list': FlagList,

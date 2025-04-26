@@ -191,7 +191,8 @@
 	text-align: center;
 	text-shadow: none;
 	color: var(--color-ink);
-	min-width: 180px;
+	min-width: 160px;
+	font-size: 14px;
 }
 
 @utility action {

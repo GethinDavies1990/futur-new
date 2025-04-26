@@ -31,6 +31,7 @@ export default defineField({
 		{ type: 'testimonial-list' },
 		{ type: 'testimonial.list.title' },
 		{ type: 'testimonial.featured' },
+		{ type: 'content.section' },
 	],
 	options: {
 		insertMenu: {
