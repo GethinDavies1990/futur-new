@@ -11,7 +11,7 @@ import css from './Header.module.css'
 export default async function Header() {
 	const { title, logo, ctas } = await getSite()
 
-	const logoImage = logo?.image?.dark || logo?.image?.default
+	const logoImage = logo?.image?.default
 
 	return (
 		<Wrapper className="frosted-glass border-ink/10 max-md:header-open:shadow-lg sticky top-0 z-10 -mt-15 border-b bg-transparent">
@@ -28,7 +28,7 @@ export default async function Header() {
 					>
 						{logoImage ? (
 							<Img
-								className="inline-block max-h-[1.2em] w-auto"
+								className="inline-block h-10 w-auto"
 								image={logoImage}
 								alt={logo?.name || title}
 							/>
