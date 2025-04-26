@@ -67,9 +67,7 @@ export default function Hero({
 						>
 							<div className="flex items-center">
 								<RxShadow className="text-accent mr-1" />
-								<Pretitle className={cn(hasImage && 'text-gray-300')}>
-									{pretitle}
-								</Pretitle>
+								<Pretitle className="text-gray-300">{pretitle}</Pretitle>
 							</div>
 
 							<PortableText
@@ -102,7 +100,7 @@ export default function Hero({
 
 							<CTAList
 								ctas={ctas}
-								className={cn('!mt-4', {
+								className={cn('!mt-4 flex items-center gap-2', {
 									'justify-start': stegaClean(textAlign) === 'left',
 									'justify-center': stegaClean(textAlign) === 'center',
 									'justify-end': stegaClean(textAlign) === 'right',

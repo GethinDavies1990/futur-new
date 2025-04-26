@@ -144,28 +144,23 @@
 }
 
 @utility h1 {
-	@apply h-base text-7xl;
-	font-family: var(--font-futsat);
+	@apply h-base text-4xl md:text-5xl lg:text-7xl;
 	font-weight: 500;
 }
 @utility h2 {
-	@apply h-base text-5xl;
-	font-family: var(--font-futsat);
+	@apply h-base text-3xl md:text-4xl lg:text-5xl;
 	font-weight: 500;
 }
 @utility h3 {
-	@apply h-base text-3xl;
-	font-family: var(--font-futsat);
+	@apply h-base text-2xl lg:text-3xl;
 	font-weight: 500;
 }
 @utility h4 {
-	@apply h-base text-2xl;
-	font-family: var(--font-futsat);
+	@apply h-base text-xl lg:text-2xl;
 	font-weight: 500;
 }
 @utility h5 {
-	@apply h-base text-xl;
-	font-family: var(--font-futsat);
+	@apply h-base text-lg lg:text-xl;
 	font-weight: 500;
 }
 @utility h6 {
@@ -175,7 +170,6 @@
 
 @utility technical {
 	letter-spacing: 1px;
-	font-weight: bold;
 	font-family: var(--font-figtree);
 }
 
@@ -197,22 +191,23 @@
 	text-align: center;
 	text-shadow: none;
 	color: var(--color-ink);
+	min-width: 180px;
 }
 
 @utility action {
-	@apply action-base bg-accent shadow-accent/60 hover:shadow-accent rounded-full border border-transparent text-balance text-white shadow-lg transition-all duration-700 hover:border-white;
+	@apply action-base bg-accent shadow-accent/60 hover:shadow-accent cursor-pointer rounded-full border border-transparent text-balance text-white shadow-lg transition-all duration-700 hover:border-white;
 }
 
 @utility action-outline {
-	@apply action-base border-accent bg-canvas/50 hover:bg-accent/30 frosted-glass rounded-full border text-balance transition-all duration-700;
+	@apply action-base border-accent bg-canvas/50 hover:bg-accent/30 frosted-glass cursor-pointer rounded-full border text-balance transition-all duration-700;
 }
 
 @utility ghost {
-	@apply action-base frosted-glass hover:bg-accent rounded-full transition-all duration-700;
+	@apply action-base frosted-glass hover:bg-accent cursor-pointer rounded-full transition-all duration-700;
 }
 
 @utility link {
-	@apply underline hover:decoration-2;
+	@apply cursor-pointer underline hover:decoration-2;
 }
 
 @utility input {
