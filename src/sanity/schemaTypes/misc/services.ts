@@ -57,7 +57,7 @@ export default defineType({
 		defineField({
 			name: 'content',
 			type: 'array',
-			of: [{ type: 'block' }],
+			of: [{ type: 'block' }, { type: 'custom-html' }],
 		}),
 		defineField({
 			name: 'testimonial',

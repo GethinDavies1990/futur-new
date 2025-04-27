@@ -1,6 +1,8 @@
 import moduleProps from '@/lib/moduleProps'
 import Pretitle from '@/ui/Pretitle'
 import { PortableText } from 'next-sanity'
+import CustomHTML from './CustomHTML'
+import Reputation from '@/ui/Reputation'
 import { ResponsiveImg } from '@/ui/Img'
 import { Img } from '@/ui/Img'
 import { RxShadow } from 'react-icons/rx'
@@ -55,7 +57,17 @@ export default function ServicesList({
 								</div>
 
 								<div className="richtext text-xs text-gray-300">
-									<PortableText value={service.content} />
+									<PortableText
+										value={service.content}
+										components={{
+											types: {
+												'custom-html': ({ value }) => <CustomHTML {...value} />,
+												'reputation-block': ({ value }) => (
+													<Reputation reputation={value.reputation} />
+												),
+											},
+										}}
+									/>
 								</div>
 
 								<div className="flex items-center justify-between gap-2 text-xs">
