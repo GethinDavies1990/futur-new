@@ -1,6 +1,8 @@
 import moduleProps from '@/lib/moduleProps'
 import Pretitle from '@/ui/Pretitle'
 import { PortableText } from 'next-sanity'
+import { ResponsiveImg } from '@/ui/Img'
+import { Img } from '@/ui/Img'
 import { RxShadow } from 'react-icons/rx'
 import CTAList from '@/ui/CTAList'
 import { cn, formatCurrency } from '@/lib/utils'
@@ -9,6 +11,7 @@ export default function ServicesList({
 	pretitle,
 	intro,
 	services,
+	assets,
 	testimonials,
 	...props
 }: Partial<{
@@ -16,14 +19,15 @@ export default function ServicesList({
 	intro: any
 	testimonials: Sanity.Testimonial[]
 	services: Sanity.Services[]
+	assets: Sanity.Img[]
 }> &
 	Sanity.Module) {
 	return (
-		<section className="section space-y-8" {...moduleProps(props)}>
+		<section className="section space-y-12" {...moduleProps(props)}>
 			{(pretitle || intro) && (
-				<header className="section richtext headings:text-white grid items-start gap-8 text-gray-300 md:grid-cols-2 md:gap-x-12">
-					<div className="flex items-center">
-						<RxShadow className="text-accent mr-1" />
+				<header className="richtext headings:text-white grid items-start justify-start gap-8 text-gray-300 md:grid-cols-2 md:gap-x-12">
+					<div className="flex items-center justify-start">
+						<RxShadow className="text-accent mr-2" size={20} />
 						<Pretitle className="text-gray-300">{pretitle}</Pretitle>
 					</div>
 					<div className="richtext headings:text-balance mx-auto w-full max-w-lg">
@@ -32,72 +36,101 @@ export default function ServicesList({
 				</header>
 			)}
 
-			<div
-				className="max-lg:carousel max-lg:full-bleed grid grid-cols-[repeat(var(--col,1),1fr)] items-stretch gap-6 max-lg:px-4"
-				style={{ '--col': services?.length } as React.CSSProperties}
-			>
-				{services?.map(
-					(services) =>
-						!!services && (
-							<article
-								className="richtext w-[400px] space-y-4 rounded p-4 text-gray-300"
-								key={services._id}
-							>
-								<div className="mb-6 flex items-center justify-between">
-									<div className="h3 text-white">{services.title}</div>
-									<Pretitle className="bg-accent/50 rounded-sm p-1 text-xs text-white">
-										{services.highlight}
-									</Pretitle>
-								</div>{' '}
-								<div className="richtext mb-6 text-sm">
-									<PortableText value={services.content} />
+			<div className="space-y-12">
+				{services?.map((service) =>
+					!!service ? (
+						<article
+							className="grid grid-cols-1 items-center gap-8 md:grid-cols-2"
+							key={service._id}
+						>
+							{/* LEFT: Content */}
+							<div className="max-w-[500px] space-y-6">
+								<div className="flex items-center justify-between">
+									<div className="h3 text-white">{service.title}</div>
+									{service.highlight && (
+										<Pretitle className="bg-accent/50 rounded-sm p-1 text-xs text-white">
+											{service.highlight}
+										</Pretitle>
+									)}
 								</div>
-								<div className="flex items-center">
-									<div className="text-xs">Starts at</div>
 
-									{services.price?.base !== undefined && (
-										<div className="ml-1 flex items-end gap-x-1 text-white">
-											{services.price.base !== undefined &&
-												!isNaN(services.price.base) && (
-													<b className="h6">
-														{formatPrice(services.price.base)}
+								<div className="richtext text-xs text-gray-300">
+									<PortableText value={service.content} />
+								</div>
+
+								<div className="flex items-center justify-between gap-2 text-xs">
+									<div className="flex items-center">
+										<div className="mr-4 text-gray-300">Starts at</div>
+										{service.price?.base !== undefined && (
+											<div className="flex items-end gap-x-1 text-white">
+												{!isNaN(service.price.base) && (
+													<b className="h5">
+														{formatPrice(service.price.base)}
 													</b>
 												)}
-											{services.price.suffix && (
-												<span
-													className={cn(isNaN(services.price.base) && 'h6')}
-												>
-													{services.price.suffix}
-												</span>
-											)}
-											{services.price.strikethrough && (
-												<s className="font-bold decoration-red-500">
-													{formatPrice(services.price?.strikethrough)}
-												</s>
-											)}
-										</div>
-									)}
-									<div className="mx-4">|</div>
-									<div>
-										{' '}
-										<CTAList className="grid" ctas={services.ctas} />
+												{service.price.suffix && (
+													<span
+														className={cn(isNaN(service.price.base) && 'h5')}
+													>
+														{service.price.suffix}
+													</span>
+												)}
+												{service.price.strikethrough && (
+													<s className="font-bold decoration-red-500">
+														{formatPrice(service.price.strikethrough)}
+													</s>
+												)}
+											</div>
+										)}
 									</div>
+
+									<CTAList className="" ctas={service.ctas} />
 								</div>
-								{services.testimonial?.length > 0 && (
-									<div className="rounded-md bg-gray-200 p-6">
-										<div className="font-bold text-gray-600">
-											{services.testimonial[0].author?.name}
+
+								{service.testimonial?.length > 0 && (
+									<div className="mt-4 rounded-md bg-gray-200 p-6">
+										<div className="text-sm text-gray-500">
+											"{service.testimonial[0].author?.title}"
 										</div>
-										<div className="text-xs text-gray-500">
-											{services.testimonial[0].author?.title}
+										<div className="mt-4 flex items-center gap-2">
+											<Img
+												className="size-[25px] shrink-0 rounded-full object-cover"
+												image={service.testimonial[0].author.image}
+												width={80}
+												alt={
+													[
+														service.testimonial.author?.name,
+														service.testimonial.author?.title,
+													]
+														.filter(Boolean)
+														.join(', ') || 'Author'
+												}
+											/>
+											<div className="text-xs text-gray-600">
+												<div className="font-bold">
+													{service.testimonial[0].author?.name}
+												</div>
+												<div>{service.testimonial[0].author?.company}</div>
+											</div>
 										</div>
 									</div>
 								)}
-							</article>
-						),
+							</div>
+
+							{/* RIGHT: Image */}
+							{service.assets?.[0] && (
+								<div className="relative aspect-video max-w-[500px] overflow-hidden rounded-md">
+									<ResponsiveImg
+										img={service.assets[0]}
+										className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+										width={800}
+									/>
+								</div>
+							)}
+						</article>
+					) : null,
 				)}
 			</div>
-			<div></div>
 		</section>
 	)
 }

@@ -17,25 +17,27 @@ export default function ContentSection({
 	ctas: Sanity.CTA[]
 }>) {
 	return (
-		<section className="section headings:text-white items- grid gap-8 text-gray-300 md:grid-cols-2 md:gap-x-12">
-			<div className="flex items-center">
-				<RxShadow className="text-accent mr-1" />
-				<Pretitle className="text-gray-300">{pretitle}</Pretitle>
-			</div>
-			<div className="richtext headings:text-balance mx-auto w-full max-w-lg">
-				<PortableText
-					value={content}
-					components={{
-						types: {
-							'custom-html': ({ value }) => <CustomHTML {...value} />,
-							'reputation-block': ({ value }) => (
-								<Reputation className="!mt-4" reputation={value.reputation} />
-							),
-						},
-					}}
-				/>
-				<CTAList ctas={ctas} className="!mt-6" />
-			</div>
+		<section className="section space-y-8">
+			<header className="richtext headings:text-white grid items-start justify-between gap-8 text-gray-300 md:grid-cols-2 md:gap-x-12">
+				<div className="flex items-center justify-start">
+					<RxShadow className="text-accent mr-2" size={20} />
+					<Pretitle className="text-gray-300">{pretitle}</Pretitle>
+				</div>
+				<div className="richtext headings:text-balance mx-auto w-full max-w-lg">
+					<PortableText
+						value={content}
+						components={{
+							types: {
+								'custom-html': ({ value }) => <CustomHTML {...value} />,
+								'reputation-block': ({ value }) => (
+									<Reputation className="!mt-4" reputation={value.reputation} />
+								),
+							},
+						}}
+					/>
+					<CTAList ctas={ctas} className="!mt-6" />
+				</div>
+			</header>
 		</section>
 	)
 }

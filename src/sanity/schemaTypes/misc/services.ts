@@ -6,6 +6,7 @@ export default defineType({
 	title: 'Services',
 	icon: LuDollarSign,
 	type: 'document',
+	groups: [{ name: 'content', default: true }, { name: 'asset' }],
 	fields: [
 		defineField({
 			name: 'title',
@@ -15,6 +16,14 @@ export default defineType({
 			name: 'highlight',
 			type: 'string',
 			description: 'e.g. Recommended, Most popular, etc.',
+		}),
+		defineField({
+			name: 'assets',
+			title: 'Assets',
+			type: 'array',
+			of: [{ type: 'img' }],
+			validation: (Rule) => Rule.max(1),
+			group: 'asset',
 		}),
 		defineField({
 			name: 'price',

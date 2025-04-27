@@ -30,6 +30,11 @@ export default defineType({
 					type: 'string',
 				}),
 				defineField({
+					name: 'company',
+					title: 'Company',
+					type: 'string',
+				}),
+				defineField({
 					name: 'image',
 					type: 'image',
 					options: {
