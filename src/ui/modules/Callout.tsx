@@ -12,7 +12,7 @@ export default function Callout({
 }>) {
 	return (
 		<section className="section text-center">
-			<div className="frosted-glass section from-accent/20 to-accent/60 headings:text-white max-w-screen-lg rounded-md bg-gradient-to-br text-gray-300">
+			<div className="frosted-glass section from-accent/30 headings:text-white max-w-screen-lg rounded-md bg-gradient-to-br to-gray-800/20 text-gray-300">
 				<div className="richtext mx-auto max-w-screen-sm text-balance">
 					<PortableText
 						value={content}

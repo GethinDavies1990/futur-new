@@ -49,7 +49,7 @@ export default function TestimonialListTitle({
 								className="relative grid basis-[min(450px,70vw)]! place-content-center rounded-md border border-gray-800 py-6"
 								key={key}
 							>
-								<div className="frosted-glass absolute inset-0 -z-10 h-full w-full bg-gray-800/20"></div>
+								<div className="frosted-glass to-accent/20 absolute inset-0 -z-10 h-full w-full bg-gradient-to-tr from-gray-800/20"></div>
 								<blockquote className="flex flex-col items-center gap-4">
 									{testimonial.author && (
 										<div className="inline-flex max-w-[25ch] items-center gap-2">
