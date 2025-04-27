@@ -9,7 +9,7 @@ import { Img } from '@/ui/Img'
 export default async function Footer() {
 	const { title, blurb, logo, copyright } = await getSite()
 
-	const logoImage = logo?.image?.light || logo?.image?.default
+	const logoImage = logo?.image?.default
 
 	return (
 		<footer
@@ -21,7 +21,7 @@ export default async function Footer() {
 					<Link className="h3 md:h2 max-w-max" href="/">
 						{logoImage ? (
 							<Img
-								className="max-h-[1.5em] w-auto"
+								className="max-h-10 w-auto"
 								image={logoImage}
 								alt={logo?.name || title}
 							/>
@@ -31,7 +31,7 @@ export default async function Footer() {
 					</Link>
 
 					{blurb && (
-						<div className="max-w-sm text-sm text-balance">
+						<div className="max-w-sm text-sm text-balance text-white">
 							<PortableText value={blurb} />
 						</div>
 					)}

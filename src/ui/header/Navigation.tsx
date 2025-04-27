@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 export default async function Menu() {
 	const { headerMenu } = await getSite()
 
-	const parentClassName = cn('md:px-3 md:text-center md:leading-tight')
+	const parentClassName = cn('md:px-3 md:text-center text-xs md:leading-tight')
 
 	return (
 		<nav

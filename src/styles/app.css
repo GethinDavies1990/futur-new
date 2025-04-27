@@ -145,11 +145,11 @@
 
 @utility h1 {
 	@apply h-base text-4xl md:text-5xl lg:text-7xl;
-	font-weight: 500;
+	font-weight: 800;
 }
 @utility h2 {
 	@apply h-base text-3xl md:text-4xl lg:text-5xl;
-	font-weight: 500;
+	font-weight: 600;
 }
 @utility h3 {
 	@apply h-base text-2xl lg:text-3xl;
@@ -275,7 +275,8 @@
 
 @utility richtext {
 	@apply space-y-2 leading-relaxed;
-	font-family: var(--font-futsat);
+	font-family: var(--font-figtree);
+	font-weight: 100;
 
 	& :is(h1, h2, h3, h4, h5, h6) strong {
 		@apply text-gradient;
