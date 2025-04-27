@@ -12,7 +12,10 @@ export default async function Footer() {
 	const logoImage = logo?.image?.light || logo?.image?.default
 
 	return (
-		<footer className="bg-ink text-canvas" role="contentinfo">
+		<footer
+			className="from-accent/50 text-canvas rounded-t-3xl bg-gradient-to-br to-black"
+			role="contentinfo"
+		>
 			<div className="section flex flex-wrap justify-between gap-x-12 gap-y-8 max-sm:flex-col">
 				<div className="flex flex-col gap-3 self-stretch">
 					<Link className="h3 md:h2 max-w-max" href="/">
