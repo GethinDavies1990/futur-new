@@ -49,11 +49,21 @@ export default defineType({
 			of: [{ type: 'cta' }],
 			group: 'content',
 		}),
+		// ✅ ADD THIS
+		defineField({
+			name: 'videoFile',
+			title: 'Video file',
+			type: 'file',
+			options: {
+				accept: 'video/*', // only allow videos
+			},
+			group: 'asset',
+		}),
 	],
 	preview: {
 		select: {
 			content: 'content',
-			media: 'assets.0.image',
+			media: 'videoFile', // change this if you want
 		},
 		prepare: ({ content, media }) => ({
 			title: getBlockText(content),

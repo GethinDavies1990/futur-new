@@ -1,66 +1,65 @@
 import moduleProps from '@/lib/moduleProps'
 import { PortableText } from 'next-sanity'
-import { RxShadow } from 'react-icons/rx'
 import Pretitle from '@/ui/Pretitle'
 import Code from './RichtextModule/Code'
 import CustomHTML from './CustomHTML'
 import Reputation from '@/ui/Reputation'
 import CTAList from '@/ui/CTAList'
-import Image from 'next/image'
 
 export default function Video({
 	pretitle,
 	content,
 	ctas,
+	videoFile,
 	...props
 }: Partial<{
 	pretitle: string
 	content: any
 	ctas: Sanity.CTA[]
+	videoFile: Sanity.Video
 }> &
 	Sanity.Module) {
 	return (
-		<div className="">
-			{/* Main Hero Section */}
+		<div>
 			<section
 				className="section space-y-8 text-center"
 				{...moduleProps(props)}
 			>
 				<div className="richtext mx-auto max-w-2xl text-balance">
-					<div className="frosted-glass shadow-accent inline-flex items-center rounded-full border-1 border-[#fc004c] bg-[#fc004c]/30 px-4 py-2 text-xs shadow-2xl">
+					{pretitle && (
 						<Pretitle className="text-xs font-medium text-white">
 							{pretitle}
 						</Pretitle>
-						<RxShadow />
-					</div>
-					<div className="">
-						<PortableText
-							value={content}
-							components={{
-								types: {
-									code: ({ value }) => (
-										<Code
-											value={value}
-											className="mx-auto mt-6! max-w-max"
-											theme="snazzy-light"
-										/>
-									),
-									'custom-html': ({ value }) => <CustomHTML {...value} />,
-									'reputation-block': ({ value }) => (
-										<Reputation
-											className="!mt-4 justify-center"
-											reputation={value.reputation}
-										/>
-									),
-								},
-							}}
-						/>
-					</div>
+					)}
+
+					<PortableText
+						value={content}
+						components={{
+							types: {
+								code: ({ value }) => (
+									<Code
+										value={value}
+										className="mx-auto mt-6! max-w-max"
+										theme="snazzy-light"
+									/>
+								),
+								'custom-html': ({ value }) => <CustomHTML {...value} />,
+								'reputation-block': ({ value }) => (
+									<Reputation
+										className="!mt-4 justify-center"
+										reputation={value.reputation}
+									/>
+								),
+							},
+						}}
+					/>
 
 					<CTAList ctas={ctas} className="!mt-8 justify-center" />
 				</div>
-				<div className="py-60">
-					<div className="">
+
+				{/* ✅ Render uploaded video */}
+				{videoFile?.asset?._ref && (
+					<div>
 						<video
 							className="anim-fade-to-t z-20 block h-full w-full rounded-xl border-1 border-gray-900 object-cover [animation-duration:1s] [mask:linear-gradient(to_top,transparent,#121212_50%)] md:h-full"
 							autoPlay
@@ -68,11 +67,10 @@ export default function Video({
 							muted
 							playsInline
 						>
-							<source src="/hero-vid.mp4" type="video/mp4" />
-							<source src="/hero-vid.ogg" type="video/ogg" />
+							<source src={urlForFile(videoFile).url()} type="video/mp4" />
 						</video>
 					</div>
-				</div>
+				)}
 			</section>
 		</div>
 	)

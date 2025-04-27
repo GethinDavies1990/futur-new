@@ -34,6 +34,18 @@ declare global {
 			readonly language?: string
 		}
 
+		interface Video extends Module<'video'> {
+			pretitle?: string
+			content?: any
+			ctas?: CTA[]
+			videoFile?: {
+				asset: {
+					_ref: string
+					_type: 'reference'
+				}
+			}
+		}
+
 		interface Page extends PageBase {
 			readonly _type: 'page'
 			modules?: Module[]

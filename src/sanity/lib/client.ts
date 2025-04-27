@@ -11,3 +11,8 @@ export const client = createClient({
 		studioUrl: '/admin',
 	},
 })
+
+export function getFileUrl(file: any) {
+	if (!file?.asset?._ref) return ''
+	return client.getUrl(file)
+}
