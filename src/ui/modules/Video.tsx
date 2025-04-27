@@ -5,6 +5,7 @@ import Code from './RichtextModule/Code'
 import CustomHTML from './CustomHTML'
 import Reputation from '@/ui/Reputation'
 import CTAList from '@/ui/CTAList'
+import { getFileUrl } from '../../sanity/lib/client'
 
 export default function Video({
 	pretitle,
@@ -12,13 +13,7 @@ export default function Video({
 	ctas,
 	videoFile,
 	...props
-}: Partial<{
-	pretitle: string
-	content: any
-	ctas: Sanity.CTA[]
-	videoFile: Sanity.Video
-}> &
-	Sanity.Module) {
+}: Partial<Sanity.Video> & Sanity.Module) {
 	return (
 		<div>
 			<section
@@ -67,7 +62,7 @@ export default function Video({
 							muted
 							playsInline
 						>
-							<source src={urlForFile(videoFile).url()} type="video/mp4" />
+							<source src={getFileUrl(videoFile.asset._ref)} type="video/mp4" />
 						</video>
 					</div>
 				)}
