@@ -65,6 +65,18 @@ export const MODULES_QUERY = groq`
 			${REPUTATION_QUERY}
 		}
 	},
+  _type == 'video' => {
+    pretitle,
+    content,
+    ctas[]{ ${CTA_QUERY} },
+    videoFile {
+      asset->{
+        _id,
+        url,
+        metadata
+      }
+    }
+  },
 	_type == 'hero.saas' => {
 		content[]{
 			...,

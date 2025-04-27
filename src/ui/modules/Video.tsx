@@ -1,5 +1,5 @@
-import moduleProps from '@/lib/moduleProps'
 import { PortableText } from 'next-sanity'
+import moduleProps from '@/lib/moduleProps'
 import Pretitle from '@/ui/Pretitle'
 import Code from './RichtextModule/Code'
 import CustomHTML from './CustomHTML'
@@ -13,7 +13,16 @@ export default function Video({
 	ctas,
 	videoFile,
 	...props
-}: Partial<Sanity.Video> & Sanity.Module) {
+}: Partial<{
+	pretitle: string
+	content: any
+	ctas: Sanity.CTA[]
+	videoFile: { asset?: { _ref: string; url: string } } // Ensure videoFile is typed correctly
+}> &
+	Sanity.Module) {
+	// Get the video URL from the videoFile asset reference
+	const videoSrc = videoFile?.asset?.url || null
+
 	return (
 		<div>
 			<section
@@ -52,8 +61,8 @@ export default function Video({
 					<CTAList ctas={ctas} className="!mt-8 justify-center" />
 				</div>
 
-				{/* ✅ Render uploaded video */}
-				{videoFile?.asset?._ref && (
+				{/* ✅ Render video only if videoSrc is valid */}
+				{videoSrc && (
 					<div>
 						<video
 							className="anim-fade-to-t z-20 block h-full w-full rounded-xl border-1 border-gray-900 object-cover [animation-duration:1s] [mask:linear-gradient(to_top,transparent,#121212_50%)] md:h-full"
@@ -62,7 +71,7 @@ export default function Video({
 							muted
 							playsInline
 						>
-							<source src={getFileUrl(videoFile.asset._ref)} type="video/mp4" />
+							<source src={videoSrc} type="video/mp4" />
 						</video>
 					</div>
 				)}

@@ -80,7 +80,7 @@ export default function TestimonialListTitle({
 								</blockquote>
 								<div className="mt-2 flex items-center justify-start">
 									{[...Array(5)].map((_, index) => (
-										<MdStar size={16} className="text-yellow-500" />
+										<MdStar key={index} size={16} className="text-yellow-500" />
 									))}
 								</div>
 							</article>
