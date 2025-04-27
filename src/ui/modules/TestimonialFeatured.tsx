@@ -13,9 +13,9 @@ export default function TestimonialFeatured({
 
 	return (
 		<section className="section">
-			<div className="section bg-accent/3 flex max-w-screen-md items-center gap-x-12 gap-y-6 rounded max-sm:flex-col">
+			<div className="section from-accent/20 to-gray-800-60 flex items-center gap-x-12 gap-y-6 rounded-md bg-gradient-to-br max-sm:flex-col">
 				<div className="space-y-2">
-					<VscQuote className="text-accent inline-block shrink-0 text-4xl" />
+					<VscQuote className="text-accent inline-block shrink-0 text-2xl" />
 
 					<div className="self-center text-xl text-balance">
 						<PortableText value={testimonial.content} />
@@ -46,7 +46,7 @@ export default function TestimonialFeatured({
 				</div>
 
 				<Img
-					className="mx-auto max-w-[200px] shrink-0 rounded"
+					className="mx-auto max-w-[100px] shrink-0 rounded"
 					image={author?.image}
 					width={400}
 					alt={

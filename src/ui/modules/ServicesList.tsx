@@ -131,7 +131,7 @@ export default function ServicesList({
 
 							{/* RIGHT: Image */}
 							{service.assets?.[0] && (
-								<div className="relative aspect-video max-w-[500px] overflow-hidden rounded-md">
+								<div className="relative aspect-video overflow-hidden rounded-md">
 									<ResponsiveImg
 										img={service.assets[0]}
 										className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -149,5 +149,5 @@ export default function ServicesList({
 
 function formatPrice(value: number) {
 	if (value === 0) return 'Free'
-	return formatCurrency(value).replace(/\.00$/, '')
+	return '£' + value.toFixed(2).replace(/\.00$/, '')
 }

@@ -5,6 +5,7 @@ import Image from './RichtextModule/Image'
 import Code from './RichtextModule/Code'
 import CustomHTML from './CustomHTML'
 import { cn } from '@/lib/utils'
+import { RxShadow } from 'react-icons/rx'
 
 export default function AccordionList({
 	pretitle,
@@ -39,16 +40,14 @@ export default function AccordionList({
 			})}
 			{...moduleProps(props)}
 		>
-			<header
-				className={cn(
-					'richtext',
-					layout === 'horizontal'
-						? 'md:sticky-below-header self-start [--offset:1rem]'
-						: 'text-center',
-				)}
-			>
-				<Pretitle>{pretitle}</Pretitle>
-				<PortableText value={intro} />
+			<header className="richtext headings:text-white grid items-start justify-between gap-8 text-gray-300 md:grid-cols-2 md:gap-x-12">
+				<div className="flex items-center justify-start">
+					<RxShadow className="text-accent mr-2" size={20} />
+					<Pretitle className="text-gray-300">{pretitle}</Pretitle>
+				</div>
+				<div className="richtext mx-auto w-full max-w-lg">
+					<PortableText value={intro} />
+				</div>
 			</header>
 
 			<div className="mx-auto w-full max-w-screen-md">
@@ -81,7 +80,10 @@ export default function AccordionList({
 								itemType: 'https://schema.org/Answer',
 							})}
 						>
-							<div className="richtext" itemProp="text">
+							<div
+								className="richtext from-accent/20 rounded-md bg-gradient-to-br to-gray-800/50 p-6 text-sm text-gray-300"
+								itemProp="text"
+							>
 								<PortableText
 									value={content}
 									components={{
