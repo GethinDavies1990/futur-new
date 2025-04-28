@@ -22,7 +22,7 @@ import resolveUrl from '@/lib/resolveUrl'
 const singletonTypes = ['site']
 
 export default defineConfig({
-	title: 'SanityPress',
+	title: 'Futur Media',
 	icon,
 	projectId,
 	dataset,
