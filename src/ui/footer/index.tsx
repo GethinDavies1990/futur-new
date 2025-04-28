@@ -13,7 +13,7 @@ export default async function Footer() {
 
 	return (
 		<footer
-			className="from-accent/50 text-canvas rounded-t-3xl bg-gradient-to-br to-black"
+			className="from-accent/50 text-canvas rounded-t-3xl bg-gradient-to-br to-blue-950"
 			role="contentinfo"
 		>
 			<div className="section flex flex-wrap justify-between gap-x-12 gap-y-8 max-sm:flex-col">

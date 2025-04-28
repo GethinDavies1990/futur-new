@@ -1,12 +1,10 @@
 import { getSite } from '@/sanity/lib/queries'
 import CTA from './CTA'
 import { cn } from '@/lib/utils'
+import { FaFacebook, FaInstagramSquare, FaLinkedin } from 'react-icons/fa'
 import {
 	FaBluesky,
-	FaFacebookF,
 	FaGithub,
-	FaInstagram,
-	FaLinkedinIn,
 	FaTiktok,
 	FaXTwitter,
 	FaYoutube,
@@ -30,7 +28,11 @@ export default async function Social({ className }: ComponentProps<'div'>) {
 								link={item}
 								key={key}
 							>
-								<Icon url={item.external} aria-label={item.label} />
+								<Icon
+									url={item.external}
+									aria-label={item.label}
+									className="h-[20px] w-[20px] text-white"
+								/>
 							</CTA>
 						)
 
@@ -51,13 +53,13 @@ function Icon({
 	return url?.includes('bsky.app') ? (
 		<FaBluesky {...props} />
 	) : url?.includes('facebook.com') ? (
-		<FaFacebookF {...props} />
+		<FaFacebook {...props} />
 	) : url?.includes('github.com') ? (
 		<FaGithub {...props} />
 	) : url?.includes('instagram.com') ? (
-		<FaInstagram {...props} />
+		<FaInstagramSquare {...props} />
 	) : url?.includes('linkedin.com') ? (
-		<FaLinkedinIn {...props} />
+		<FaLinkedin {...props} />
 	) : url?.includes('tiktok.com') ? (
 		<FaTiktok {...props} />
 	) : url?.includes('twitter.com') || url?.includes('x.com') ? (
