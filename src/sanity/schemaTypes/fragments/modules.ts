@@ -33,6 +33,7 @@ export default defineField({
 		{ type: 'testimonial.list.title' },
 		{ type: 'testimonial.featured' },
 		{ type: 'content.section' },
+		{ type: 'contact-form' },
 	],
 	options: {
 		insertMenu: {

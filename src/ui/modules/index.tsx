@@ -21,6 +21,7 @@ import TestimonialList from './TestimonialList'
 import TestimonialFeatured from './TestimonialFeatured'
 import Video from './Video'
 import ContentSection from './ContentSection'
+import ContactForm from './ContactForm'
 
 import dynamic from 'next/dynamic'
 import { createDataAttribute } from 'next-sanity'
@@ -54,6 +55,7 @@ const MODULE_MAP = {
 	'testimonial-list': TestimonialList,
 	'testimonial.list.title': TestimonialListTitle,
 	'testimonial.featured': TestimonialFeatured,
+	'contact-form': ContactForm,
 	video: Video,
 } as const
 

@@ -9,6 +9,7 @@ import { Fustat, Figtree } from 'next/font/google'
 import VisualEditingControls from '@/ui/VisualEditingControls'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { Toaster } from 'react-hot-toast'
 import '@/styles/app.css'
 
 const fustat = Fustat({
@@ -43,6 +44,7 @@ export default async function RootLayout({
 					<Header />
 					<main id="main-content" role="main" tabIndex={-1}>
 						{children}
+						<Toaster position="bottom-center" />
 					</main>
 					<Footer />
 					<VisualEditingControls />

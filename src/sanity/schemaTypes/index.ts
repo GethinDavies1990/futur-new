@@ -56,6 +56,7 @@ import testimonialListTitle from './modules/testimonial.list.title'
 import Video from './modules/video'
 import contentSection from './modules/content.section'
 import servicesList from './modules/services.list'
+import contactForm from './modules/contact-form'
 
 export const schemaTypes: SchemaTypeDefinition[] = [
 	// documents
@@ -114,4 +115,5 @@ export const schemaTypes: SchemaTypeDefinition[] = [
 	testimonialFeatured,
 	testimonialList,
 	testimonialListTitle,
+	contactForm,
 ]
