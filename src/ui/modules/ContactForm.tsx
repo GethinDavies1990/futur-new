@@ -1,10 +1,11 @@
 'use client'
 import React, { useState } from 'react'
 import Code from './RichtextModule/Code'
-import Asset from './Asset'
+import { TfiArrowRight } from 'react-icons/tfi'
 import Pretitle from '../Pretitle'
 import { PortableText } from 'next-sanity'
 import { toast } from 'react-hot-toast'
+import BookCallButton from '@/ui/BookCallButton'
 
 export default function ContactForm({
 	content,
@@ -58,14 +59,18 @@ export default function ContactForm({
 	}
 
 	return (
-		<div className="headings:text-black rounded-t-4xl bg-white text-gray-800">
+		<div className="headings:text-black bg-offwhite rounded-t-4xl text-gray-800">
 			<div className="section">
 				<div className="flex flex-col gap-8 md:flex-row">
 					{/* Left Side: Text Content */}
 					<div className="flex w-full items-center md:w-1/2">
 						<div className="p-6 md:p-10">
 							<div className="text-left md:text-left">
-								<Pretitle>{pretitle}</Pretitle>
+								<div className="flex items-center">
+									<Pretitle className="mr-2 text-gray-800">{pretitle}</Pretitle>
+									<TfiArrowRight size={14} />
+								</div>
+
 								<div className="h-5" />
 								<div className="richtext">
 									<PortableText
@@ -78,6 +83,7 @@ export default function ContactForm({
 											},
 										}}
 									/>
+									<BookCallButton />
 								</div>
 							</div>
 						</div>
@@ -87,7 +93,7 @@ export default function ContactForm({
 					<div className="w-full md:w-1/2">
 						<form
 							onSubmit={sendEmail}
-							className="text-canvas frosted-glass mx-auto mt-6 flex w-full flex-col gap-4 rounded-xl bg-gray-100 p-6 md:p-10"
+							className="text-canvas frosted-glass mx-auto mt-6 flex w-full flex-col gap-4 rounded-xl border-1 border-gray-100 bg-white p-6 md:p-10"
 						>
 							<div className="font-poppins flex flex-col gap-4 md:flex-row">
 								<input
@@ -96,7 +102,7 @@ export default function ContactForm({
 									value={data.firstName}
 									onChange={handleChange}
 									placeholder="First Name"
-									className="focus:ring-accent w-full rounded-sm bg-gray-200 p-3 focus:ring-1 focus:outline-none"
+									className="focus:ring-accent w-full rounded-sm bg-gray-100 p-3 focus:ring-1 focus:outline-none"
 								/>
 								<input
 									type="text"
@@ -104,7 +110,7 @@ export default function ContactForm({
 									value={data.lastName}
 									onChange={handleChange}
 									placeholder="Last Name"
-									className="focus:ring-accent w-full rounded-sm bg-gray-200 p-3 focus:ring-1 focus:outline-none"
+									className="focus:ring-accent w-full rounded-sm bg-gray-100 p-3 focus:ring-1 focus:outline-none"
 								/>
 							</div>
 
@@ -115,7 +121,7 @@ export default function ContactForm({
 									value={data.email}
 									onChange={handleChange}
 									placeholder="Email"
-									className="focus:ring-accent w-full rounded-sm bg-gray-200 p-3 focus:ring-1 focus:outline-none"
+									className="focus:ring-accent w-full rounded-sm bg-gray-100 p-3 focus:ring-1 focus:outline-none"
 								/>
 							</div>
 
@@ -125,10 +131,13 @@ export default function ContactForm({
 								onChange={handleChange}
 								rows={4}
 								placeholder="Your message"
-								className="focus:ring-accent w-full rounded-sm bg-gray-200 p-3 focus:ring-1 focus:outline-none"
+								className="focus:ring-accent w-full rounded-sm bg-gray-100 p-3 focus:ring-1 focus:outline-none"
 							></textarea>
-
-							<div className="flex justify-center">
+							<small className="text-gray-600">
+								By submitting this form I accept the Privacy Policy of this
+								site.
+							</small>
+							<div className="flex justify-start">
 								<button type="submit" className="action">
 									Submit
 								</button>

@@ -5,6 +5,7 @@
 	--color-canvas: #121212;
 	--color-ink: #fff;
 	--color-accent: #2388ff;
+	--color-offwhite: #fffafa;
 
 	--max-height-fold: calc(100svh - var(--header-height));
 }
