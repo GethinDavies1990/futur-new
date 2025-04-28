@@ -9,14 +9,11 @@ import { toast } from 'react-hot-toast'
 export default function ContactForm({
 	content,
 	pretitle,
-	assets,
 }: Partial<{
 	content: any
 	assets: Array<Sanity.Img | Sanity.Code | Sanity.CustomHTML>
 	pretitle: string
 }>) {
-	const asset = assets?.[0]
-
 	const [data, setData] = useState({
 		firstName: '',
 		lastName: '',
@@ -61,86 +58,83 @@ export default function ContactForm({
 	}
 
 	return (
-		<div className="section">
-			<div className="from-accent-40 togray-800 mx-auto flex w-full flex-col rounded-xl bg-gradient-to-br md:w-[80%] lg:w-[60%]">
-				{/* Image */}
-				{asset && (
-					<div className="h-[250px] w-full overflow-hidden rounded-t-lg">
-						<Asset asset={asset} />
-					</div>
-				)}
-
-				{/* Form Content */}
-				<div className="p-6 md:p-10">
-					{/* Pretitle */}
-					<div className="text-center">
-						<Pretitle>{pretitle}</Pretitle>
-						<div className="h-5"></div>
-						<div className="text-sm">
-							<PortableText
-								value={content}
-								components={{
-									types: {
-										code: ({ value }) => (
-											<Code value={value} className="" theme="snazzy-light" />
-										),
-									},
-								}}
-							/>
+		<div className="headings:text-black rounded-t-4xl bg-white text-gray-800">
+			<div className="section">
+				<div className="flex flex-col gap-8 md:flex-row">
+					{/* Left Side: Text Content */}
+					<div className="flex w-full items-center md:w-1/2">
+						<div className="p-6 md:p-10">
+							<div className="text-left md:text-left">
+								<Pretitle>{pretitle}</Pretitle>
+								<div className="h-5" />
+								<div className="richtext">
+									<PortableText
+										value={content}
+										components={{
+											types: {
+												code: ({ value }) => (
+													<Code value={value} theme="snazzy-light" />
+												),
+											},
+										}}
+									/>
+								</div>
+							</div>
 						</div>
 					</div>
 
-					{/* Form */}
-					<form onSubmit={sendEmail} className="mt-6 flex flex-col gap-4">
-						{/* Name Fields */}
-						<div className="font-poppins flex flex-col gap-4 md:flex-row">
-							<input
-								type="text"
-								name="firstName"
-								value={data.firstName}
-								onChange={handleChange}
-								placeholder="First Name"
-								className="focus:ring-accent w-full rounded-sm bg-gray-900 p-3 focus:ring-1 focus:outline-none"
-							/>
-							<input
-								type="text"
-								name="lastName"
-								value={data.lastName}
-								onChange={handleChange}
-								placeholder="Last Name"
-								className="focus:ring-accent w-full rounded-sm bg-gray-900 p-3 focus:ring-1 focus:outline-none"
-							/>
-						</div>
+					{/* Right Side: Form */}
+					<div className="w-full md:w-1/2">
+						<form
+							onSubmit={sendEmail}
+							className="text-canvas frosted-glass mx-auto mt-6 flex w-full flex-col gap-4 rounded-xl bg-gray-100 p-6 md:p-10"
+						>
+							<div className="font-poppins flex flex-col gap-4 md:flex-row">
+								<input
+									type="text"
+									name="firstName"
+									value={data.firstName}
+									onChange={handleChange}
+									placeholder="First Name"
+									className="focus:ring-accent w-full rounded-sm bg-gray-200 p-3 focus:ring-1 focus:outline-none"
+								/>
+								<input
+									type="text"
+									name="lastName"
+									value={data.lastName}
+									onChange={handleChange}
+									placeholder="Last Name"
+									className="focus:ring-accent w-full rounded-sm bg-gray-200 p-3 focus:ring-1 focus:outline-none"
+								/>
+							</div>
 
-						{/* Contact Info */}
-						<div className="flex flex-col gap-4 md:flex-row">
-							<input
-								type="email"
-								name="email"
-								value={data.email}
+							<div className="flex flex-col gap-4 md:flex-row">
+								<input
+									type="email"
+									name="email"
+									value={data.email}
+									onChange={handleChange}
+									placeholder="Email"
+									className="focus:ring-accent w-full rounded-sm bg-gray-200 p-3 focus:ring-1 focus:outline-none"
+								/>
+							</div>
+
+							<textarea
+								name="message"
+								value={data.message}
 								onChange={handleChange}
-								placeholder="Email"
-								className="focus:ring-accent w-full rounded-sm bg-gray-900 p-3 focus:ring-1 focus:outline-none"
-							/>
-						</div>
+								rows={4}
+								placeholder="Your message"
+								className="focus:ring-accent w-full rounded-sm bg-gray-200 p-3 focus:ring-1 focus:outline-none"
+							></textarea>
 
-						{/* Message Box */}
-						<textarea
-							name="message"
-							value={data.message}
-							onChange={handleChange}
-							rows={4}
-							placeholder="Your message"
-							className="focus:ring-accent w-full rounded-sm bg-gray-900 p-3 focus:ring-1 focus:outline-none"
-						></textarea>
-
-						{/* Submit Button */}
-						<div className="flex justify-center">
-							<button type="submit" className="action">
-								Submit
-							</button>
-						</div>
-					</form>
+							<div className="flex justify-center">
+								<button type="submit" className="action">
+									Submit
+								</button>
+							</div>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>

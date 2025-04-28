@@ -4,10 +4,7 @@ export default defineType({
 	name: 'contact-form',
 	title: 'Contact Form',
 	type: 'object',
-	groups: [
-		{ name: 'content', default: true },
-		{ name: 'asset', title: 'Assets' },
-	],
+	groups: [{ name: 'content', default: true }],
 	fields: [
 		defineField({
 			name: 'pretitle',
@@ -19,24 +16,6 @@ export default defineType({
 			type: 'array',
 			group: 'content',
 			of: [{ type: 'block' }, { type: 'custom-html' }],
-		}),
-		defineField({
-			name: 'assets',
-			title: 'Assets',
-			type: 'array',
-			of: [
-				{ type: 'img' },
-				defineArrayMember({
-					title: 'Code block',
-					type: 'code',
-					options: {
-						withFilename: true,
-					},
-				}),
-				{ type: 'custom-html' },
-			],
-			validation: (Rule) => Rule.max(1),
-			group: 'asset',
 		}),
 	],
 })
