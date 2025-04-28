@@ -25,7 +25,7 @@ export default function ServicesList({
 }> &
 	Sanity.Module) {
 	return (
-		<div className="bg-offwhite rounded-4xl">
+		<div className="bg-gray-100">
 			<section className="section space-y-12" {...moduleProps(props)}>
 				{(pretitle || intro) && (
 					<header className="richtext headings:text-black grid items-start justify-start gap-8 text-gray-800 md:grid-cols-2 md:gap-x-12">
