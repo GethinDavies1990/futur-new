@@ -28,7 +28,7 @@ export default async function LogoList({
 		}))
 
 	return (
-		<section className="section space-y-8">
+		<section className="section space-y-8 bg-black/90 py-20">
 			{(pretitle || intro) && (
 				<header className="richtext mx-auto max-w-screen-sm text-center text-balance">
 					<Pretitle>{pretitle}</Pretitle>

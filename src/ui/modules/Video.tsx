@@ -26,7 +26,7 @@ export default function Video({
 	return (
 		<div>
 			<section
-				className="section space-y-8 text-center"
+				className="section space-y-8 bg-black text-center"
 				{...moduleProps(props)}
 			>
 				<div className="richtext mx-auto max-w-2xl text-balance">

@@ -1,11 +1,10 @@
 import moduleProps from '@/lib/moduleProps'
 import Pretitle from '@/ui/Pretitle'
 import { PortableText } from 'next-sanity'
-import Image from 'next/image'
+import Image from './RichtextModule/Image'
 import Code from './RichtextModule/Code'
 import CustomHTML from './CustomHTML'
 import { cn } from '@/lib/utils'
-import { RxShadow } from 'react-icons/rx'
 import Link from 'next/link'
 
 export default function AccordionList({
