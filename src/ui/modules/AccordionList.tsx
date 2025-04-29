@@ -45,7 +45,7 @@ export default function AccordionList({
 					<div className="flex-col items-center justify-start">
 						<div className="flex-row items-center justify-center">
 							<div>
-								<small className="text-center">👋 Speak to us</small>
+								<small className="text-left">👋 Speak to us</small>
 							</div>
 							<Link
 								target="_blank"
