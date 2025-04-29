@@ -25,7 +25,7 @@ export default function ServicesList({
 }> &
 	Sanity.Module) {
 	return (
-		<div className="bg-gray-100">
+		<div className="bg-gray-50 py-20">
 			<section className="section space-y-12" {...moduleProps(props)}>
 				{(pretitle || intro) && (
 					<header className="richtext headings:text-black grid items-start justify-start gap-8 text-gray-800 md:grid-cols-2 md:gap-x-12">
@@ -103,7 +103,7 @@ export default function ServicesList({
 									</div>
 
 									{service.testimonial?.length > 0 && (
-										<div className="mt-4 rounded-md bg-gray-200 p-6">
+										<div className="mt-4 rounded-md bg-gray-100 p-6">
 											<div className="text-sm text-gray-500">
 												"{service.testimonial[0].author?.title}"
 											</div>
@@ -134,7 +134,7 @@ export default function ServicesList({
 
 								{/* RIGHT: Image */}
 								{service.assets?.[0] && (
-									<div className="relative aspect-video overflow-hidden rounded-md">
+									<div className="max-[500px] relative aspect-video overflow-hidden rounded-md">
 										<ResponsiveImg
 											img={service.assets[0]}
 											className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"

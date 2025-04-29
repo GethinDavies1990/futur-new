@@ -12,19 +12,13 @@ export default function TestimonialFeatured({
 	const { author } = testimonial
 
 	return (
-		<section className="section">
-			<div className="frosted-glass section from-accent/30 headings:text-white max-w-screen-lg rounded-md bg-gradient-to-br to-gray-800/20 text-gray-300">
-				<div className="space-y-6">
-					<VscQuote className="text-accent inline-block shrink-0 text-xl" />
-
-					<div className="self-center text-sm text-balance">
-						<PortableText value={testimonial.content} />
-					</div>
-
-					<div className="flex items-center gap-4">
-						{/* IMAGE */}
+		<div className="bg-white py-20">
+			<section className="section">
+				<div className="frosted-glass section mx-auto max-w-screen-lg rounded-md bg-gray-50 px-6 text-gray-800">
+					<div className="flex flex-col items-center space-y-6 text-center">
+						{/* IMAGE at top */}
 						<Img
-							className="size-[30px] shrink-0 rounded object-cover"
+							className="size-[50px] rounded-full object-cover"
 							image={author?.image}
 							width={400}
 							alt={
@@ -33,30 +27,37 @@ export default function TestimonialFeatured({
 							}
 						/>
 
-						{/* AUTHOR INFO */}
-						<div className="flex flex-col text-start">
-							<div className="text-md flex items-center gap-1 font-bold">
-								{author?.name}
-								{testimonial?.source && (
-									<cite>
-										<a
-											className="text-ink/50"
-											href={testimonial.source}
-											target="_blank"
-											title="Source"
-										>
-											<VscSurroundWith />
-										</a>
-									</cite>
-								)}
+						{/* REVIEW */}
+						<div className="max-w-xl">
+							<div className="mt-2 text-left text-sm text-balance">
+								<PortableText value={testimonial.content} />
 							</div>
-							{author?.company && (
-								<div className="text-xs text-gray-500">{author?.company}</div>
+						</div>
+
+						{/* COMPANY */}
+						{author?.company && (
+							<div className="text-xs text-gray-500">{author.company}</div>
+						)}
+
+						{/* AUTHOR NAME + OPTIONAL SOURCE */}
+						<div className="text-md flex items-center gap-1 font-bold">
+							{author?.name}
+							{testimonial?.source && (
+								<cite>
+									<a
+										className="text-ink/50"
+										href={testimonial.source}
+										target="_blank"
+										title="Source"
+									>
+										<VscSurroundWith />
+									</a>
+								</cite>
 							)}
 						</div>
 					</div>
 				</div>
-			</div>
-		</section>
+			</section>
+		</div>
 	)
 }

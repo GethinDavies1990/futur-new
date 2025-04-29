@@ -1,11 +1,12 @@
 import moduleProps from '@/lib/moduleProps'
 import Pretitle from '@/ui/Pretitle'
 import { PortableText } from 'next-sanity'
-import Image from './RichtextModule/Image'
+import Image from 'next/image'
 import Code from './RichtextModule/Code'
 import CustomHTML from './CustomHTML'
 import { cn } from '@/lib/utils'
 import { RxShadow } from 'react-icons/rx'
+import Link from 'next/link'
 
 export default function AccordionList({
 	pretitle,
@@ -29,81 +30,94 @@ export default function AccordionList({
 }> &
 	Sanity.Module) {
 	return (
-		<section
-			className={cn(
-				'section',
-				layout === 'horizontal' ? 'grid gap-8 md:grid-cols-2' : 'space-y-8',
-			)}
-			{...(generateSchema && {
-				itemScope: true,
-				itemType: 'https://schema.org/FAQPage',
-			})}
-			{...moduleProps(props)}
-		>
-			<header className="richtext headings:text-white grid items-start justify-between gap-8 text-gray-300 md:grid-cols-2 md:gap-x-12">
-				<div className="flex items-center justify-start">
-					<RxShadow className="text-accent mr-2" size={20} />
-					<Pretitle className="text-gray-300">{pretitle}</Pretitle>
-				</div>
-				<div className="richtext mx-auto w-full max-w-lg">
-					<PortableText value={intro} />
-				</div>
-			</header>
+		<div className="bg-gray-50 py-20">
+			<section
+				className={cn(
+					'section',
+					layout === 'horizontal' ? 'grid gap-8 md:grid-cols-2' : 'space-y-8',
+				)}
+				{...(generateSchema && {
+					itemScope: true,
+					itemType: 'https://schema.org/FAQPage',
+				})}
+				{...moduleProps(props)}
+			>
+				<header className="richtext headings:text-black grid items-start justify-between gap-8 text-gray-800 md:grid-cols-2 md:gap-x-12">
+					<div className="flex-col items-center justify-start">
+						<div className="flex-row items-center justify-center">
+							<div>
+								<small className="text-center">👋 Speak to us</small>
+							</div>
+							<Link
+								target="_blank"
+								rel="noopener noreferrer"
+								href="https://cal.com/wearefutur/chat-with-gethin-futur-media?overlayCalendar=true"
+								className="action-outline mt-2"
+							>
+								Book Call
+							</Link>
+						</div>
+					</div>
+					<div className="richtext mx-auto w-full max-w-lg">
+						<PortableText value={intro} />
+					</div>
+				</header>
 
-			<div className="mx-auto w-full max-w-screen-md">
-				{items?.map(({ summary, content, open }, key) => (
-					<details
-						className="accordion border-ink/10 border-b"
-						name={connect ? props._key : undefined}
-						open={open}
-						{...(generateSchema && {
-							itemScope: true,
-							itemProp: 'mainEntity',
-							itemType: 'https://schema.org/Question',
-						})}
-						key={key}
-					>
-						<summary
-							className="py-4 font-bold"
-							{...(generateSchema && {
-								itemProp: 'name',
-							})}
-						>
-							{summary}
-						</summary>
-
-						<div
-							className="anim-fade-to-b pb-4"
+				<div className="mx-auto w-full max-w-screen-md">
+					{items?.map(({ summary, content, open }, key) => (
+						<details
+							className="accordion border-ink border-b"
+							name={connect ? props._key : undefined}
+							open={open}
 							{...(generateSchema && {
 								itemScope: true,
-								itemProp: 'acceptedAnswer',
-								itemType: 'https://schema.org/Answer',
+								itemProp: 'mainEntity',
+								itemType: 'https://schema.org/Question',
 							})}
+							key={key}
 						>
-							<div
-								className="richtext from-accent/20 rounded-md bg-gradient-to-br to-gray-800/50 p-6 text-sm text-gray-300"
-								itemProp="text"
+							<summary
+								className="py-4 font-light text-black"
+								{...(generateSchema && {
+									itemProp: 'name',
+								})}
 							>
-								<PortableText
-									value={content}
-									components={{
-										types: {
-											image: Image,
-											code: Code,
-											'custom-html': ({ value }) => (
-												<CustomHTML
-													className="has-[table]:md:[grid-column:bleed] has-[table]:md:mx-auto"
-													{...value}
-												/>
-											),
-										},
-									}}
-								/>
+								{summary}
+							</summary>
+
+							<div
+								className="anim-fade-to-b pb-4"
+								{...(generateSchema && {
+									itemScope: true,
+									itemProp: 'acceptedAnswer',
+									itemType: 'https://schema.org/Answer',
+								})}
+							>
+								<div
+									className="richtext rounded-md bg-white p-6 text-sm text-gray-800"
+									itemProp="text"
+								>
+									<PortableText
+										value={content}
+										components={{
+											types: {
+												image: Image,
+												code: Code,
+												'custom-html': ({ value }) => (
+													<CustomHTML
+														className="has-[table]:md:[grid-column:bleed] has-[table]:md:mx-auto"
+														{...value}
+													/>
+												),
+											},
+										}}
+									/>
+								</div>
 							</div>
-						</div>
-					</details>
-				))}
-			</div>
-		</section>
+						</details>
+					))}
+				</div>
+			</section>
+		</div>
 	)
 }

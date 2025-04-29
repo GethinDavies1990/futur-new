@@ -55,7 +55,7 @@ export default function TestimonialListTitle({
 						(testimonial, key) =>
 							testimonial && (
 								<article
-									className="bg-offwhite relative grid basis-[min(450px,70vw)]! place-content-center rounded-lg border border-gray-200 py-6 text-gray-800"
+									className="relative grid basis-[min(450px,70vw)]! place-content-center rounded-lg border border-gray-200 bg-gray-100 py-6 text-gray-800"
 									key={key}
 								>
 									<div className="frosted-glass absolute inset-0 -z-10 h-full w-full"></div>
