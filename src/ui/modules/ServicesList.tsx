@@ -28,7 +28,7 @@ export default function ServicesList({
 		<div className="bg-gray-50 py-20">
 			<section className="section space-y-12" {...moduleProps(props)}>
 				{(pretitle || intro) && (
-					<header className="richtext headings:text-black grid items-start justify-start gap-8 text-gray-800 md:grid-cols-2 md:gap-x-12">
+					<header className="richtext headings:text-black grid items-start justify-start gap-8 text-gray-600 md:grid-cols-2 md:gap-x-12">
 						<div className="flex items-center justify-start">
 							<RxShadow className="text-accent mr-2" size={20} />
 							<Pretitle className="text-gray-800">{pretitle}</Pretitle>
@@ -57,7 +57,7 @@ export default function ServicesList({
 										)}
 									</div>
 
-									<div className="richtext text-xs text-gray-800">
+									<div className="richtext text-xs text-gray-600">
 										<PortableText
 											value={service.content}
 											components={{
@@ -75,7 +75,7 @@ export default function ServicesList({
 
 									<div className="flex items-center justify-between gap-2 text-xs">
 										<div className="flex items-center">
-											<div className="mr-4 text-gray-800">Starts at</div>
+											<div className="mr-4 text-gray-600">Starts at</div>
 											{service.price?.base !== undefined && (
 												<div className="flex items-end gap-x-1 text-black">
 													{!isNaN(service.price.base) && (

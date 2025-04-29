@@ -13,7 +13,7 @@ export default function Category({
 }) {
 	const props = {
 		className: cn(
-			"before:text-current/50 before:content-['#'] hover:*:underline",
+			'bg-green-100 p-1 uppercase rounded-sm',
 			!linked && 'pointer-events-none',
 		),
 		children: <span>{label || value?.title}</span>,

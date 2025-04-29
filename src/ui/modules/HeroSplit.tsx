@@ -24,7 +24,7 @@ export default function HeroSplit({
 	const asset = assets?.[0]
 
 	return (
-		<section className="section grid items-center gap-8 md:grid-cols-2 md:gap-x-12">
+		<section className="section headings:text-black grid items-center gap-8 text-gray-600 md:grid-cols-2 md:gap-x-12">
 			<figure
 				className={cn(
 					asset?._type === 'img' && 'max-md:full-bleed',

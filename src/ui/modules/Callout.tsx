@@ -14,7 +14,7 @@ export default function Callout({
 	return (
 		<div className="bg-offwhite py-20">
 			<section className="section text-center">
-				<div className="frosted-glass section headings:text-black h-full w-full rounded-md bg-blue-100 py-30 text-gray-800">
+				<div className="frosted-glass section headings:text-black h-full w-full rounded-md bg-blue-100 py-30 text-gray-600">
 					<div className="richtext mx-auto max-w-screen-sm text-balance">
 						<PortableText
 							value={content}

@@ -33,11 +33,6 @@ export default async function RootLayout({
 		<Root>
 			{/* <GoogleTagManager gtmId="" /> */}
 			<body className="relative h-full w-full bg-black text-white">
-				{/* Background Effects */}
-
-				{/* Radial gradient background */}
-				<div className="absolute top-[5%] left-1/2 -z-10 h-[1000px] w-[1000px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_400px_at_50%_300px,#fbfbfb36,#000)]" />
-
 				<NuqsAdapter>
 					<SkipToContent />
 					<Announcement />

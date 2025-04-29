@@ -16,8 +16,8 @@ export default function PostPreview({
 	if (!post && !skeleton) return null
 
 	return (
-		<div className="group relative isolate flex h-full flex-col space-y-2">
-			<figure className="bg-ink/3 relative aspect-video overflow-hidden">
+		<div className="group relative isolate flex h-full flex-col space-y-2 rounded-lg border-1 border-gray-100 bg-white p-2">
+			<figure className="bg-ink relative aspect-video overflow-hidden rounded-xl">
 				<Img
 					className="aspect-video w-full object-cover transition-all group-hover:scale-105 group-hover:brightness-110"
 					image={post?.metadata.image}
@@ -26,7 +26,7 @@ export default function PostPreview({
 				/>
 
 				{post?.featured && (
-					<span className="action absolute top-0 right-4 rounded-t-none py-1 text-xs shadow-md">
+					<span className="pill-button absolute top-0 right-4 rounded-t-none py-1 text-xs">
 						Featured
 					</span>
 				)}
@@ -34,7 +34,7 @@ export default function PostPreview({
 
 			<div className={cn('h4', skeleton && 'skeleton-2')}>
 				<Link
-					className="group-hover:underline"
+					className="text-gray-900"
 					href={resolveUrl(post, { base: false })}
 				>
 					<span className="absolute inset-0" />
@@ -50,7 +50,7 @@ export default function PostPreview({
 
 			{(post?.authors?.length || skeleton) && (
 				<Authors
-					className="flex flex-wrap items-center gap-4 text-sm"
+					className="flex flex-wrap items-center gap-4 text-sm text-gray-600"
 					authors={post?.authors}
 					skeleton={skeleton}
 				/>
@@ -58,10 +58,10 @@ export default function PostPreview({
 
 			<hr />
 
-			<div className="empty:skeleton flex flex-wrap gap-x-4 text-sm">
+			<div className="empty:skeleton flex flex-wrap items-center justify-between gap-x-4 text-xs text-gray-600">
 				<Date value={post?.publishDate} />
 				<Categories
-					className="flex flex-wrap gap-x-2"
+					className="flex flex-wrap gap-x-2 text-xs"
 					categories={post?.categories}
 				/>
 			</div>

@@ -17,11 +17,11 @@ export default function ContentSection({
 	ctas: Sanity.CTA[]
 }>) {
 	return (
-		<section className="section space-y-8">
-			<header className="richtext headings:text-white grid items-start justify-between gap-8 text-gray-300 md:grid-cols-2 md:gap-x-12">
+		<section className="section headings:text-black space-y-8 text-gray-600">
+			<header className="richtext grid items-start justify-between gap-8 md:grid-cols-2 md:gap-x-12">
 				<div className="flex items-center justify-start">
 					<RxShadow className="text-accent mr-2" size={20} />
-					<Pretitle className="text-gray-300">{pretitle}</Pretitle>
+					<Pretitle className="text-gray-600">{pretitle}</Pretitle>
 				</div>
 				<div className="richtext headings:text-balance mx-auto w-full max-w-lg">
 					<PortableText

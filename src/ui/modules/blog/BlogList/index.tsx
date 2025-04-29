@@ -63,29 +63,31 @@ export default async function BlogList({
 	)
 
 	return (
-		<section className="section space-y-8" {...moduleProps(props)}>
-			{intro && (
-				<header className="richtext">
-					<Pretitle>{pretitle}</Pretitle>
-					<PortableText value={intro} />
-				</header>
-			)}
+		<div className="bg-offwhite">
+			<section className="section space-y-8" {...moduleProps(props)}>
+				{intro && (
+					<header className="richtext headings:text-black text-gray-600">
+						<Pretitle>{pretitle}</Pretitle>
+						<PortableText value={intro} />
+					</header>
+				)}
 
-			{displayFilters && !filteredCategory && <FilterList />}
+				{displayFilters && !filteredCategory && <FilterList />}
 
-			<Suspense
-				fallback={
-					<ul className={listClassName}>
-						{Array.from({ length: limit ?? 6 }).map((_, i) => (
-							<li key={i}>
-								<PostPreview skeleton />
-							</li>
-						))}
-					</ul>
-				}
-			>
-				<List posts={posts} className={listClassName} />
-			</Suspense>
-		</section>
+				<Suspense
+					fallback={
+						<ul className={listClassName}>
+							{Array.from({ length: limit ?? 6 }).map((_, i) => (
+								<li key={i}>
+									<PostPreview skeleton />
+								</li>
+							))}
+						</ul>
+					}
+				>
+					<List posts={posts} className={listClassName} />
+				</Suspense>
+			</section>
+		</div>
 	)
 }

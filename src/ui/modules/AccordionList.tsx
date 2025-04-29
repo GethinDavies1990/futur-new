@@ -41,7 +41,7 @@ export default function AccordionList({
 				})}
 				{...moduleProps(props)}
 			>
-				<header className="richtext headings:text-black grid items-start justify-between gap-8 text-gray-800 md:grid-cols-2 md:gap-x-12">
+				<header className="richtext headings:text-black grid items-start justify-between gap-8 text-gray-600 md:grid-cols-2 md:gap-x-12">
 					<div className="flex-col items-center justify-start">
 						<div className="flex-row items-center justify-center">
 							<div>
@@ -93,7 +93,7 @@ export default function AccordionList({
 								})}
 							>
 								<div
-									className="richtext rounded-md bg-white p-6 text-sm text-gray-800"
+									className="richtext rounded-md bg-white p-6 text-sm text-gray-600"
 									itemProp="text"
 								>
 									<PortableText

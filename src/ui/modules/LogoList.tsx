@@ -29,7 +29,7 @@ export default async function LogoList({
 		}))
 
 	return (
-		<section className="section headings:text-black space-y-8 py-20 text-gray-800">
+		<section className="section headings:text-black space-y-8 py-20 text-gray-600">
 			{(pretitle || intro) && (
 				<header className="richtext mx-auto max-w-screen-sm text-center text-balance">
 					<div className="flex items-center justify-center">
@@ -37,7 +37,7 @@ export default async function LogoList({
 							size={30}
 							className="bg-accent mr-2 rounded-full text-white"
 						/>
-						<Pretitle className="font-semibold">{pretitle}</Pretitle>
+						<Pretitle>{pretitle}</Pretitle>
 					</div>
 
 					<PortableText value={intro} />

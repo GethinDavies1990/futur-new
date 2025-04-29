@@ -59,7 +59,7 @@ export default function ContactForm({
 	}
 
 	return (
-		<div className="headings:text-black rounded-t-4xl bg-blue-100 text-gray-800">
+		<div className="headings:text-black rounded-t-4xl bg-blue-100 text-gray-600">
 			<div className="section">
 				<div className="flex flex-col gap-8 md:flex-row">
 					{/* Left Side: Text Content */}
@@ -67,7 +67,7 @@ export default function ContactForm({
 						<div className="p-6 md:p-10">
 							<div className="text-left md:text-left">
 								<div className="flex items-center">
-									<Pretitle className="mr-2 text-gray-800">{pretitle}</Pretitle>
+									<Pretitle className="mr-2 text-gray-600">{pretitle}</Pretitle>
 									<TfiArrowRight size={14} />
 								</div>
 
@@ -93,7 +93,7 @@ export default function ContactForm({
 					<div className="w-full md:w-1/2">
 						<form
 							onSubmit={sendEmail}
-							className="text-canvas frosted-glass mx-auto mt-6 flex w-full flex-col gap-4 rounded-xl border-1 border-gray-100 bg-white p-6 md:p-10"
+							className="frosted-glass mx-auto mt-6 flex w-full flex-col gap-4 rounded-xl border-1 border-gray-100 bg-white p-6 text-gray-600 md:p-10"
 						>
 							<div className="font-poppins flex flex-col gap-4 md:flex-row">
 								<input

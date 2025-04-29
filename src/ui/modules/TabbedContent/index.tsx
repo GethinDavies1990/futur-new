@@ -26,7 +26,7 @@ export default function TabbedContent({
 	return (
 		<section className="section space-y-8">
 			{(pretitle || intro) && (
-				<header className="richtext text-center">
+				<header className="richtext headings:text-black text-center text-gray-600">
 					<Pretitle>{pretitle}</Pretitle>
 					<PortableText value={intro} />
 				</header>
@@ -54,11 +54,13 @@ export default function TabbedContent({
 
 							<div
 								className={cn(
-									'richtext anim-fade-to-r w-full',
+									'richtext anim-fade-to-r w-full text-gray-600',
 									!tab.assetOnRight && 'md:anim-fade-to-l',
 								)}
 							>
-								<Pretitle>{tab.pretitle}</Pretitle>
+								<Pretitle className="font-semibold text-black">
+									{tab.pretitle}
+								</Pretitle>
 								<PortableText value={tab.content} />
 								<CTAList ctas={tab.ctas} />
 							</div>
