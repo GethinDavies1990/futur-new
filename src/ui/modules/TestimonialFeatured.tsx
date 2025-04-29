@@ -14,7 +14,7 @@ export default function TestimonialFeatured({
 	return (
 		<div className="bg-white py-20">
 			<section className="section">
-				<div className="frosted-glass section mx-auto max-w-screen-lg rounded-md bg-gray-50 px-6 text-gray-600">
+				<div className="frosted-glass section mx-auto max-w-screen-lg rounded-md bg-pink-100 px-6 text-gray-600">
 					<div className="flex flex-col items-center space-y-6 text-center">
 						{/* IMAGE at top */}
 						<Img
