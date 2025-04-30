@@ -44,6 +44,31 @@ export const MODULES_QUERY = groq`
 			${REPUTATION_QUERY}
 		}
 	},
+	_type == 'callout-asset' => {
+    content[]{
+      ...,
+      ${REPUTATION_QUERY}
+    },
+    ctas[]{ ${CTA_QUERY} },
+    media {
+      image {
+        asset->{
+          _id,
+          url,
+          metadata
+        },
+        alt
+      },
+      video {
+        asset->{
+          _id,
+          url,
+          metadata
+        }
+      }
+    }
+  },
+
 	_type == 'card-list' => {
 		cards[]{
 			...,

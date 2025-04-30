@@ -17,10 +17,9 @@ export default function Video({
 	pretitle: string
 	content: any
 	ctas: Sanity.CTA[]
-	videoFile: { asset?: { _ref: string; url: string } } // Ensure videoFile is typed correctly
+	videoFile: { asset?: { _ref: string; url: string } }
 }> &
 	Sanity.Module) {
-	// Get the video URL from the videoFile asset reference
 	const videoSrc = videoFile?.asset?.url || null
 
 	return (
@@ -31,7 +30,7 @@ export default function Video({
 			>
 				<div className="richtext mx-auto max-w-2xl text-balance">
 					{pretitle && (
-						<Pretitle className="text-xs font-medium text-white">
+						<Pretitle className="text-xs font-medium text-black">
 							{pretitle}
 						</Pretitle>
 					)}

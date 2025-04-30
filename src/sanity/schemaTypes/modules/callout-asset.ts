@@ -1,29 +1,41 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
-import { TfiLayoutCtaCenter } from 'react-icons/tfi'
+import { VscInspect } from 'react-icons/vsc'
 import { reputationBlock } from '../misc/reputation'
 import { getBlockText } from 'sanitypress-utils'
 
 export default defineType({
-	name: 'video',
-	title: 'Video',
-	icon: TfiLayoutCtaCenter,
+	name: 'callout-asset',
+	title: 'Callout with Asset',
+	icon: VscInspect,
 	type: 'object',
-	groups: [
-		{ name: 'content', default: true },
-		{ name: 'asset' },
-		{ name: 'options' },
-	],
 	fields: [
 		defineField({
-			name: 'options',
-			title: 'Module options',
-			type: 'module-options',
-			group: 'options',
-		}),
-		defineField({
-			name: 'pretitle',
-			type: 'string',
-			group: 'content',
+			name: 'media',
+			title: 'Media (Image or Video)',
+			type: 'object',
+			fields: [
+				defineField({
+					name: 'image',
+					title: 'Image',
+					type: 'image',
+					options: { hotspot: true },
+				}),
+				defineField({
+					name: 'video',
+					title: 'Video',
+					type: 'file',
+					options: {
+						accept: 'video/*',
+					},
+				}),
+			],
+			validation: (Rule) =>
+				Rule.custom((media) => {
+					if (media?.image && media?.video) {
+						return 'Only one of image or video can be set.'
+					}
+					return true
+				}),
 		}),
 		defineField({
 			name: 'content',
@@ -40,34 +52,21 @@ export default defineType({
 				{ type: 'custom-html' },
 				reputationBlock,
 			],
-			group: 'content',
 		}),
 		defineField({
 			name: 'ctas',
 			title: 'Call-to-actions',
 			type: 'array',
 			of: [{ type: 'cta' }],
-			group: 'content',
-		}),
-		defineField({
-			name: 'videoFile',
-			title: 'Video file',
-			type: 'file',
-			options: {
-				accept: 'video/*',
-			},
-			group: 'asset',
 		}),
 	],
 	preview: {
 		select: {
 			content: 'content',
-			media: 'videoFile',
 		},
-		prepare: ({ content, media }) => ({
+		prepare: ({ content }) => ({
 			title: getBlockText(content),
-			subtitle: 'Video',
-			media,
+			subtitle: 'Callout with Asset',
 		}),
 	},
 })

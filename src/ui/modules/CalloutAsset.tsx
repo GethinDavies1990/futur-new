@@ -1,0 +1,73 @@
+import { PortableText } from 'next-sanity'
+import CTAList from '@/ui/CTAList'
+import Code from './RichtextModule/Code'
+import Reputation from '@/ui/Reputation'
+import BookCallButton from '../BookCallButton'
+import Image from 'next/image'
+
+export default function CalloutAsset({
+	content,
+	ctas,
+	media,
+}: Partial<{
+	content: any
+	ctas: Sanity.CTA[]
+	media: {
+		image?: Sanity.Image
+		video?: Sanity.File
+	}
+}>) {
+	return (
+		<div className="bg-[#0D0D0D] py-20">
+			<section className="section">
+				<div className="headings:text-white grid grid-cols-1 items-center gap-10 md:grid-cols-2">
+					{/* Content on the Left */}
+					<div className="richtext text-gray-300">
+						<PortableText
+							value={content}
+							components={{
+								types: {
+									code: ({ value }) => (
+										<Code
+											value={value}
+											className="mx-auto max-w-max"
+											theme="snazzy-light"
+										/>
+									),
+									'reputation-block': ({ value }) => (
+										<Reputation
+											className="!mt-4"
+											reputation={value.reputation}
+										/>
+									),
+								},
+							}}
+						/>
+						{!ctas && <BookCallButton />}
+						<CTAList className="!mt-8" ctas={ctas} />
+					</div>
+
+					{/* Media on the Right */}
+					<div className="mx-auto w-full max-w-lg">
+						{media?.image ? (
+							<Image
+								src={media.image.asset.url}
+								alt={media.image.alt || 'Callout Image'}
+								width={600}
+								height={600}
+								className="rounded"
+							/>
+						) : media?.video ? (
+							<video
+								src={media.video.asset.url}
+								autoPlay
+								loop
+								className="aspect-video w-full rounded"
+							/>
+						) : null}
+					</div>
+				</div>
+			</section>
+		</div>
+	)
+}

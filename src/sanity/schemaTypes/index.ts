@@ -57,6 +57,7 @@ import Video from './modules/video'
 import contentSection from './modules/content.section'
 import servicesList from './modules/services.list'
 import contactForm from './modules/contact-form'
+import calloutAsset from './modules/callout-asset'
 
 export const schemaTypes: SchemaTypeDefinition[] = [
 	// documents
@@ -93,6 +94,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
 	blogPostContent,
 	breadcrumbs,
 	callout,
+	calloutAsset,
 	cardList,
 	contentSection,
 	creativeModule,

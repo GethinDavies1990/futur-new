@@ -22,10 +22,11 @@ import TestimonialFeatured from './TestimonialFeatured'
 import Video from './Video'
 import ContentSection from './ContentSection'
 import ContactForm from './ContactForm'
+import TestimonialListTitle from './TestimonialListTitle'
+import CalloutAsset from './CalloutAsset'
 
 import dynamic from 'next/dynamic'
 import { createDataAttribute } from 'next-sanity'
-import TestimonialListTitle from './TestimonialListTitle'
 
 const MODULE_MAP = {
 	'accordion-list': AccordionList,
@@ -34,6 +35,7 @@ const MODULE_MAP = {
 	'blog-post-content': BlogPostContent,
 	breadcrumbs: Breadcrumbs,
 	callout: Callout,
+	'callout-asset': CalloutAsset,
 	'card-list': CardList,
 	'content.section': ContentSection,
 	'creative-module': dynamic(() => import('./CreativeModule')),

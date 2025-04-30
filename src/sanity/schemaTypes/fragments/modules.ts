@@ -11,6 +11,7 @@ export default defineField({
 		{ type: 'blog-post-content' },
 		{ type: 'breadcrumbs' },
 		{ type: 'callout' },
+		{ type: 'callout-asset' },
 		{ type: 'card-list' },
 		{ type: 'creative-module' },
 		{ type: 'custom-html' },
