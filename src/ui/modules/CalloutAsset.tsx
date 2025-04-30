@@ -14,7 +14,14 @@ export default function CalloutAsset({
 	ctas: Sanity.CTA[]
 	media: {
 		image?: Sanity.Image
-		video?: Sanity.File
+		video?: {
+			asset: {
+				_ref: string
+				_type: string
+				url: string
+				metadata?: any
+			}
+		}
 	}
 }>) {
 	return (
