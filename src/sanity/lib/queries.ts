@@ -68,6 +68,7 @@ export const MODULES_QUERY = groq`
       }
     }
   },
+	
 
 	_type == 'card-list' => {
 		cards[]{
