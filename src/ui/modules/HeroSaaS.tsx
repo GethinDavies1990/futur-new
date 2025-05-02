@@ -33,12 +33,10 @@ export default function HeroSaaS({
 				{...moduleProps(props)}
 			>
 				<div className="richtext mx-auto max-w-2xl text-balance">
-					<div className="frosted-glass shadow-accent inline-block rounded-full border-1 border-[#fc004c] bg-[#fc004c]/30 px-4 py-2 text-xs shadow-2xl">
-						<Pretitle className="font-montserrat font-medium text-white">
-							{pretitle}
-						</Pretitle>
+					<div>
+						<Pretitle className="text-gray-600">{pretitle}</Pretitle>
 					</div>
-					<div className="">
+					<div className="headings:text-black text-gray-600np">
 						<PortableText
 							value={content}
 							components={{

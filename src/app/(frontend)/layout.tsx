@@ -12,6 +12,8 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Toaster } from 'react-hot-toast'
 import '@/styles/app.css'
 
+export const runtime = 'nodejs'
+
 const fustat = Fustat({
 	subsets: ['latin'],
 	weight: ['200', '300', '400', '500', '600', '700', '800'],
