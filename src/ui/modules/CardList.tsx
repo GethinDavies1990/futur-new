@@ -4,6 +4,7 @@ import { PortableText, stegaClean } from 'next-sanity'
 import CTAList from '@/ui/CTAList'
 import { Img } from '@/ui/Img'
 import { cn } from '@/lib/utils'
+import { BsArrowUpRightCircle } from 'react-icons/bs'
 
 export default function CardList({
 	pretitle,
@@ -31,60 +32,70 @@ export default function CardList({
 	const isCarousel = stegaClean(layout) === 'carousel'
 
 	return (
-		<section className="section space-y-12" {...moduleProps(props)}>
-			{(pretitle || intro) && (
-				<header className="richtext text-center">
-					<Pretitle>{pretitle}</Pretitle>
-					<PortableText value={intro} />
-					<CTAList className="justify-center" ctas={ctas} />
-				</header>
-			)}
-
-			<div
-				className={cn(
-					'items-stretch gap-4',
-					isCarousel
-						? 'carousel max-xl:full-bleed md:overflow-fade pb-4 max-md:px-4 md:gap-8 md:before:m-auto md:after:m-auto'
-						: [
-								'grid *:h-full max-md:pb-4',
-								columns
-									? 'md:grid-cols-[repeat(var(--col,3),minmax(0,1fr))]'
-									: 'sm:grid-cols-[repeat(auto-fill,minmax(var(--size,300px),1fr))]',
-							],
+		<div className="bg-gray-100">
+			<section className="section space-y-12" {...moduleProps(props)}>
+				{(pretitle || intro) && (
+					<header className="richtext text-center">
+						<Pretitle>{pretitle}</Pretitle>
+						<PortableText value={intro} />
+						<CTAList className="justify-center" ctas={ctas} />
+					</header>
 				)}
-				style={
-					columns
-						? ({
-								'--col': columns,
-							} as React.CSSProperties)
-						: undefined
-				}
-			>
-				{cards?.map((card, key) => (
-					<article
-						className={cn(
-							'flex flex-col gap-2',
-							visualSeparation && 'border-ink/10 border p-4',
-						)}
-						key={key}
-					>
-						{card.image && (
-							<figure>
-								<Img
-									className="aspect-video w-full object-cover"
-									image={card.image}
-									width={600}
-								/>
-							</figure>
-						)}
 
-						<div className="richtext grow">
-							<PortableText value={card.content} />
-						</div>
-						<CTAList className="mt-auto" ctas={card.ctas} />
-					</article>
-				))}
-			</div>
-		</section>
+				<div
+					className={cn(
+						'items-stretch gap-4',
+						isCarousel
+							? 'carousel max-xl:full-bleed md:overflow-fade pb-4 max-md:px-4 md:gap-8 md:before:m-auto md:after:m-auto'
+							: [
+									'grid *:h-full max-md:pb-4',
+									columns
+										? 'md:grid-cols-[repeat(var(--col,3),minmax(0,1fr))]'
+										: 'sm:grid-cols-[repeat(auto-fill,minmax(var(--size,300px),1fr))]',
+								],
+					)}
+					style={
+						columns
+							? ({
+									'--col': columns,
+								} as React.CSSProperties)
+							: undefined
+					}
+				>
+					{cards?.map((card, key) => (
+						<article
+							className={cn(
+								'flex flex-col gap-2',
+								visualSeparation &&
+									'group rounded-lg border border-gray-200 bg-white transition-all duration-700 hover:border-gray-400',
+							)}
+							key={key}
+						>
+							{card.image && (
+								<figure>
+									<Img
+										className="aspect-video w-full rounded-t-[6px] object-cover"
+										image={card.image}
+										width={600}
+									/>
+								</figure>
+							)}
+							<div className="p-4">
+								<div className="richtext grow">
+									<PortableText value={card.content} />
+								</div>
+								<div className="mt-4 flex items-center justify-between">
+									<CTAList ctas={card.ctas} />
+									<BsArrowUpRightCircle
+										size={20}
+										className="group-hover:rotate-45"
+									/>
+								</div>
+							</div>
+						</article>
+					))}
+				</div>
+			</section>
+		</div>
 	)
 }

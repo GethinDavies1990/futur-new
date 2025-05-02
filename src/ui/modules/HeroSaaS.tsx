@@ -32,7 +32,7 @@ export default function HeroSaaS({
 				className="section space-y-8 text-center"
 				{...moduleProps(props)}
 			>
-				<div className="richtext mx-auto max-w-2xl text-balance">
+				<div className="richtext mx-auto text-balance">
 					<div>
 						<Pretitle className="text-gray-600">{pretitle}</Pretitle>
 					</div>
