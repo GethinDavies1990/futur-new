@@ -66,10 +66,10 @@ export default async function MediaCarousel({
 
 	console.log('Fetched Items:', allItems)
 	return (
-		<section className="section headings:text-black space-y-8 py-10 text-gray-600">
+		<section className="section headings:text-black py-8 text-gray-600">
 			{(pretitle || intro) && (
 				<header className="richtext mx-auto max-w-screen-sm text-center text-balance">
-					<div className="flex items-center justify-center">
+					<div className="flex items-start justify-center">
 						<MdPermMedia
 							size={30}
 							className="bg-accent mr-2 rounded-full text-white"
@@ -82,10 +82,10 @@ export default async function MediaCarousel({
 
 			<figure
 				className={cn(
-					'mx-auto flex items-center gap-y-2 pb-4',
+					'mx-auto flex items-center gap-1 pb-4', // Reduced gap around items
 					autoScroll
-						? `${css.track} `
-						: 'flex-wrap justify-center gap-x-4 rounded-lg bg-blue-950 py-20',
+						? `${css.track} overflow-fade overflow-hidden`
+						: 'flex-wrap justify-center gap-1 rounded-lg bg-blue-950 py-10', // Adjusted padding and gap
 				)}
 				style={
 					{
@@ -97,7 +97,7 @@ export default async function MediaCarousel({
 				{allItems?.map((item: MediaItem, i) => (
 					<div
 						key={item._key || i} // Use _key for better uniqueness
-						className="flex h-[450px] w-[450px] shrink-0 items-center justify-center px-4 py-2"
+						className="flex h-[500px] w-[500px] shrink-0 items-center justify-center px-1 py-2" // Adjusted item size and gap
 						style={{ '--index': i } as React.CSSProperties}
 					>
 						{/* Check for media type and render accordingly */}
@@ -105,17 +105,16 @@ export default async function MediaCarousel({
 							<Image
 								src={item.media.asset.url}
 								alt={item.title || 'Image'}
-								width={400} // You can adjust the size as necessary
-								height={400} // This ensures the image is square
-								className="max-h-full max-w-full object-cover"
+								width={500} // Adjusted size for consistency
+								height={500} // Square image
+								className="max-h-full max-w-full rounded-lg object-cover"
 								loading="lazy"
 							/>
 						) : item.mediaType === 'video' && item.media?.asset?.url ? (
 							<video
 								src={item.media.asset.url}
-								className="aspect-video max-h-full max-w-full object-cover"
+								className="aspect-video max-h-full max-w-full rounded-lg object-cover"
 								autoPlay
-								controls
 							/>
 						) : null}
 					</div>
