@@ -2,7 +2,7 @@
 @import './fonts.css';
 
 @theme {
-	--color-canvas: #fff;
+	--color-canvas: #fffafa;
 	--color-ink: #000;
 	--color-accent: #2388ff;
 	--color-offwhite: #fffafa;
@@ -144,29 +144,23 @@ body {
 /* typography */
 
 @utility h-base {
-	font-weight: bold;
 	font-family: var(--font-futsat);
 }
 
 @utility h1 {
-	@apply h-base text-4xl md:text-5xl lg:text-7xl;
-	font-weight: 800;
+	@apply h-base text-3xl font-bold md:text-4xl lg:text-5xl;
 }
 @utility h2 {
-	@apply h-base text-3xl md:text-4xl lg:text-5xl;
-	font-weight: 600;
+	@apply h-base text-2xl font-semibold md:text-3xl lg:text-4xl;
 }
 @utility h3 {
-	@apply h-base text-2xl lg:text-3xl;
-	font-weight: 500;
+	@apply h-base text-2xl font-medium lg:text-3xl;
 }
 @utility h4 {
 	@apply h-base text-xl lg:text-2xl;
-	font-weight: 500;
 }
 @utility h5 {
 	@apply h-base text-lg lg:text-xl;
-	font-weight: 500;
 }
 @utility h6 {
 	@apply h-base;
@@ -183,7 +177,7 @@ body {
 }
 
 @utility text-gradient {
-	@apply from-accent/3 to-accent bg-linear-to-br bg-clip-text text-transparent;
+	@apply from-accent to-accent/50 bg-linear-to-br bg-clip-text text-transparent;
 }
 
 /* ctas, links */

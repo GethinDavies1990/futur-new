@@ -29,11 +29,10 @@ export default function Hero({
 	const asset = assets?.[0]
 
 	return (
-		<div className="bg-[url('/backgrounds/bg-gradient.jpg')] bg-cover bg-center">
+		<div className="bg-cover bg-center">
 			<section
 				className={cn(
-					hasImage &&
-						'bg-ink text-canvas grid overflow-hidden *:col-span-full *:row-span-full',
+					hasImage && 'grid overflow-hidden *:col-span-full *:row-span-full',
 				)}
 				{...moduleProps(props)}
 			>
@@ -50,7 +49,7 @@ export default function Hero({
 					<div className="section flex h-screen w-full flex-col">
 						<div
 							className={cn(
-								'richtext headings:text-white relative isolate max-w-xl text-gray-300',
+								'richtext headings:text-black relative isolate max-w-xl text-gray-600',
 								hasImage && 'text-shadow',
 								{
 									'mb-8': stegaClean(alignItems) === 'start',

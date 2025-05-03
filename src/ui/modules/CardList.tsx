@@ -32,7 +32,7 @@ export default function CardList({
 	const isCarousel = stegaClean(layout) === 'carousel'
 
 	return (
-		<div className="bg-gray-100">
+		<div className="bg-gray-100 py-10">
 			<section className="section space-y-12" {...moduleProps(props)}>
 				{(pretitle || intro) && (
 					<header className="richtext text-center">
