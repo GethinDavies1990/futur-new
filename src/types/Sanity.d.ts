@@ -46,6 +46,23 @@ declare global {
 			}
 		}
 
+		interface MediaItem extends SanityDocument {
+			_key: string
+			_type: 'mediaImage' | 'mediaVideo'
+			title?: string
+			media?: {
+				asset?: {
+					_id: string
+					url: string
+					metadata: {
+						lqip: string
+						dimensions: { width: number; height: number }
+						aspectRatio: number
+					}
+				}
+			}
+		}
+
 		interface Page extends PageBase {
 			readonly _type: 'page'
 			modules?: Module[]

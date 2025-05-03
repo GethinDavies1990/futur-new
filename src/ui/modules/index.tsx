@@ -24,6 +24,7 @@ import ContentSection from './ContentSection'
 import ContactForm from './ContactForm'
 import TestimonialListTitle from './TestimonialListTitle'
 import CalloutAsset from './CalloutAsset'
+import MediaCarousel from './MediaCarousel'
 
 import dynamic from 'next/dynamic'
 import { createDataAttribute } from 'next-sanity'
@@ -59,6 +60,7 @@ const MODULE_MAP = {
 	'testimonial.featured': TestimonialFeatured,
 	'contact-form': ContactForm,
 	video: Video,
+	'media-carousel': MediaCarousel,
 } as const
 
 export default function Modules({

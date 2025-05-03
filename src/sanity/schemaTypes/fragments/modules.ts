@@ -19,6 +19,7 @@ export default defineField({
 		{ type: 'hero' },
 		{ type: 'hero.saas' },
 		{ type: 'video' },
+		{ type: 'media-carousel' },
 		{ type: 'hero.split' },
 		{ type: 'logo-list' },
 		{ type: 'person-list' },

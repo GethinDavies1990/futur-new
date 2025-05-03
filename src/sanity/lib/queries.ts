@@ -25,6 +25,27 @@ export const CTA_QUERY = groq`
 	...,
 	link{ ${LINK_QUERY} }
 `
+export const MEDIA_CAROUSEL_QUERY = groq`
+  *[_type == "media-carousel"][0] {
+    items[]->{
+      ...,
+      media {
+        ...,
+        asset->{
+          _id,
+          url,
+          metadata {
+            lqip,
+            dimensions { width, height },
+            aspectRatio
+          }
+        }
+      }
+    },
+    autoScroll,
+    duration
+  }
+`
 
 export const REPUTATION_QUERY = groq`
 	_type == 'reputation-block' => { reputation-> }

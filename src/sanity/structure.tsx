@@ -35,6 +35,7 @@ export const structure = structureTool({
 					S.documentTypeListItem('services').title('Services'),
 					S.documentTypeListItem('reputation'),
 					S.documentTypeListItem('testimonial').title('Testimonials'),
+					S.documentTypeListItem('media').title('Media Files'),
 				]),
 			]),
 })

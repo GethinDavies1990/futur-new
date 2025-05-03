@@ -17,6 +17,7 @@ import pricing from './misc/pricing'
 import reputation from './misc/reputation'
 import testimonial from './misc/testimonial'
 import services from './misc/services'
+import media from './misc/media'
 
 // objects
 import cta from './objects/cta'
@@ -54,6 +55,7 @@ import testimonialFeatured from './modules/testimonial.featured'
 import testimonialList from './modules/testimonial-list'
 import testimonialListTitle from './modules/testimonial.list.title'
 import Video from './modules/video'
+import mediaCarousel from './modules/media-carousel'
 import contentSection from './modules/content.section'
 import servicesList from './modules/services.list'
 import contactForm from './modules/contact-form'
@@ -77,6 +79,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
 	services,
 	reputation,
 	testimonial,
+	media,
 
 	// objects
 	cta,
@@ -103,6 +106,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
 	hero,
 	heroSaas,
 	Video,
+	mediaCarousel,
 	heroSplit,
 	logoList,
 	personList,
