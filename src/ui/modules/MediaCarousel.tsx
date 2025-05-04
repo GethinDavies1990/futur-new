@@ -80,7 +80,7 @@ export default async function MediaCarousel({
 	const duplicatedItems = [...allItems, ...allItems]
 
 	return (
-		<div className="bg-black">
+		<div className="overflow-hidden bg-black">
 			<section className="section headings:text-black py-8 text-gray-600">
 				{(pretitle || intro) && (
 					<header className="richtext mx-auto max-w-screen-sm text-center text-balance">

@@ -46,7 +46,7 @@ export default function Hero({
 				)}
 
 				{content && (
-					<div className="section flex h-auto w-full flex-col pt-30">
+					<div className="section flex h-auto w-full flex-col pt-40">
 						<div
 							className={cn(
 								'richtext headings:text-white relative isolate max-w-xl text-gray-300',
