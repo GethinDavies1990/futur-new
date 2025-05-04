@@ -10,6 +10,7 @@ import Image from 'next/image'
 interface MediaItem {
 	_key: string
 	_type: 'media'
+	_id: string
 	title?: string
 	mediaType?: 'image' | 'video'
 	media?: {
@@ -29,7 +30,7 @@ export default async function MediaCarousel({
 	pretitle,
 	intro,
 	items,
-	autoScroll,
+	autoScroll = true,
 	duration = 12,
 }: Partial<{
 	pretitle: string
@@ -38,88 +39,118 @@ export default async function MediaCarousel({
 	autoScroll?: boolean
 	duration?: number
 }>) {
-	// Fetch items with a GROQ query if items are not provided
-	const allItems =
-		!items || items.some((item) => '_ref' in item)
+	const isReferenceArray = items?.some((item) => '_ref' in item)
+
+	const fetchedItems =
+		!items || isReferenceArray
 			? await fetchSanityLive<MediaItem[]>({
 					query: groq`
-          *[_type == 'media'] | order(title) {
-            _key,
-            _type,
-            title,
-            mediaType,
-            media {
-              asset -> {
-                _id,
-                url,
-                metadata {
-                  lqip,
-                  dimensions { width, height },
-                  aspectRatio
-                }
-              }
-            }
-          }
-        `,
+						*[_id in $ids] {
+							_id,
+							_key,
+							_type,
+							title,
+							mediaType,
+							media {
+								asset -> {
+									_id,
+									url,
+									metadata {
+										lqip,
+										dimensions { width, height },
+										aspectRatio
+									}
+								}
+							}
+						}
+					`,
+					params: { ids: items?.map((item: any) => item._ref) },
 				})
 			: items
 
-	console.log('Fetched Items:', allItems)
-	return (
-		<section className="section headings:text-black py-8 text-gray-600">
-			{(pretitle || intro) && (
-				<header className="richtext mx-auto max-w-screen-sm text-center text-balance">
-					<div className="flex items-start justify-center">
-						<MdPermMedia
-							size={30}
-							className="bg-accent mr-2 rounded-full text-white"
-						/>
-						<Pretitle>{pretitle}</Pretitle>
-					</div>
-					<PortableText value={intro} />
-				</header>
-			)}
+	// Sort to match original CMS order
+	const originalOrder = items?.map((item: any) => item._ref || item._id)
+	const allItems = originalOrder
+		? fetchedItems.sort(
+				(a, b) => originalOrder.indexOf(a._id) - originalOrder.indexOf(b._id),
+			)
+		: fetchedItems
 
-			<figure
-				className={cn(
-					'mx-auto flex items-center gap-1 pb-4', // Reduced gap around items
-					autoScroll
-						? `${css.track} overflow-fade overflow-hidden`
-						: 'flex-wrap justify-center gap-1 rounded-lg bg-blue-950 py-10', // Adjusted padding and gap
+	// Duplicate for seamless scroll
+	const duplicatedItems = [...allItems, ...allItems]
+
+	return (
+		<div className="bg-black">
+			<section className="section headings:text-black py-8 text-gray-600">
+				{(pretitle || intro) && (
+					<header className="richtext mx-auto max-w-screen-sm text-center text-balance">
+						<div className="flex items-start justify-center">
+							<MdPermMedia
+								size={30}
+								className="bg-accent mr-2 rounded-full text-white"
+							/>
+							<Pretitle>{pretitle}</Pretitle>
+						</div>
+						<PortableText value={intro} />
+					</header>
 				)}
-				style={
-					{
-						'--count': allItems?.length,
-						'--dur': `${duration}s`,
-					} as React.CSSProperties
-				}
-			>
-				{allItems?.map((item: MediaItem, i) => (
-					<div
-						key={item._key || i} // Use _key for better uniqueness
-						className="flex h-[500px] w-[500px] shrink-0 items-center justify-center px-1 py-2" // Adjusted item size and gap
-						style={{ '--index': i } as React.CSSProperties}
-					>
-						{/* Check for media type and render accordingly */}
-						{item.mediaType === 'image' && item.media?.asset?.url ? (
-							<Image
-								src={item.media.asset.url}
-								alt={item.title || 'Image'}
-								width={500} // Adjusted size for consistency
-								height={500} // Square image
-								className="max-h-full max-w-full rounded-lg object-cover"
-								loading="lazy"
-							/>
-						) : item.mediaType === 'video' && item.media?.asset?.url ? (
-							<video
-								src={item.media.asset.url}
-								className="aspect-video max-h-full max-w-full rounded-lg object-cover"
-								autoPlay
-							/>
-						) : null}
-					</div>
-				))}
-			</figure>
-		</section>
+
+				<figure
+					className={cn(
+						'mx-auto flex items-center gap-2 pb-4',
+						autoScroll
+							? `${css.track} overflow-hidden`
+							: 'flex-wrap justify-center',
+					)}
+					style={
+						{
+							'--count': allItems?.length,
+							'--dur': `${duration}s`,
+						} as React.CSSProperties
+					}
+				>
+					{duplicatedItems?.map((item, i) => {
+						const isImage = item.mediaType === 'image'
+						const isVideo = item.mediaType === 'video'
+						const mediaUrl = item.media?.asset?.url
+
+						if (!mediaUrl) return null
+
+						return (
+							<div
+								key={`${item._key || item._id}-${i}`}
+								className={cn(
+									'flex shrink-0 items-center justify-center rounded-lg bg-black',
+									isImage
+										? 'aspect-square h-[300px] w-[300px]'
+										: 'aspect-video h-[300px] w-[533px]', // 16:9 ratio at 300px height
+								)}
+								style={{ '--index': i } as React.CSSProperties}
+							>
+								{isImage ? (
+									<Image
+										src={mediaUrl}
+										alt={item.title || 'Image'}
+										width={300}
+										height={300}
+										className="h-full w-full rounded-lg object-cover"
+										loading="lazy"
+									/>
+								) : (
+									<video
+										src={mediaUrl}
+										className="h-full w-full rounded-lg object-cover"
+										autoPlay
+										loop
+										muted
+										playsInline
+									/>
+								)}
+							</div>
+						)
+					})}
+				</figure>
+			</section>
+		</div>
 	)
 }

@@ -29,7 +29,7 @@ export default function Hero({
 	const asset = assets?.[0]
 
 	return (
-		<div className="bg-cover bg-center">
+		<div className="bg-black bg-cover bg-center">
 			<section
 				className={cn(
 					hasImage && 'grid overflow-hidden *:col-span-full *:row-span-full',
@@ -49,7 +49,7 @@ export default function Hero({
 					<div className="section flex h-auto w-full flex-col pt-30">
 						<div
 							className={cn(
-								'richtext headings:text-black relative isolate max-w-xl text-gray-600',
+								'richtext headings:text-white relative isolate max-w-xl text-gray-300',
 								hasImage && 'text-shadow',
 								{
 									'mb-8': stegaClean(alignItems) === 'start',
