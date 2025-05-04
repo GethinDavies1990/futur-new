@@ -5,6 +5,7 @@ import Code from './RichtextModule/Code'
 import CustomHTML from './CustomHTML'
 import Reputation from '@/ui/Reputation'
 import CTAList from '@/ui/CTAList'
+import Image from 'next/image'
 import { getFileUrl } from '../../sanity/lib/client'
 
 export default function Video({
@@ -28,7 +29,7 @@ export default function Video({
 				className="section space-y-8 text-center"
 				{...moduleProps(props)}
 			>
-				<div className="richtext mx-auto max-w-2xl text-balance">
+				<div className="richtext mx-auto max-w-3xl text-2xl text-balance">
 					{pretitle && (
 						<Pretitle className="text-xs font-medium text-black">
 							{pretitle}
@@ -57,6 +58,14 @@ export default function Video({
 						}}
 					/>
 
+					<Image
+						src="/shopify-experts.png"
+						width={200}
+						height={200}
+						alt="Shopify Experts logo"
+						className="mx-auto mt-4"
+					/>
+
 					<CTAList ctas={ctas} className="!mt-8 justify-center" />
 				</div>
 
@@ -64,7 +73,7 @@ export default function Video({
 				{videoSrc && (
 					<div>
 						<video
-							className="anim-fade-to-t z-20 block h-full w-full rounded-xl border-1 border-gray-900 object-cover [animation-duration:1s] [mask:linear-gradient(to_top,transparent,#121212_50%)] md:h-full"
+							className="anim-fade-to-t z-20 block h-full w-full rounded-lg object-cover [animation-duration:1s] md:h-full"
 							autoPlay
 							loop
 							muted
