@@ -88,7 +88,7 @@ declare global {
 			body: any
 			readTime: number
 			headings?: { style: string; text: string }[]
-			categories: BlogCategory[]
+			categories: CaseCategory[]
 			authors: Person[]
 			featured: boolean
 			hideTableOfContents: boolean
@@ -98,6 +98,23 @@ declare global {
 		interface BlogCategory extends SanityDocument {
 			title: string
 			slug: { current: string }
+		}
+
+		interface CasePageCategory extends SanityDocument {
+			title: string
+			slug: { current: string }
+		}
+
+		interface CasePagePost extends PageBase {
+			readonly _type: 'casePage.post'
+			body: any
+			readTime: number
+			headings?: { style: string; text: string }[]
+			categories: CasePageCategory[]
+			authors: Person[]
+			featured: boolean
+			hideTableOfContents: boolean
+			publishDate: string
 		}
 
 		// miscellaneous

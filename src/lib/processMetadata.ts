@@ -1,10 +1,10 @@
 import resolveUrl from './resolveUrl'
-import { BASE_URL, BLOG_DIR, vercelPreview } from './env'
+import { BASE_URL, BLOG_DIR, CASE_DIR, vercelPreview } from './env'
 import type { Metadata } from 'next'
 import { DEFAULT_LANG } from './i18n'
 
 export default async function processMetadata(
-	page: (Sanity.Page | Sanity.BlogPost) & {
+	page: (Sanity.Page | Sanity.BlogPost | Sanity.CasePost) & {
 		translations?: {
 			slug: string
 			language?: string
@@ -42,7 +42,8 @@ export default async function processMetadata(
 					]) || [],
 			),
 			types: {
-				'application/rss+xml': `/${BLOG_DIR}/rss.xml`,
+				'application/rss+xml; rel=blog': `/${BLOG_DIR}/rss.xml`,
+				'application/rss+xml; rel=case': `/${CASE_DIR}/rss.xml`,
 			},
 		},
 	}

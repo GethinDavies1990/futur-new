@@ -9,6 +9,9 @@ export default defineField({
 		{ type: 'blog-frontpage' },
 		{ type: 'blog-list' },
 		{ type: 'blog-post-content' },
+		{ type: 'casePage-frontpage' },
+		{ type: 'casePage-list' },
+		{ type: 'casePage-post-content' },
 		{ type: 'breadcrumbs' },
 		{ type: 'callout' },
 		{ type: 'callout-asset' },
@@ -53,6 +56,11 @@ export default defineField({
 					of: ['blog-frontpage', 'blog-list', 'blog-post-content'],
 				},
 				{
+					name: 'case',
+					of: ['casePage-frontpage', 'casePage-list', 'casePage-post-content'],
+				},
+
+				{
 					name: 'hero',
 					of: ['hero', 'hero.saas', 'hero.split'],
 				},
@@ -61,6 +69,7 @@ export default defineField({
 					of: [
 						'accordion-list',
 						'blog-list',
+						'casePage-list',
 						'card-list',
 						'flag-list',
 						'logo-list',

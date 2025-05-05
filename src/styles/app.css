@@ -4,7 +4,7 @@
 @theme {
 	--color-canvas: #fffafa;
 	--color-ink: #000;
-	--color-accent: #2388ff;
+	--color-accent: #1c77c3;
 	--color-offwhite: #fffafa;
 
 	--max-height-fold: calc(100svh - var(--header-height));
@@ -148,7 +148,7 @@ body {
 }
 
 @utility h1 {
-	@apply h-base text-3xl font-bold md:text-4xl lg:text-5xl;
+	@apply h-base text-3xl font-semibold md:text-4xl lg:text-5xl;
 }
 @utility h2 {
 	@apply h-base text-2xl font-semibold md:text-3xl lg:text-4xl;
@@ -186,7 +186,7 @@ body {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	padding: 0.2em 2em;
+	padding: 0.5em 3em;
 	text-align: center;
 	text-shadow: none;
 	color: var(--color-ink);

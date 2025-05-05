@@ -22,6 +22,10 @@ export const structure = structureTool({
 
 				S.documentTypeListItem('blog.post').title('Blog posts'),
 				S.documentTypeListItem('blog.category').title('Blog categories'),
+
+				S.documentTypeListItem('casePage.post').title('Case studies'),
+				S.documentTypeListItem('casePage.category').title('Case categories'),
+
 				S.divider(),
 
 				S.documentTypeListItem('navigation'),
