@@ -24,7 +24,7 @@ export default async function CasePageFrontpage({
 	const posts = await fetchSanityLive<Sanity.CasePagePost[]>({
 		query: groq`
 			*[
-				_type == 'case.post'
+				_type == 'casePage.post'
 				${!!lang ? `&& select(defined(language) => language == '${lang}', true)` : ''}
 			]|order(publishDate desc){
 				_type,

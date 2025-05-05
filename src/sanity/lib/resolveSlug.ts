@@ -20,7 +20,7 @@ export default function resolveSlug({
 
 		if (_type === 'blog.post') {
 			segment = `/${BLOG_DIR}/`
-		} else if (_type === 'case.post') {
+		} else if (_type === 'casePage.post') {
 			segment = `/${CASE_DIR}/`
 		}
 
