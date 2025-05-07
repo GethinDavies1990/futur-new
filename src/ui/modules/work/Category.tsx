@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { CASE_DIR } from '@/lib/env'
+import { WORK_DIR } from '@/lib/env'
 import { cn } from '@/lib/utils'
 import { BiSolidCategory } from 'react-icons/bi'
 import { FaShopify, FaCode } from 'react-icons/fa' // Example additional icons
@@ -43,7 +43,7 @@ export default function Category({
 	return linked ? (
 		<Link
 			href={{
-				pathname: `/${CASE_DIR}`,
+				pathname: `/${WORK_DIR}`,
 				query: { category: value?.slug.current },
 			}}
 			{...props}
