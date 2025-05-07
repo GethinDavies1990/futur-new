@@ -58,12 +58,12 @@ export default async function WorkList({
 	const listClassName = cn(
 		'items-stretch gap-x-8 gap-y-12',
 		stegaClean(layout) === 'grid'
-			? 'grid md:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]'
+			? 'grid grid-cols-1 md:grid-cols-2'
 			: 'carousel max-xl:full-bleed md:overflow-fade-r pb-4 [--size:320px] max-xl:px-4',
 	)
 
 	return (
-		<div className="bg-offwhite">
+		<div className="bg-gray-100">
 			<section className="section space-y-8" {...moduleProps(props)}>
 				{intro && (
 					<header className="richtext headings:text-black text-gray-600">

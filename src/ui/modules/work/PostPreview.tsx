@@ -4,6 +4,7 @@ import { Img } from '@/ui/Img'
 import Date from '@/ui/Date'
 import Categories from './Categories'
 import Authors from './Authors'
+
 import { cn } from '@/lib/utils'
 
 export default function PostPreview({
@@ -16,54 +17,44 @@ export default function PostPreview({
 	if (!post && !skeleton) return null
 
 	return (
-		<div className="group relative isolate flex h-full flex-col space-y-2 rounded-lg border-1 border-gray-100 bg-white p-2">
-			<figure className="bg-ink relative aspect-video overflow-hidden rounded-xl">
+		<div className="group relative isolate flex h-full flex-col space-y-2 rounded-xl bg-white">
+			<figure className="bg-ink relative aspect-video overflow-hidden">
 				<Img
-					className="aspect-video w-full object-cover transition-all group-hover:scale-105 group-hover:brightness-110"
+					className="aspect-video w-full rounded-t-xl object-cover transition-all group-hover:scale-105 group-hover:brightness-110"
 					image={post?.metadata.image}
 					width={700}
 					alt={post?.metadata.title}
 				/>
 
 				{post?.featured && (
-					<span className="pill-button absolute top-0 right-4 rounded-t-none py-1 text-xs">
+					<span className="absolute top-0 right-0 rounded-sm rounded-t-none rounded-r-none bg-white p-2 text-xs">
 						Featured
 					</span>
 				)}
 			</figure>
+			<div className="p-6">
+				<div className={cn('h4', skeleton && 'skeleton-2')}>
+					<Link
+						className="text-gray-900"
+						href={resolveUrl(post, { base: false })}
+					>
+						<span className="absolute inset-0 text-xl" />
+						{post?.metadata.title}
+					</Link>
+				</div>
 
-			<div className={cn('h4', skeleton && 'skeleton-2')}>
-				<Link
-					className="text-gray-900"
-					href={resolveUrl(post, { base: false })}
-				>
-					<span className="absolute inset-0" />
-					{post?.metadata.title}
-				</Link>
-			</div>
-
-			<div className="grow">
-				<p className="line-clamp-3 text-sm empty:h-[3lh]">
-					{post?.metadata.description}
-				</p>
-			</div>
-
-			{(post?.authors?.length || skeleton) && (
-				<Authors
-					className="flex flex-wrap items-center gap-4 text-sm text-gray-600"
-					authors={post?.authors}
-					skeleton={skeleton}
-				/>
-			)}
-
-			<hr />
-
-			<div className="empty:skeleton flex flex-wrap items-center justify-between gap-x-4 text-xs text-gray-600">
-				<Date value={post?.publishDate} />
-				<Categories
-					className="flex flex-wrap gap-x-2 text-xs"
-					categories={post?.categories}
-				/>
+				<div className="grow">
+					<p className="line-clamp-3">{post?.metadata.description}</p>
+				</div>
+				<div className="empty:skeleton mt-4 flex flex-wrap items-center justify-between gap-4 text-xs text-gray-600">
+					<Categories
+						className="flex flex-wrap gap-x-2 text-xs"
+						categories={post?.categories}
+					/>
+					<div className="rounded-full bg-black px-4 py-2 text-xs text-white">
+						View now
+					</div>
+				</div>
 			</div>
 		</div>
 	)
