@@ -4,7 +4,7 @@ import processMetadata from '@/lib/processMetadata'
 import { client } from '@/sanity/lib/client'
 import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
-import { CASE_DIR } from '@/lib/env'
+import { WORK_DIR } from '@/lib/env'
 import { MODULES_QUERY, TRANSLATIONS_QUERY } from '@/sanity/lib/queries'
 import { languages, type Lang } from '@/lib/i18n'
 import errors from '@/lib/errors'
@@ -12,7 +12,7 @@ import errors from '@/lib/errors'
 export default async function Page({ params }: Props) {
 	const post = await getPost(await params)
 	if (!post) notFound()
-	return <Modules modules={post.modules} casePost={post} />
+	return <Modules modules={post.modules} workPost={post} />
 }
 
 export async function generateMetadata({ params }: Props) {
@@ -23,24 +23,24 @@ export async function generateMetadata({ params }: Props) {
 
 export async function generateStaticParams() {
 	const slugs = await client.fetch<string[]>(
-		groq`*[_type == 'case.post' && defined(metadata.slug.current)].metadata.slug.current`,
+		groq`*[_type == 'work.post' && defined(metadata.slug.current)].metadata.slug.current`,
 	)
 
 	return slugs.map((slug) => ({ slug: slug.split('/') }))
 }
 
 async function getPost(params: Params) {
-	const caseTemplateExists = await fetchSanityLive<boolean>({
-		query: groq`count(*[_type == 'global-module' && path == '${CASE_DIR}/']) > 0`,
+	const workTemplateExists = await fetchSanityLive<boolean>({
+		query: groq`count(*[_type == 'global-module' && path == '${WORK_DIR}/']) > 0`,
 	})
 
-	if (!caseTemplateExists) throw new Error(errors.missingCaseTemplate)
+	if (!workTemplateExists) throw new Error(errors.missingWorkTemplate)
 
 	const { slug, lang } = processSlug(params)
 
-	return await fetchSanityLive<Sanity.CasePost & { modules: Sanity.Module[] }>({
+	return await fetchSanityLive<Sanity.WorkPost & { modules: Sanity.Module[] }>({
 		query: groq`*[
-			_type == 'case.post' &&
+			_type == 'work.post' &&
 			metadata.slug.current == $slug
 			${lang ? `&& language == '${lang}'` : ''}
 		][0]{
@@ -64,9 +64,9 @@ async function getPost(params: Params) {
 				// global modules (before)
 				*[_type == 'global-module' && path == '*'].before[]{ ${MODULES_QUERY} }
 				// path modules (before)
-				+ *[_type == 'global-module' && path == '${CASE_DIR}/'].before[]{ ${MODULES_QUERY} }
+				+ *[_type == 'global-module' && path == '${WORK_DIR}/'].before[]{ ${MODULES_QUERY} }
 				// path modules (after)
-				+ *[_type == 'global-module' && path == '${CASE_DIR}/'].after[]{ ${MODULES_QUERY} }
+				+ *[_type == 'global-module' && path == '${WORK_DIR}/'].after[]{ ${MODULES_QUERY} }
 				// global modules (after)
 				+ *[_type == 'global-module' && path == '*'].after[]{ ${MODULES_QUERY} }
 			),

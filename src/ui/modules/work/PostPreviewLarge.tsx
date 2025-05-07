@@ -5,11 +5,7 @@ import Date from '@/ui/Date'
 import Categories from './Categories'
 import Authors from './Authors'
 
-export default function PostPreviewLarge({
-	post,
-}: {
-	post: Sanity.CasePagePost
-}) {
+export default function PostPreviewLarge({ post }: { post: Sanity.WorkPost }) {
 	if (!post) return null
 
 	return (

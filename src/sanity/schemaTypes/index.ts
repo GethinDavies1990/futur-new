@@ -6,8 +6,8 @@ import page from './documents/page'
 import globalModule from './documents/global-module'
 import blogPost from './documents/blog.post'
 import blogCategory from './documents/blog.category'
-import casePagePost from './documents/casePage.post'
-import casePageCategory from './documents/casePage.category'
+import workPost from './documents/work.post'
+import workCategory from './documents/work.category'
 import navigation from './documents/navigation'
 import redirect from './documents/redirect'
 
@@ -35,9 +35,9 @@ import accordionList from './modules/accordion-list'
 import blogFrontpage from './modules/blog-frontpage'
 import blogList from './modules/blog-list'
 import blogPostContent from './modules/blog-post-content'
-import casePageFrontpage from './modules/casePage-frontpage'
-import casePageList from './modules/casePage-list'
-import casePagePostContent from './modules/casePage-post-content'
+import workFrontpage from './modules/work-frontpage'
+import workList from './modules/work-list'
+import workPostContent from './modules/work-post-content'
 import breadcrumbs from './modules/breadcrumbs'
 import callout from './modules/callout'
 import cardList from './modules/card-list'
@@ -73,8 +73,8 @@ export const schemaTypes: SchemaTypeDefinition[] = [
 	globalModule,
 	blogPost,
 	blogCategory,
-	casePagePost,
-	casePageCategory,
+	workPost,
+	workCategory,
 	navigation,
 
 	// miscellaneous
@@ -102,9 +102,9 @@ export const schemaTypes: SchemaTypeDefinition[] = [
 	blogFrontpage,
 	blogList,
 	blogPostContent,
-	casePageFrontpage,
-	casePageList,
-	casePagePostContent,
+	workFrontpage,
+	workList,
+	workPostContent,
 	breadcrumbs,
 	callout,
 	calloutAsset,

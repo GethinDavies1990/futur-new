@@ -6,11 +6,11 @@ import { stegaClean } from 'next-sanity'
 import sortFeaturedPosts from './sortFeaturedPosts'
 import { Suspense } from 'react'
 import PostPreviewLarge from '../PostPreviewLarge'
-import FilterList from '../CasePageList/FilterList'
+import FilterList from '../WorkList/FilterList'
 import PostPreview from '../PostPreview'
 import Paginated from './Paginated'
 
-export default async function CasePageFrontpage({
+export default async function WorkFrontpage({
 	mainPost,
 	showFeaturedPostsFirst,
 	itemsPerPage,
@@ -21,10 +21,10 @@ export default async function CasePageFrontpage({
 }>) {
 	const lang = (await cookies()).get('lang')?.value ?? DEFAULT_LANG
 
-	const posts = await fetchSanityLive<Sanity.CasePagePost[]>({
+	const posts = await fetchSanityLive<Sanity.WorkPost[]>({
 		query: groq`
 			*[
-				_type == 'casePage.post'
+				_type == 'work.post'
 				${!!lang ? `&& select(defined(language) => language == '${lang}', true)` : ''}
 			]|order(publishDate desc){
 				_type,

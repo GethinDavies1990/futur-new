@@ -9,37 +9,42 @@ import Content from '@/ui/modules/RichtextModule/Content'
 import { cn } from '@/lib/utils'
 import css from './PostContent.module.css'
 
-export default function PostContent({
-	post,
+export default function WorkPostContent({
+	workPost,
 	...props
-}: { post?: Sanity.CasePagePost } & Sanity.Module) {
-	if (!post) return null
+}: { workPost?: Sanity.WorkPost } & Sanity.Module) {
+	if (!workPost) return null
 
-	const showTOC = !post.hideTableOfContents || !!post.headings?.length
+	// Only check for work post type
+	if (workPost._type !== 'work.post') {
+		return null // Return null if it's not a work post
+	}
+
+	const showTOC = !workPost.hideTableOfContents || !!workPost.headings?.length
 
 	return (
 		<article {...moduleProps(props)}>
 			<header className="section headings:text-black space-y-6 py-30 text-center text-gray-600">
-				<h1 className="h1 text-balance">{post.metadata.title}</h1>
+				<h1 className="h1 text-balance">{workPost.metadata.title}</h1>
 				<div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs">
-					<Date value={post.publishDate} />
+					<Date value={workPost.publishDate} />
 					<Categories
 						className="flex flex-wrap gap-x-2"
-						categories={post.categories}
+						categories={workPost.categories}
 						linked
 					/>
 					<div className="flex items-center">
 						<LiaReadme size={20} className="mr-2" />
-						<ReadTime value={post.readTime} />
+						<ReadTime value={workPost.readTime} />
 					</div>
 				</div>
 
-				{post.authors?.length && (
+				{workPost.authors?.length && (
 					<div className="text-xs">
 						<p>Written by</p>
 						<Authors
 							className="flex flex-wrap items-center justify-center gap-4"
-							authors={post.authors}
+							authors={workPost.authors}
 							linked
 						/>
 					</div>
@@ -54,12 +59,12 @@ export default function PostContent({
 			>
 				{showTOC && (
 					<aside className="lg:sticky-below-header mx-auto w-full max-w-lg self-start rounded-md bg-gray-100 text-gray-600 [--offset:1rem] lg:order-1 lg:w-3xs lg:p-8">
-						<TableOfContents headings={post.headings} />
+						<TableOfContents headings={workPost.headings} />
 					</aside>
 				)}
 
 				<Content
-					value={post.body}
+					value={workPost.body}
 					className={cn(
 						css.body,
 						'headings:text-gray-800 grid max-w-screen-md text-gray-500',

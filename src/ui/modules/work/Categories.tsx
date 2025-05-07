@@ -5,7 +5,7 @@ export default function Categories({
 	linked,
 	...props
 }: {
-	categories?: Sanity.CasePageCategory[]
+	categories?: Sanity.WorkCategory[]
 	linked?: boolean
 } & React.ComponentProps<'ul'>) {
 	if (!categories?.length) return null

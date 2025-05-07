@@ -1,6 +1,6 @@
 'use client'
 
-import { useCasePageFilters } from '../store'
+import { useWorkFilters } from '../store'
 import { usePageState } from '@/lib/usePagination'
 import Category from '../Category'
 import { cn } from '@/lib/utils'
@@ -13,7 +13,7 @@ export default function Filter({
 	label: string
 	value?: 'All' | string
 }) {
-	const { category, setCategory } = useCasePageFilters()
+	const { category, setCategory } = useWorkFilters()
 	const { setPage } = usePageState()
 
 	return (

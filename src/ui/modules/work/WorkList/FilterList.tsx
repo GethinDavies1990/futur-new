@@ -6,10 +6,10 @@ import css from './FilterList.module.css'
 import { cn } from '@/lib/utils'
 
 export default async function FilterList() {
-	const categories = await fetchSanityLive<Sanity.CasePageCategory[]>({
+	const categories = await fetchSanityLive<Sanity.WorkCategory[]>({
 		query: groq`*[
-			_type == 'casePage.category' &&
-			count(*[_type == 'casePage.post' && references(^._id)]) > 0
+			_type == 'work.category' &&
+			count(*[_type == 'work.post' && references(^._id)]) > 0
 		]|order(title)`,
 	})
 

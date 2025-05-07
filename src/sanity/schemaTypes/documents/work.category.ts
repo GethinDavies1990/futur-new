@@ -2,8 +2,8 @@ import { defineField, defineType } from 'sanity'
 import { VscTag } from 'react-icons/vsc'
 
 export default defineType({
-	name: 'casePage.category',
-	title: 'Case study category',
+	name: 'work.category',
+	title: 'Work category',
 	type: 'document',
 	icon: VscTag,
 	fields: [

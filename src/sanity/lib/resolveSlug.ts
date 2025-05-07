@@ -1,4 +1,4 @@
-import { BLOG_DIR, CASE_DIR } from '@/lib/env'
+import { BLOG_DIR, WORK_DIR } from '@/lib/env'
 
 export default function resolveSlug({
 	_type,
@@ -20,8 +20,8 @@ export default function resolveSlug({
 
 		if (_type === 'blog.post') {
 			segment = `/${BLOG_DIR}/`
-		} else if (_type === 'casePage.post') {
-			segment = `/${CASE_DIR}/`
+		} else if (_type === 'work.post') {
+			segment = `/${WORK_DIR}/`
 		}
 
 		const path = internal === 'index' ? null : internal

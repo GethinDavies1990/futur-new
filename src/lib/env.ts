@@ -12,4 +12,4 @@ export const BASE_URL = dev
 	: process.env.NEXT_PUBLIC_BASE_URL!
 
 export const BLOG_DIR = 'blog'
-export const CASE_DIR = 'case'
+export const WORK_DIR = 'work'

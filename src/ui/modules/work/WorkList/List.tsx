@@ -1,13 +1,13 @@
 'use client'
 
 import PostPreview from '../PostPreview'
-import { useCasePageFilters } from '../store'
+import { useWorkFilters } from '../store'
 
 export default function List({
 	posts,
 	...props
 }: {
-	posts: Sanity.CasePagePost[]
+	posts: Sanity.WorkPost[]
 } & React.ComponentProps<'ul'>) {
 	const filtered = filterPosts(posts)
 
@@ -26,8 +26,8 @@ export default function List({
 	)
 }
 
-export function filterPosts(posts: Sanity.CasePagePost[]) {
-	const { category, author } = useCasePageFilters()
+export function filterPosts(posts: Sanity.WorkPost[]) {
+	const { category, author } = useWorkFilters()
 
 	return posts.filter((post) => {
 		if (category !== 'All' && author)

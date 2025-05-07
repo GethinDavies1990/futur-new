@@ -1,5 +1,5 @@
 export default function (
-	posts: Sanity.CasePagePost[],
+	posts: Sanity.WorkPost[],
 	showFeaturedPostsFirst: boolean = true,
 ) {
 	if (showFeaturedPostsFirst)

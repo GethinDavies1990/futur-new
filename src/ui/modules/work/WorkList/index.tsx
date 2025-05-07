@@ -11,7 +11,7 @@ import PostPreview from '../PostPreview'
 import List from './List'
 import { cn } from '@/lib/utils'
 
-export default async function CasePageList({
+export default async function WorkList({
 	pretitle,
 	intro,
 	layout,
@@ -27,15 +27,15 @@ export default async function CasePageList({
 	limit: number
 	showFeaturedPostsFirst: boolean
 	displayFilters: boolean
-	filteredCategory: Sanity.CasePageCategory
+	filteredCategory: Sanity.WorkCategory
 }> &
 	Sanity.Module) {
 	const lang = (await cookies()).get('lang')?.value ?? DEFAULT_LANG
 
-	const posts = await fetchSanityLive<Sanity.CasePagePost[]>({
+	const posts = await fetchSanityLive<Sanity.WorkPost[]>({
 		query: groq`
 			*[
-				_type == 'casePage.post'
+				_type == 'work.post'
 				${!!lang ? `&& select(defined(language) => language == '${lang}', true)` : ''}
 				${!!filteredCategory ? `&& $filteredCategory in categories[]->._id` : ''}
 			]|order(

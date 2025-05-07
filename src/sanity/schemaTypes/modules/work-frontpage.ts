@@ -2,8 +2,8 @@ import { defineField, defineType } from 'sanity'
 import { ImNewspaper } from 'react-icons/im'
 
 export default defineType({
-	name: 'casePage-frontpage',
-	title: 'Case study frontpage',
+	name: 'work-frontpage',
+	title: 'Work frontpage',
 	icon: ImNewspaper,
 	type: 'object',
 	fields: [
@@ -37,7 +37,7 @@ export default defineType({
 			mainPost: 'mainPost',
 		},
 		prepare: ({ mainPost }) => ({
-			title: 'Case study frontpage',
+			title: 'Work frontpage',
 			subtitle: `Main post: ${mainPost}`,
 		}),
 	},

@@ -3,8 +3,8 @@ import { VscEdit } from 'react-icons/vsc'
 import { imageBlock, admonition } from '../fragments'
 
 export default defineType({
-	name: 'casePage.post',
-	title: 'Case Study post',
+	name: 'work.post',
+	title: 'Work post',
 	icon: VscEdit,
 	type: 'document',
 	groups: [
@@ -37,7 +37,7 @@ export default defineType({
 			of: [
 				{
 					type: 'reference',
-					to: [{ type: 'casePage.category' }],
+					to: [{ type: 'work.category' }],
 				},
 			],
 			group: 'content',

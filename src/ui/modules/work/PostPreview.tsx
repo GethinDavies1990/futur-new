@@ -10,7 +10,7 @@ export default function PostPreview({
 	post,
 	skeleton,
 }: {
-	post?: Sanity.CasePagePost
+	post?: Sanity.WorkPost
 	skeleton?: boolean
 }) {
 	if (!post && !skeleton) return null

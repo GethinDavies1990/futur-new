@@ -1,6 +1,6 @@
 import { fetchSanityLive } from '@/sanity/lib/fetch'
 import { groq } from 'next-sanity'
-import { CASE_DIR } from '@/lib/env'
+import { WORK_DIR } from '@/lib/env'
 import resolveUrl from '@/lib/resolveUrl'
 import { Feed } from 'feed'
 import { escapeHTML, toHTML } from '@portabletext/to-html'
@@ -8,19 +8,19 @@ import { urlFor } from '@/sanity/lib/image'
 import { DEFAULT_LANG } from '@/lib/i18n'
 
 export async function GET() {
-	const { casePage, posts, copyright } = await fetchSanityLive<{
-		casePage: Sanity.Page
-		posts: Array<Sanity.CasePost & { image?: string }>
+	const { work, posts, copyright } = await fetchSanityLive<{
+		work: Sanity.Page
+		posts: Array<Sanity.WorkPost & { image?: string }>
 		copyright: string
 	}>({
 		query: groq`{
-      'casePage': *[_type == 'page' && metadata.slug.current == '${CASE_DIR}'][0]{
+      'work': *[_type == 'page' && metadata.slug.current == '${WORK_DIR}'][0]{
         _type,
         title,
         metadata,
         'image': metadata.image.asset->url,
       },
-      'posts': *[_type == 'case.post']{
+      'posts': *[_type == 'work.post']{
         _type,
         body,
         publishDate,
@@ -33,18 +33,18 @@ export async function GET() {
     }`,
 	})
 
-	if (!casePage || !posts) {
+	if (!work || !posts) {
 		return new Response(
 			'Missing either a case page or case posts in Sanity Studio',
 			{ status: 500 },
 		)
 	}
 
-	const url = resolveUrl(casePage)
+	const url = resolveUrl(work)
 
 	const feed = new Feed({
-		title: casePage?.title || casePage.metadata.title,
-		description: casePage.metadata.description,
+		title: work?.title || work.metadata.title,
+		description: work.metadata.description,
 		link: url,
 		id: url,
 		copyright,

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { CASE_DIR } from '@/lib/env'
+import { WORK_DIR } from '@/lib/env'
 import { cn } from '@/lib/utils'
 
 export default function Category({
@@ -7,7 +7,7 @@ export default function Category({
 	label,
 	linked,
 }: {
-	value?: Sanity.CasePageCategory
+	value?: Sanity.WorkCategory
 	label?: string
 	linked?: boolean
 }) {
@@ -22,7 +22,7 @@ export default function Category({
 	return linked ? (
 		<Link
 			href={{
-				pathname: `/${CASE_DIR}`,
+				pathname: `/${WORK_DIR}`,
 				query: { category: value?.slug.current },
 			}}
 			{...props}

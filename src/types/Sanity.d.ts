@@ -100,17 +100,17 @@ declare global {
 			slug: { current: string }
 		}
 
-		interface CasePageCategory extends SanityDocument {
+		interface WorkCategory extends SanityDocument {
 			title: string
 			slug: { current: string }
 		}
 
-		interface CasePagePost extends PageBase {
-			readonly _type: 'casePage.post'
+		interface WorkPost extends PageBase {
+			readonly _type: 'work.post'
 			body: any
 			readTime: number
 			headings?: { style: string; text: string }[]
-			categories: CasePageCategory[]
+			categories: WorkCategory[]
 			authors: Person[]
 			featured: boolean
 			hideTableOfContents: boolean

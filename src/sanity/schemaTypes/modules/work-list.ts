@@ -3,7 +3,7 @@ import { VscEdit } from 'react-icons/vsc'
 import { getBlockText } from 'sanitypress-utils'
 
 export default defineType({
-	name: 'casePage-list',
+	name: 'work-list',
 	title: 'Case study list',
 	icon: VscEdit,
 	type: 'object',
@@ -68,7 +68,7 @@ export default defineType({
 			title: 'Filter posts by a category',
 			description: 'Leave empty to show all posts',
 			type: 'reference',
-			to: [{ type: 'casePage.category' }],
+			to: [{ type: 'work.category' }],
 			group: 'filtering',
 		}),
 	],

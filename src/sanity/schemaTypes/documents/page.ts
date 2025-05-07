@@ -8,7 +8,7 @@ import {
 	VscEdit,
 	VscMortarBoard,
 } from 'react-icons/vsc'
-import { BLOG_DIR, CASE_DIR } from '@/lib/env'
+import { BLOG_DIR, WORK_DIR } from '@/lib/env'
 
 export default defineType({
 	name: 'page',
@@ -60,7 +60,7 @@ export default defineType({
 				(slug === '404' && VscQuestion) ||
 				(slug === 'search' && VscSearch) ||
 				(slug === BLOG_DIR && VscEdit) ||
-				(slug === CASE_DIR && VscEdit) ||
+				(slug === WORK_DIR && VscEdit) ||
 				(slug.startsWith('docs') && VscMortarBoard) ||
 				(noindex && VscEyeClosed),
 		}),

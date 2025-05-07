@@ -1,4 +1,4 @@
-import { BLOG_DIR, CASE_DIR } from './env'
+import { BLOG_DIR, WORK_DIR } from './env'
 import { DEFAULT_LANG } from './i18n'
 import { stegaClean } from 'next-sanity'
 
@@ -17,8 +17,8 @@ export default function resolveUrl(
 	const segment =
 		page?._type === 'blog.post'
 			? `/${BLOG_DIR}/`
-			: page?._type === 'case.post'
-				? `/${CASE_DIR}/`
+			: page?._type === 'work.post'
+				? `/${WORK_DIR}/`
 				: '/'
 
 	const lang = language && language !== DEFAULT_LANG ? `/${language}` : ''

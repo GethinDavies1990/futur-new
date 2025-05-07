@@ -1,13 +1,13 @@
 'use client'
 
 import { usePagination } from '@/lib/usePagination'
-import List, { filterPosts } from '../CasePageList/List'
+import List, { filterPosts } from '../WorkList/List'
 
 export default function Paginated({
 	posts,
 	itemsPerPage = 6,
 }: {
-	posts: Sanity.CasePagePost[]
+	posts: Sanity.WorkPost[]
 	itemsPerPage?: number
 }) {
 	const { paginatedItems, Pagination } = usePagination({
@@ -25,7 +25,7 @@ export default function Paginated({
 	return (
 		<div className="relative space-y-12">
 			<List
-				id="case-list"
+				id="work-list"
 				posts={paginatedItems}
 				className="grid scroll-mt-[calc(var(--header-height)+1rem)] gap-x-8 gap-y-12 sm:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]"
 			/>

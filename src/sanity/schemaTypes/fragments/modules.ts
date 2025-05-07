@@ -9,9 +9,9 @@ export default defineField({
 		{ type: 'blog-frontpage' },
 		{ type: 'blog-list' },
 		{ type: 'blog-post-content' },
-		{ type: 'casePage-frontpage' },
-		{ type: 'casePage-list' },
-		{ type: 'casePage-post-content' },
+		{ type: 'work-frontpage' },
+		{ type: 'work-list' },
+		{ type: 'work-post-content' },
 		{ type: 'breadcrumbs' },
 		{ type: 'callout' },
 		{ type: 'callout-asset' },
@@ -57,7 +57,7 @@ export default defineField({
 				},
 				{
 					name: 'case',
-					of: ['casePage-frontpage', 'casePage-list', 'casePage-post-content'],
+					of: ['work-frontpage', 'work-list', 'work-post-content'],
 				},
 
 				{
@@ -69,7 +69,7 @@ export default defineField({
 					of: [
 						'accordion-list',
 						'blog-list',
-						'casePage-list',
+						'work-list',
 						'card-list',
 						'flag-list',
 						'logo-list',

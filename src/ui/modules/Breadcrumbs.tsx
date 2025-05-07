@@ -9,7 +9,7 @@ export default async function Breadcrumbs({
 }: Partial<{
 	crumbs: Sanity.Link[]
 	hideCurrent?: boolean
-	currentPage: Sanity.Page | Sanity.BlogPost | Sanity.CasePost
+	currentPage: Sanity.Page | Sanity.BlogPost | Sanity.WorkPost
 }>) {
 	return (
 		<nav className="section py-4 text-sm">
@@ -22,11 +22,11 @@ export default async function Breadcrumbs({
 					<Fragment key={key}>
 						<Crumb link={crumb} position={key + 1} />
 
-						{(key < crumbs.length - 1 || !hideCurrent) && (
+						{key < crumbs.length - 1 || !hideCurrent ? (
 							<li className="text-ink/20" role="presentation">
 								/
 							</li>
-						)}
+						) : null}
 					</Fragment>
 				))}
 

@@ -20,7 +20,7 @@ export default {
 		'Also add the Blog post content module to display blog post content.\n\n' +
 		'💁‍♂️ https://sanitypress.dev/docs/errors#missing-blog-template',
 
-	missingCaseTemplate:
+	missingWorkTemplate:
 		'Missing blog template: 👻 Oof, your blog posts are ghosting...\n\n' +
 		'Solution: Add a new Global module document in your Sanity Studio with the path "blog/".\n' +
 		'Also add the Blog post content module to display blog post content.\n\n' +

@@ -1,6 +1,6 @@
 import { useQueryState } from 'nuqs'
 
-export const useCasePageFilters = () => {
+export const useWorkFilters = () => {
 	const [category, setCategory] = useQueryState('category', {
 		defaultValue: 'All',
 	})

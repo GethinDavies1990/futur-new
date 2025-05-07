@@ -29,8 +29,7 @@
 		"**/*.ts",
 		"**/*.tsx",
 		".next/types/**/*.ts",
-		"src/app/api/send/route.js",
-		"src/ui/modules/CasePage/CasePageFrontpage"
+		"src/app/api/send/route.js"
 	],
 	"exclude": ["node_modules"]
 }

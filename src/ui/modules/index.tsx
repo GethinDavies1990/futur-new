@@ -2,9 +2,9 @@ import AccordionList from './AccordionList'
 import BlogFrontpage from './blog/BlogFrontpage'
 import BlogList from './blog/BlogList'
 import BlogPostContent from './blog/PostContent'
-import CasePageFrontpage from './CasePage/CasePageFrontpage'
-import CasePageList from './CasePage/CasePageList'
-import CasePagePostContent from './CasePage/PostContent'
+import WorkFrontpage from './work/WorkFrontpage'
+import WorkList from './work/WorkList'
+import WorkPostContent from './work/PostContent'
 import Breadcrumbs from './Breadcrumbs'
 import Callout from './Callout'
 import CardList from './CardList'
@@ -37,9 +37,9 @@ const MODULE_MAP = {
 	'blog-frontpage': BlogFrontpage,
 	'blog-list': BlogList,
 	'blog-post-content': BlogPostContent,
-	'case-frontpage': CasePageFrontpage,
-	'case-list': CasePageList,
-	'case-post-content': CasePagePostContent,
+	'work-frontpage': WorkFrontpage,
+	'work-list': WorkList,
+	'work-post-content': WorkPostContent,
 	breadcrumbs: Breadcrumbs,
 	callout: Callout,
 	'callout-asset': CalloutAsset,
@@ -73,21 +73,24 @@ export default function Modules({
 	modules,
 	page,
 	post,
-	casePost,
+	workPost,
 }: {
 	modules?: Sanity.Module[]
-	page?: Sanity.Page | Sanity.BlogPost | Sanity.CasePagePost
+	page?: Sanity.Page
 	post?: Sanity.BlogPost
-	casePost?: Sanity.CasePagePost
+	workPost?: Sanity.WorkPost
 }) {
 	const getAdditionalProps = (module: Sanity.Module) => {
 		switch (module._type) {
 			case 'blog-post-content':
+				// Only passing `post` for blog-related modules
 				return { post }
-			case 'case-post-content':
-				return { casePost }
+			case 'work-post-content':
+				// Only passing `casePost` for case-related modules
+				return { workPost }
 			case 'breadcrumbs':
-				return { currentPage: post || casePost || page }
+				// Make sure that we pass the right `currentPage` based on the available types
+				return { currentPage: post || page }
 			default:
 				return {}
 		}
@@ -105,8 +108,8 @@ export default function Modules({
 					<Component
 						key={module._key}
 						{...module}
-						{...getAdditionalProps(module)}
-						currentPage={post || casePost || page}
+						{...getAdditionalProps(module)} // Pass correct props here
+						currentPage={post || page} // Decide which one to pass as currentPage
 						data-sanity={
 							!!page?._id &&
 							createDataAttribute({

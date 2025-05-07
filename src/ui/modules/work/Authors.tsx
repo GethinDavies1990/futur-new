@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Img } from '@/ui/Img'
 import { GoPerson } from 'react-icons/go'
-import { CASE_DIR } from '@/lib/env'
+import { WORK_DIR } from '@/lib/env'
 import { cn } from '@/lib/utils'
 
 export default function Authors({
@@ -61,7 +61,7 @@ function Author({
 	return linked ? (
 		<Link
 			href={{
-				pathname: `/${CASE_DIR}`,
+				pathname: `/${WORK_DIR}`,
 				query: { author: author?.slug.current },
 			}}
 			{...props}
