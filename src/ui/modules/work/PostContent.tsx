@@ -26,7 +26,7 @@ export default function WorkPostContent({
 					<Img
 						className="h-full w-full object-cover"
 						image={workPost?.metadata.image}
-						width={800}
+						width={1200}
 						alt={workPost?.metadata.title}
 					/>
 
