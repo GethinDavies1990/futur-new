@@ -10,16 +10,16 @@ function BookCallButton() {
 			target="_blank"
 			rel="noopener noreferrer"
 			href="https://cal.com/wearefutur/chat-with-gethin-futur-media?overlayCalendar=true"
-			className="group mt-8 inline-flex items-center justify-between gap-4 rounded-full border border-gray-200 bg-white px-2 py-2 no-underline transition-colors duration-500 hover:bg-gray-100 hover:no-underline"
+			className="group bg-accent hover:bg-accent/50 mt-8 inline-flex items-center justify-between gap-4 rounded-full border border-gray-200 px-2 py-2 no-underline transition-colors duration-500 hover:no-underline"
 		>
 			{/* Avatars / Icons */}
 			<div className="flex items-center">
 				<Image
-					src="/icons/futur-emblem-blue.svg"
+					src="/icons/futur-emblem-black.svg"
 					alt="Futur Media Emblem"
 					width={40}
 					height={40}
-					className="h-8 w-8 rounded-full border border-white object-contain"
+					className="h-8 w-8 rounded-full border border-black object-cover"
 				/>
 
 				<Image
@@ -27,7 +27,7 @@ function BookCallButton() {
 					alt="Profile"
 					width={40}
 					height={40}
-					className="-ml-3 h-8 w-8 rounded-full border border-white object-cover"
+					className="-ml-3 h-8 w-8 rounded-full border border-black object-cover"
 				/>
 			</div>
 
@@ -35,7 +35,7 @@ function BookCallButton() {
 			<p className="text-md text-gray-800">Book discovery call</p>
 
 			{/* Circle Icon Button */}
-			<div className="flex size-8 items-center justify-center rounded-full bg-black transition-colors group-hover:bg-white">
+			<div className="group-hover:bg-accent/50 flex size-8 items-center justify-center rounded-full bg-black transition-colors">
 				<BiRightArrowAlt
 					size={16}
 					className="text-white group-hover:text-black"

@@ -4,7 +4,7 @@
 @theme {
 	--color-canvas: #0d0d0d;
 	--color-ink: #000;
-	--color-accent: #1c77c3;
+	--color-accent: #ffe66d;
 	--color-offwhite: #fffafa;
 
 	--max-height-fold: calc(100svh - var(--header-height));
@@ -196,10 +196,10 @@ body {
 }
 
 @utility action {
-	@apply action-base bg-accent shadow-accent/60 hover:shadow-accent cursor-pointer rounded-full border border-transparent text-balance text-white shadow-lg transition-all duration-700 hover:border-white;
+	@apply action-base bg-accent shadow-accent/30 hover:shadow-accent cursor-pointer rounded-full border border-transparent text-balance text-black shadow-lg transition-all duration-700 hover:border-white;
 }
 @utility pill-button {
-	@apply bg-accent hover:bg-accent/50 cursor-pointer rounded-sm p-2 text-xs text-white transition duration-500;
+	@apply bg-accent hover:bg-accent/50 cursor-pointer rounded-sm p-2 text-xs text-black transition duration-500;
 }
 
 @utility action-outline {

@@ -14,11 +14,7 @@ export default function Callout({
 	return (
 		<div className="py-5">
 			<section className="section text-center">
-				<div className="frosted-glass section headings:text-black relative w-full overflow-hidden rounded-md py-30 text-gray-600">
-					{/* Gradient background, fills parent including padding */}
-					<div className="pointer-events-none absolute inset-0 -z-10 rotate-180 rounded-lg bg-white bg-[radial-gradient(60%_120%_at_50%_50%,hsla(0,0%,100%,0)_0,rgba(97,166,255,0.8)_100%)]" />
-
-					{/* Leave your content exactly as it is */}
+				<div className="frosted-glass section headings:text-black bg-offwhite relative w-full overflow-hidden rounded-md py-30 text-gray-600">
 					<div className="richtext mx-auto max-w-screen-sm text-balance">
 						<PortableText
 							value={content}
