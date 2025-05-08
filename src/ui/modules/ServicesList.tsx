@@ -25,13 +25,13 @@ export default function ServicesList({
 }> &
 	Sanity.Module) {
 	return (
-		<div className="bg-gray-50 py-20">
+		<div className="py-5">
 			<section className="section space-y-12" {...moduleProps(props)}>
 				{(pretitle || intro) && (
-					<header className="richtext headings:text-black grid items-start justify-start gap-8 text-gray-600 md:grid-cols-2 md:gap-x-12">
+					<header className="richtext headings:text-white grid items-start justify-start gap-8 text-gray-300 md:grid-cols-2 md:gap-x-12">
 						<div className="flex items-center justify-start">
 							<RxShadow className="text-accent mr-2" size={20} />
-							<Pretitle className="text-gray-800">{pretitle}</Pretitle>
+							<Pretitle className="text-gray-300">{pretitle}</Pretitle>
 						</div>
 						<div className="richtext headings:text-balance mx-auto w-full max-w-lg">
 							<PortableText value={intro} />
@@ -47,17 +47,17 @@ export default function ServicesList({
 								key={service._id}
 							>
 								{/* LEFT: Content */}
-								<div className="max-w-[500px] space-y-6 rounded-md border-1 border-gray-100 bg-white p-6">
+								<div className="max-w-[500px] space-y-6 rounded-md border-1 border-gray-600 bg-black p-6">
 									<div className="flex items-center justify-between">
-										<div className="h3 text-black">{service.title}</div>
+										<div className="h3 text-white">{service.title}</div>
 										{service.highlight && (
-											<Pretitle className="bg-accent/50 rounded-sm p-1 text-xs text-black">
+											<Pretitle className="bg-accent/80 rounded-sm p-1 text-xs text-white">
 												{service.highlight}
 											</Pretitle>
 										)}
 									</div>
 
-									<div className="richtext text-xs text-gray-600">
+									<div className="richtext text-xs text-gray-300">
 										<PortableText
 											value={service.content}
 											components={{
@@ -75,9 +75,9 @@ export default function ServicesList({
 
 									<div className="flex items-center justify-between gap-2 text-xs">
 										<div className="flex items-center">
-											<div className="mr-4 text-gray-600">Starts at</div>
+											<div className="mr-4 text-gray-300">Starts at</div>
 											{service.price?.base !== undefined && (
-												<div className="flex items-end gap-x-1 text-black">
+												<div className="flex items-end gap-x-1 font-semibold text-white">
 													{!isNaN(service.price.base) && (
 														<b className="h5">
 															{formatPrice(service.price.base)}
@@ -103,8 +103,8 @@ export default function ServicesList({
 									</div>
 
 									{service.testimonial?.length > 0 && (
-										<div className="mt-4 rounded-md bg-gray-100 p-6">
-											<div className="text-sm text-gray-500">
+										<div className="bg-canvas mt-4 rounded-lg border border-gray-800 p-6">
+											<div className="text-sm text-gray-300">
 												"{service.testimonial[0].author?.title}"
 											</div>
 											<div className="mt-4 flex items-center gap-2">
@@ -121,7 +121,7 @@ export default function ServicesList({
 															.join(', ') || 'Author'
 													}
 												/>
-												<div className="text-xs text-gray-600">
+												<div className="text-xs text-gray-300">
 													<div className="font-bold">
 														{service.testimonial[0].author?.name}
 													</div>

@@ -20,13 +20,13 @@ export default function TestimonialListTitle({
 	layoutMobile: 'grid' | 'carousel'
 }>) {
 	return (
-		<div className="bg-white py-20">
+		<div className="py-5">
 			<section className="section space-y-8 text-left">
 				{(pretitle || intro) && (
-					<header className="richtext headings:text-black grid items-start justify-between gap-8 text-gray-600 md:grid-cols-2 md:gap-x-12">
+					<header className="richtext headings:text-white grid items-start justify-between gap-8 text-gray-300 md:grid-cols-2 md:gap-x-12">
 						<div className="flex items-center justify-start">
 							<RxShadow className="text-accent mr-2" size={20} />
-							<Pretitle className="text-gray-600">{pretitle}</Pretitle>
+							<Pretitle className="text-gray-300">{pretitle}</Pretitle>
 						</div>
 						<div className="richtext headings:text-balance mx-auto w-full max-w-lg">
 							<PortableText
@@ -55,7 +55,7 @@ export default function TestimonialListTitle({
 						(testimonial, key) =>
 							testimonial && (
 								<article
-									className="relative grid basis-[min(450px,70vw)]! place-content-center rounded-lg border border-gray-200 bg-gray-100 py-6 text-gray-600"
+									className="relative grid basis-[min(450px,70vw)]! place-content-center rounded-lg border border-gray-600 bg-black py-6 text-gray-300"
 									key={key}
 								>
 									<div className="frosted-glass absolute inset-0 -z-10 h-full w-full"></div>

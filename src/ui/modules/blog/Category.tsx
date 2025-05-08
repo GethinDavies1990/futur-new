@@ -13,7 +13,7 @@ export default function Category({
 }) {
 	const props = {
 		className: cn(
-			'bg-green-100 p-1 uppercase rounded-sm',
+			'bg-canvas p-1 uppercase rounded-sm text-white border border-gray-600',
 			!linked && 'pointer-events-none',
 		),
 		children: <span>{label || value?.title}</span>,

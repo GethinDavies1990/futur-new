@@ -32,11 +32,11 @@ export default function CardList({
 	const isCarousel = stegaClean(layout) === 'carousel'
 
 	return (
-		<div className="bg-gray-100 py-10">
+		<div className="py-3">
 			<section className="section space-y-12" {...moduleProps(props)}>
 				{(pretitle || intro) && (
-					<header className="richtext text-center">
-						<Pretitle>{pretitle}</Pretitle>
+					<header className="richtext headings:text-white text-center text-gray-300">
+						<Pretitle className="text-gray-300">{pretitle}</Pretitle>
 						<PortableText value={intro} />
 						<CTAList className="justify-center" ctas={ctas} />
 					</header>
@@ -67,7 +67,7 @@ export default function CardList({
 							className={cn(
 								'flex flex-col gap-2',
 								visualSeparation &&
-									'group rounded-lg border border-gray-200 bg-white transition-all duration-700 hover:border-gray-400',
+									'group headings:text-white rounded-lg border border-gray-600 bg-black text-gray-300 transition-all duration-700',
 							)}
 							key={key}
 						>

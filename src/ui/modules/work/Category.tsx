@@ -30,7 +30,7 @@ export default function Category({
 
 	const props = {
 		className: cn(
-			'bg-white py-2 px-4 uppercase text-xs rounded-full flex items-center gap-1 border-gray-200 border',
+			'bg-canvas py-2 px-4 uppercase text-xs rounded-full flex items-center gap-1 border-gray-100 text-gray-300 border',
 			!linked && 'pointer-events-none',
 		),
 		children: (

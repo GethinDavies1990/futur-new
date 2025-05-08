@@ -31,7 +31,8 @@ export async function generateStaticParams() {
 
 async function getPost(params: Params) {
 	const workTemplateExists = await fetchSanityLive<boolean>({
-		query: groq`count(*[_type == 'global-module' && path == '${WORK_DIR}/']) > 0`,
+		query: groq`count(*[_type == 'global-module' && path == $path]) > 0`,
+		params: { path: `${WORK_DIR}/` },
 	})
 
 	if (!workTemplateExists) throw new Error(errors.missingWorkTemplate)
@@ -42,13 +43,42 @@ async function getPost(params: Params) {
 		query: groq`*[
 			_type == 'work.post' &&
 			metadata.slug.current == $slug
-			${lang ? `&& language == '${lang}'` : ''}
+			${lang ? '&& language == $lang' : ''}
 		][0]{
 			...,
+			company,
 			body[]{
 				...,
 				_type == 'image' => { asset-> }
 			},
+			bodySecondary[]{
+				...,
+				_type == 'image' => { asset-> }
+			},
+			image1 {
+				asset->{
+					_id,
+					url,
+					metadata { lqip, dimensions, aspectRatio }
+				}
+			},
+			image1Alt,
+			image2 {
+				asset->{
+					_id,
+					url,
+					metadata { lqip, dimensions, aspectRatio }
+				}
+			},
+			image2Alt,
+			image3 {
+				asset->{
+					_id,
+					url,
+					metadata { lqip, dimensions, aspectRatio }
+				}
+			},
+			image3Alt,
 			'readTime': length(string::split(pt::text(body), ' ')) / 200,
 			'headings': body[style in ['h2', 'h3']]{
 				style,
@@ -61,18 +91,18 @@ async function getPost(params: Params) {
 				'ogimage': image.asset->url + '?w=1200'
 			},
 			'modules': (
-				// global modules (before)
 				*[_type == 'global-module' && path == '*'].before[]{ ${MODULES_QUERY} }
-				// path modules (before)
-				+ *[_type == 'global-module' && path == '${WORK_DIR}/'].before[]{ ${MODULES_QUERY} }
-				// path modules (after)
-				+ *[_type == 'global-module' && path == '${WORK_DIR}/'].after[]{ ${MODULES_QUERY} }
-				// global modules (after)
+				+ *[_type == 'global-module' && path == $path].before[]{ ${MODULES_QUERY} }
+				+ *[_type == 'global-module' && path == $path].after[]{ ${MODULES_QUERY} }
 				+ *[_type == 'global-module' && path == '*'].after[]{ ${MODULES_QUERY} }
 			),
 			${TRANSLATIONS_QUERY},
 		}`,
-		params: { slug },
+		params: {
+			slug,
+			...(lang ? { lang } : {}),
+			path: `${WORK_DIR}/`,
+		},
 	})
 }
 

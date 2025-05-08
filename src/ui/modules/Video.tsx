@@ -29,9 +29,9 @@ export default function Video({
 				className="section space-y-8 text-center"
 				{...moduleProps(props)}
 			>
-				<div className="richtext mx-auto max-w-3xl text-2xl text-balance">
+				<div className="richtext mx-auto max-w-3xl text-2xl text-balance text-white">
 					{pretitle && (
-						<Pretitle className="text-xs font-medium text-black">
+						<Pretitle className="text-xs font-medium text-white">
 							{pretitle}
 						</Pretitle>
 					)}

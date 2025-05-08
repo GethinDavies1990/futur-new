@@ -30,7 +30,7 @@ export default function AccordionList({
 }> &
 	Sanity.Module) {
 	return (
-		<div className="bg-gray-50 py-20">
+		<div className="py-5">
 			<section
 				className={cn(
 					'section',
@@ -42,7 +42,7 @@ export default function AccordionList({
 				})}
 				{...moduleProps(props)}
 			>
-				<header className="richtext headings:text-black grid items-start justify-between gap-8 text-gray-600 md:grid-cols-2 md:gap-x-12">
+				<header className="richtext headings:text-white grid items-start justify-between gap-8 text-gray-300 md:grid-cols-2 md:gap-x-12">
 					<div className="flex-col items-center justify-start">
 						<div className="flex-row items-center justify-center">
 							<div>
@@ -67,7 +67,7 @@ export default function AccordionList({
 					{items?.map(({ id, summary, content, open }, index) => (
 						<details
 							key={id || index}
-							className="accordion border-ink border-b"
+							className="accordion border-b border-gray-600"
 							name={connect ? props._key : undefined}
 							open={open}
 							{...(generateSchema && {
@@ -77,7 +77,7 @@ export default function AccordionList({
 							})}
 						>
 							<summary
-								className="py-4 font-light text-black"
+								className="py-4 font-light text-white"
 								{...(generateSchema && {
 									itemProp: 'name',
 								})}
@@ -94,7 +94,7 @@ export default function AccordionList({
 								})}
 							>
 								<div
-									className="richtext rounded-md bg-white p-6 text-sm text-gray-600"
+									className="richtext rounded-md border border-gray-600 bg-black p-6 text-sm text-gray-300"
 									itemProp="text"
 								>
 									<PortableText

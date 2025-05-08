@@ -29,8 +29,8 @@ export default async function LogoList({
 		}))
 
 	return (
-		<div className={autoScroll ? 'bg-black' : 'bg-white'}>
-			<section className="section headings:text-black text-gray-600">
+		<div className={autoScroll ? 'bg-black' : 'bg-canvas'}>
+			<section className="section headings:text-white text-gray-300">
 				{(pretitle || intro) && (
 					<header className="richtext mx-auto max-w-screen-sm text-center text-balance">
 						<div className="mb-4 flex items-center justify-center">
@@ -38,7 +38,7 @@ export default async function LogoList({
 								size={30}
 								className="bg-accent mr-2 rounded-full text-white"
 							/>
-							<Pretitle>{pretitle}</Pretitle>
+							<Pretitle className="text-gray-300">{pretitle}</Pretitle>
 						</div>
 
 						<PortableText value={intro} />
@@ -50,7 +50,7 @@ export default async function LogoList({
 						'mx-auto flex items-center',
 						autoScroll
 							? `${css.track} overflow-fade max-w-max overflow-hidden`
-							: 'mt-4 flex-wrap justify-center gap-8 rounded-lg bg-blue-950 py-20',
+							: 'mt-4 flex-wrap justify-center gap-8 rounded-lg border border-gray-600 bg-black py-10',
 					)}
 					style={
 						{

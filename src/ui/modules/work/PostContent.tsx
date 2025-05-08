@@ -1,9 +1,7 @@
 import moduleProps from '@/lib/moduleProps'
 import Date from '@/ui/Date'
 import Categories from './Categories'
-import Authors from './Authors'
-import ReadTime from './ReadTime'
-import { LiaReadme } from 'react-icons/lia'
+import { Img } from '@/ui/Img'
 import TableOfContents from '@/ui/modules/RichtextModule/TableOfContents'
 import Content from '@/ui/modules/RichtextModule/Content'
 import { cn } from '@/lib/utils'
@@ -20,49 +18,48 @@ export default function WorkPostContent({
 		return null // Return null if it's not a work post
 	}
 
-	const showTOC = !workPost.hideTableOfContents || !!workPost.headings?.length
-
 	return (
 		<article {...moduleProps(props)}>
-			<header className="section headings:text-black space-y-6 py-30 text-center text-gray-600">
-				<h1 className="h1 text-balance">{workPost.metadata.title}</h1>
-				<div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs">
-					<Date value={workPost.publishDate} />
-					<Categories
-						className="flex flex-wrap gap-x-2"
-						categories={workPost.categories}
-						linked
+			<div>
+				<div className="relative aspect-video w-full">
+					{/* Image */}
+					<Img
+						className="h-full w-full object-cover"
+						image={workPost?.metadata.image}
+						width={800}
+						alt={workPost?.metadata.title}
 					/>
-					<div className="flex items-center">
-						<LiaReadme size={20} className="mr-2" />
-						<ReadTime value={workPost.readTime} />
+
+					{/* Gradient overlay + centered text */}
+					<div className="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black to-transparent">
+						<h1 className="px-4 text-center text-4xl text-white">
+							{workPost.metadata.title}
+						</h1>
 					</div>
 				</div>
-
-				{workPost.authors?.length && (
-					<div className="text-xs">
-						<p>Written by</p>
-						<Authors
-							className="flex flex-wrap items-center justify-center gap-4"
-							authors={workPost.authors}
+				<header className="section headings:text-white text-gray-600">
+					<div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs">
+						<Date value={workPost.publishDate} />
+						<Categories
+							className="flex flex-wrap gap-x-2"
+							categories={workPost.categories}
 							linked
 						/>
+						<p>{workPost.company}</p>
 					</div>
-				)}
-			</header>
+				</header>
+			</div>
 
-			<div
+			<Content
+				value={workPost.bodySecondary}
 				className={cn(
-					'section grid gap-8',
-					showTOC && 'lg:grid-cols-[1fr_auto]',
+					css.body,
+					'headings:text-gray-800 max-w-screen-4xl grid text-yellow-500',
 				)}
 			>
-				{showTOC && (
-					<aside className="lg:sticky-below-header mx-auto w-full max-w-lg self-start rounded-md bg-gray-100 text-gray-600 [--offset:1rem] lg:order-1 lg:w-3xs lg:p-8">
-						<TableOfContents headings={workPost.headings} />
-					</aside>
-				)}
-
+				<hr />
+			</Content>
+			<div className={cn('section grid gap-8')}>
 				<Content
 					value={workPost.body}
 					className={cn(

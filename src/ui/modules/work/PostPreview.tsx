@@ -17,8 +17,8 @@ export default function PostPreview({
 	if (!post && !skeleton) return null
 
 	return (
-		<div className="group relative isolate flex h-full flex-col space-y-2 rounded-xl bg-white">
-			<figure className="bg-ink relative aspect-video overflow-hidden">
+		<div className="group relative isolate flex h-full flex-col space-y-2 overflow-hidden rounded-xl border border-gray-600 bg-black">
+			<figure className="bg-ink relative aspect-video">
 				<Img
 					className="aspect-video w-full rounded-t-xl object-cover transition-all group-hover:scale-105 group-hover:brightness-110"
 					image={post?.metadata.image}
@@ -34,10 +34,7 @@ export default function PostPreview({
 			</figure>
 			<div className="p-6">
 				<div className={cn('h4', skeleton && 'skeleton-2')}>
-					<Link
-						className="text-gray-900"
-						href={resolveUrl(post, { base: false })}
-					>
+					<Link className="text-white" href={resolveUrl(post, { base: false })}>
 						<span className="absolute inset-0 text-xl" />
 						{post?.metadata.title}
 					</Link>
@@ -51,7 +48,7 @@ export default function PostPreview({
 						className="flex flex-wrap gap-x-2 text-xs"
 						categories={post?.categories}
 					/>
-					<div className="rounded-full bg-black px-4 py-2 text-xs text-white">
+					<div className="rounded-full bg-white px-4 py-2 text-xs text-black">
 						View now
 					</div>
 				</div>

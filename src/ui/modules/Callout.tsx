@@ -12,7 +12,7 @@ export default function Callout({
 	ctas: Sanity.CTA[]
 }>) {
 	return (
-		<div className="bg-offwhite py-20">
+		<div className="py-5">
 			<section className="section text-center">
 				<div className="frosted-glass section headings:text-black relative w-full overflow-hidden rounded-md py-30 text-gray-600">
 					{/* Gradient background, fills parent including padding */}

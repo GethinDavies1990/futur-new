@@ -32,6 +32,67 @@ export default defineType({
 			group: 'content',
 		}),
 		defineField({
+			name: 'bodySecondary',
+			title: 'Secondary Content',
+			type: 'array',
+			of: [
+				{ type: 'block' },
+				imageBlock,
+				admonition,
+				defineArrayMember({
+					title: 'Code block',
+					type: 'code',
+					options: {
+						withFilename: true,
+					},
+				}),
+				{ type: 'custom-html' },
+			],
+			group: 'content',
+		}),
+		defineField({
+			name: 'image1',
+			title: 'Image 1',
+			type: 'image',
+			group: 'content',
+		}),
+		defineField({
+			name: 'image1Alt',
+			title: 'Image 1 Alt Text',
+			type: 'string',
+			group: 'content',
+		}),
+		defineField({
+			name: 'image2',
+			title: 'Image 2',
+			type: 'image',
+			group: 'content',
+		}),
+		defineField({
+			name: 'image2Alt',
+			title: 'Image 2 Alt Text',
+			type: 'string',
+			group: 'content',
+		}),
+		defineField({
+			name: 'image3',
+			title: 'Image 3',
+			type: 'image',
+			group: 'content',
+		}),
+		defineField({
+			name: 'image3Alt',
+			title: 'Image 3 Alt Text',
+			type: 'string',
+			group: 'content',
+		}),
+		defineField({
+			name: 'company',
+			title: 'Company Name',
+			type: 'string',
+			group: 'content',
+		}),
+		defineField({
 			name: 'categories',
 			type: 'array',
 			of: [

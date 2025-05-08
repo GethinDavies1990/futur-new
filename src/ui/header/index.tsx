@@ -14,7 +14,7 @@ export default async function Header() {
 	const logoImage = logo?.image?.default
 
 	return (
-		<Wrapper className="frosted-glass border-ink/10 max-md:header-open:shadow-lg sticky top-0 z-10 -mt-20 border-b bg-transparent">
+		<Wrapper className="frosted-glass border-ink/10 max-md:header-open:shadow-lg sticky top-0 z-10 border-b bg-black/70 text-white">
 			<div
 				className={cn(
 					css.header,
