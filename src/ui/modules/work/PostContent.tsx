@@ -20,7 +20,7 @@ export default function WorkPostContent({
 	}
 
 	return (
-		<article {...moduleProps(props)}>
+		<article {...moduleProps(props)} className="h-auto">
 			<div>
 				<div className="section max-w-5xl">
 					<Content
@@ -29,7 +29,7 @@ export default function WorkPostContent({
 					>
 						<hr />
 					</Content>
-					<div className="flex-row justify-between gap-4 md:flex">
+					<div className="flex justify-between gap-4">
 						<div className="mb-2 flex-row text-gray-300">
 							<p className="mb-2 font-bold">Client:</p>
 							<p>{workPost.company}</p>
@@ -59,16 +59,38 @@ export default function WorkPostContent({
 				/>
 			</div>
 
-			<div className={cn('section grid gap-8')}>
+			<div className={cn('section mb-10 grid h-auto gap-8')}>
 				<Content
 					value={workPost.body}
 					className={cn(
 						css.body,
-						'headings:text-gray-800 grid max-w-screen-md text-gray-500',
+						'headings:text-white max-w-5xl text-gray-300',
 					)}
 				>
 					<hr />
 				</Content>
+				<div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+					<Img
+						className="relative h-full w-full rounded-xl object-cover"
+						image={workPost?.image1}
+						width={800}
+						alt={workPost?.metadata.title}
+					/>
+					<Img
+						className="relative h-full w-full rounded-xl object-cover"
+						image={workPost?.image2}
+						width={800}
+						alt={workPost?.metadata.title}
+					/>
+				</div>
+				<div>
+					<Img
+						className="relative h-full w-full rounded-xl object-cover"
+						image={workPost?.image3}
+						width={800}
+						alt={workPost?.metadata.title}
+					/>
+				</div>
 			</div>
 		</article>
 	)
