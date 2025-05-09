@@ -103,6 +103,8 @@ function generateSrc(
 			.withOptions({
 				width: !!w ? Number(w) : undefined,
 				height: !!h ? Number(h) : undefined,
+				dpr: 2,
+				quality: 100,
 				auto: 'format',
 			})
 			.url(),

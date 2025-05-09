@@ -77,7 +77,7 @@ export default function Hero({
 										'reputation-block': ({ value }) => (
 											<Reputation
 												className={cn(
-													'!mt-4',
+													'split !mt-4',
 													hasImage && '[&_strong]:text-accent',
 													{
 														'justify-start': ['left', 'start'].includes(
