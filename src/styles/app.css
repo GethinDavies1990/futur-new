@@ -4,7 +4,7 @@
 @theme {
 	--color-canvas: #0d0d0d;
 	--color-ink: #000;
-	--color-accent: #ffe66d;
+	--color-accent: #70c1ff;
 	--color-offwhite: #fffafa;
 
 	--max-height-fold: calc(100svh - var(--header-height));
