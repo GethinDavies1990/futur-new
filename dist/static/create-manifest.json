@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "createdAt": "2025-05-09T22:45:45.538Z",
+  "workspaces": [
+    {
+      "name": "default",
+      "title": "Futur Media",
+      "basePath": "/admin",
+      "projectId": "t3lpwlpo",
+      "dataset": "production",
+      "icon": "<img alt=\"SanityPress\" src=\"/favicon.ico\" style=\"width:100%;aspect-ratio:1\">",
+      "schema": "3e7c240f.create-schema.json",
+      "tools": "db417928.create-tools.json"
+    }
+  ]
+}
