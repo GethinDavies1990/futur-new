@@ -70,27 +70,31 @@ export default function WorkPostContent({
 					<hr />
 				</Content>
 				<div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-					<Img
-						className="relative h-full w-full rounded-xl object-cover"
-						image={workPost?.image1}
-						width={800}
-						alt={workPost?.metadata.title}
-					/>
-					<Img
-						className="relative h-full w-full rounded-xl object-cover"
-						image={workPost?.image2}
-						width={800}
-						alt={workPost?.metadata.title}
-					/>
+					{workPost.image1 && (
+						<Img
+							className="relative h-full w-full rounded-xl object-cover"
+							image={workPost?.image1}
+							width={800}
+							alt={workPost?.metadata.title}
+						/>
+					)}
+					{workPost.image2 && (
+						<Img
+							className="relative h-full w-full rounded-xl object-cover"
+							image={workPost?.image2}
+							width={800}
+							alt={workPost?.metadata.title}
+						/>
+					)}
 				</div>
-				<div>
+				{workPost.image3 && (
 					<Img
 						className="relative h-full w-full rounded-xl object-cover"
 						image={workPost?.image3}
 						width={800}
 						alt={workPost?.metadata.title}
 					/>
-				</div>
+				)}
 			</div>
 		</article>
 	)
