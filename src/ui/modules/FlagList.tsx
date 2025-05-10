@@ -18,20 +18,20 @@ export default function FlagList({
 	iconPosition: 'top' | 'left'
 }>) {
 	return (
-		<div className="bg-offwhite">
+		<div className="">
 			<section className="section space-y-8">
 				{(pretitle || intro) && (
-					<header className="richtext headings:text-black mx-auto max-w-xl text-center text-balance text-gray-600">
+					<header className="richtext headings:text-white mx-auto text-left text-balance text-gray-600">
 						<Pretitle>{pretitle}</Pretitle>
 						<PortableText value={intro} />
 					</header>
 				)}
 
-				<div className="headings:text-black text-md grid items-start gap-x-8 gap-y-6 text-gray-600 md:grid-cols-[repeat(auto-fit,minmax(200px,1fr))]">
+				<div className="headings:text-white text-md grid items-start gap-x-8 gap-y-6 text-gray-300 md:grid-cols-[repeat(3,minmax(200px,1fr))]">
 					{items?.map(({ icon, content }, key) => (
 						<article
 							className={cn(
-								'grid gap-4',
+								'frosted-glass grid gap-4 rounded-lg border-t-1 border-gray-600 p-4 text-sm',
 								stegaClean(iconPosition) === 'left' &&
 									icon &&
 									'grid-cols-[var(--size)_1fr]',
@@ -45,7 +45,9 @@ export default function FlagList({
 						>
 							{icon && (
 								<figure style={{ height: getPixels(icon?.size) }}>
-									<Icon icon={icon} />
+									<div className="inline-flex rounded-full bg-white p-1">
+										<Icon icon={icon} />
+									</div>
 								</figure>
 							)}
 
