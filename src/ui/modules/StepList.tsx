@@ -15,7 +15,7 @@ export default function StepList({
 	return (
 		<section className="section space-y-8">
 			{(pretitle || intro) && (
-				<header className="richtext mx-auto max-w-xl text-center text-balance">
+				<header className="richtext headings:text-white mx-auto max-w-xl text-center text-balance text-gray-300">
 					<Pretitle>{pretitle}</Pretitle>
 					<PortableText value={intro} />
 				</header>
@@ -23,12 +23,15 @@ export default function StepList({
 
 			<ol className="grid gap-8 md:grid-cols-[repeat(auto-fit,minmax(250px,1fr))]">
 				{steps?.map((step, index) => (
-					<li className="grid grid-cols-[auto_1fr] gap-2" key={index}>
-						<b className="text-gradient aspect-square h-[1em] -translate-y-4 text-center text-6xl tabular-nums">
+					<li
+						className="grid grid-cols-[auto_1fr] gap-2 rounded-xl border border-gray-600 bg-black p-2"
+						key={index}
+					>
+						<b className="aspect-square h-[1em] rounded-full bg-gray-900 p-1 text-center text-3xl text-white tabular-nums">
 							{index + 1}
 						</b>
 
-						<div className="richtext">
+						<div className="richtext text-gray-300">
 							<PortableText value={step.content} />
 						</div>
 					</li>
