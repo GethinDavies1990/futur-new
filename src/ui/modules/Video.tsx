@@ -57,14 +57,15 @@ export default function Video({
 							},
 						}}
 					/>
-
-					<Image
-						src="/shopify-experts.png"
-						width={200}
-						height={200}
-						alt="Shopify Experts logo"
-						className="mx-auto mt-4"
-					/>
+					{content && (
+						<Image
+							src="/shopify-experts.png"
+							width={200}
+							height={200}
+							alt="Shopify Experts logo"
+							className="mx-auto mt-4"
+						/>
+					)}
 
 					<CTAList ctas={ctas} className="!mt-8 justify-center" />
 				</div>
