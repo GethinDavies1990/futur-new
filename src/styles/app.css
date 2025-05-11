@@ -187,7 +187,7 @@ body {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	padding: 0.5em 3em;
+	padding: 0.8em 3em;
 	text-align: center;
 	text-shadow: none;
 	color: var(--color-ink);
@@ -196,14 +196,14 @@ body {
 }
 
 @utility action {
-	@apply action-base bg-accent shadow-accent/30 hover:shadow-accent cursor-pointer rounded-full border border-transparent text-balance text-black shadow-lg transition-all duration-700 hover:border-white;
+	@apply action-base cursor-pointer rounded-full border border-transparent bg-white text-balance text-black shadow-lg transition-all duration-700 hover:border-white hover:bg-black hover:text-white;
 }
 @utility pill-button {
-	@apply bg-accent hover:bg-accent/50 cursor-pointer rounded-sm p-2 text-xs text-black transition duration-500;
+	@apply cursor-pointer rounded-sm border border-white bg-white p-2 text-xs text-black transition duration-500 hover:bg-black hover:text-white;
 }
 
 @utility action-outline {
-	@apply action-base border-accent hover:bg-accent/30 frosted-glass text-accent cursor-pointer rounded-full border text-balance transition-all duration-700;
+	@apply action-base frosted-glass cursor-pointer rounded-full border border-white text-balance text-white transition-all duration-700 hover:bg-white/30;
 }
 
 @utility ghost {

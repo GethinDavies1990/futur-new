@@ -10,7 +10,7 @@ function BookCallButton() {
 			target="_blank"
 			rel="noopener noreferrer"
 			href="https://cal.com/wearefutur/chat-with-gethin-futur-media?overlayCalendar=true"
-			className="group bg-accent hover:bg-accent/50 mt-8 inline-flex items-center justify-between gap-4 rounded-full border border-gray-200 px-2 py-2 no-underline transition-colors duration-500 hover:no-underline"
+			className="group mt-8 inline-flex items-center justify-between gap-4 rounded-full border border-gray-200 bg-white px-2 py-2 transition-colors duration-500"
 		>
 			{/* Avatars / Icons */}
 			<div className="flex items-center">
@@ -32,13 +32,15 @@ function BookCallButton() {
 			</div>
 
 			{/* Button Text */}
-			<p className="text-md text-gray-800">Book discovery call</p>
+			<p className="text-md text-gray-800 underline decoration-white">
+				Book discovery call
+			</p>
 
 			{/* Circle Icon Button */}
-			<div className="group-hover:bg-accent/50 flex size-8 items-center justify-center rounded-full bg-black transition-colors">
+			<div className="flex size-8 items-center justify-center rounded-full bg-white transition-colors group-hover:bg-black">
 				<BiRightArrowAlt
 					size={16}
-					className="text-white group-hover:text-black"
+					className="text-black group-hover:text-white"
 				/>
 			</div>
 		</Link>
