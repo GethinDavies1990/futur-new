@@ -12,7 +12,7 @@ export default function Callout({
 	ctas: Sanity.CTA[]
 }>) {
 	return (
-		<div className="py-5">
+		<div className="py-10">
 			<section className="section text-center">
 				<div className="frosted-glass section headings:text-black bg-offwhite relative w-full overflow-hidden rounded-md py-30 text-gray-600">
 					<div className="richtext mx-auto max-w-screen-sm text-balance">

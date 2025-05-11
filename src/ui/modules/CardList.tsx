@@ -32,10 +32,10 @@ export default function CardList({
 	const isCarousel = stegaClean(layout) === 'carousel'
 
 	return (
-		<div className="py-3">
+		<div className="py-10">
 			<section className="section space-y-12" {...moduleProps(props)}>
 				{(pretitle || intro) && (
-					<header className="richtext headings:text-white text-center text-gray-300">
+					<header className="richtext headings:text-white text-left text-balance text-gray-300 no-underline decoration-yellow-500">
 						<Pretitle className="text-gray-300">{pretitle}</Pretitle>
 						<PortableText value={intro} />
 						<CTAList className="justify-center" ctas={ctas} />
@@ -65,22 +65,26 @@ export default function CardList({
 					{cards?.map((card, key) => (
 						<article
 							className={cn(
-								'flex flex-col gap-2',
+								'relative flex min-h-[400px] flex-col justify-end overflow-hidden', // ensure card has height
 								visualSeparation &&
 									'group headings:text-white rounded-lg border border-gray-600 bg-black text-gray-300 transition-all duration-700',
 							)}
 							key={key}
 						>
 							{card.image && (
-								<figure>
+								<figure className="absolute inset-0 z-0">
 									<Img
-										className="aspect-video w-full rounded-t-[6px] object-cover"
+										className="h-full w-full object-cover"
 										image={card.image}
 										width={600}
 									/>
+									{/* Gradient overlay */}
+									<div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-90" />
 								</figure>
 							)}
-							<div className="p-4">
+
+							{/* Content on top */}
+							<div className="relative z-10 p-4">
 								<div className="richtext grow">
 									<PortableText value={card.content} />
 								</div>

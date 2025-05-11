@@ -12,7 +12,7 @@ export default function TestimonialFeatured({
 	const { author } = testimonial
 
 	return (
-		<div className="py-5">
+		<div className="py-10">
 			<section className="section">
 				<div className="frosted-glass section mx-auto max-w-screen-lg rounded-md bg-pink-100 px-6 text-gray-600">
 					<div className="flex flex-col items-center space-y-6 text-center">

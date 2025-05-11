@@ -18,7 +18,7 @@ export default function TestimonialList({
 	layoutMobile: 'grid' | 'carousel'
 }>) {
 	return (
-		<section className="section space-y-8 text-center">
+		<section className="section space-y-8 py-10 text-center">
 			{(pretitle || intro) && (
 				<header className="richtext">
 					<Pretitle>{pretitle}</Pretitle>

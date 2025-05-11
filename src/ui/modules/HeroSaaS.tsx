@@ -26,7 +26,7 @@ export default function HeroSaaS({
 	const asset = assets?.[0]
 
 	return (
-		<div className="">
+		<div className="py-10">
 			{/* Main Hero Section */}
 			<section
 				className="section space-y-8 text-center"

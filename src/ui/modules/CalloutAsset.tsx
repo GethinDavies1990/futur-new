@@ -25,7 +25,7 @@ export default function CalloutAsset({
 	}
 }>) {
 	return (
-		<div className="bg-[#0D0D0D] py-20">
+		<div className="bg-[#0D0D0D] py-10">
 			<section className="section">
 				<div className="headings:text-white grid grid-cols-1 items-center gap-10 md:grid-cols-2">
 					{/* Content on the Left */}

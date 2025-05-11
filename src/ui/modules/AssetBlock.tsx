@@ -17,7 +17,7 @@ type AssetBlockProps = {
 
 export default function AssetBlock({ image, video }: AssetBlockProps) {
 	return (
-		<div className="relative w-screen overflow-hidden">
+		<div className="relative w-screen overflow-hidden py-10">
 			{/* Image with overlay */}
 			{image?.asset?.url ? (
 				<div className="relative w-full">
