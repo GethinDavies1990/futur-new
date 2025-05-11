@@ -69,7 +69,9 @@ export default function CalloutAsset({
 								src={media.video.asset.url}
 								autoPlay
 								loop
-								className="aspect-video w-full rounded"
+								muted
+								playsInline
+								className="aspect-square w-full rounded"
 							/>
 						) : null}
 					</div>

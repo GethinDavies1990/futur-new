@@ -18,7 +18,7 @@ export default function FlagList({
 	iconPosition: 'top' | 'left'
 }>) {
 	return (
-		<div className="">
+		<div className="py-10">
 			<section className="section space-y-8">
 				{(pretitle || intro) && (
 					<header className="richtext headings:text-white mx-auto text-left text-balance text-gray-600">
@@ -44,7 +44,10 @@ export default function FlagList({
 							key={key}
 						>
 							{icon && (
-								<figure style={{ height: getPixels(icon?.size) }}>
+								<figure
+									className="mb-2"
+									style={{ height: getPixels(icon?.size) }}
+								>
 									<div className="inline-flex rounded-full bg-white p-1">
 										<Icon icon={icon} />
 									</div>
