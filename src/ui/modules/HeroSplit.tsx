@@ -24,32 +24,34 @@ export default function HeroSplit({
 	const asset = assets?.[0]
 
 	return (
-		<section className="section headings:text-white grid items-center gap-8 py-10 text-gray-300 md:grid-cols-2 md:gap-x-12">
-			<figure
-				className={cn(
-					asset?._type === 'img' && 'max-md:full-bleed',
-					assetOnRight && 'md:order-1',
-					assetBelowContent && 'max-md:order-last',
-				)}
-			>
-				<Asset asset={asset} />
-			</figure>
+		<div className="">
+			<section className="section headings:text-white grid items-center gap-8 py-10 text-gray-300 md:grid-cols-2 md:gap-x-12">
+				<figure
+					className={cn(
+						asset?._type === 'img' && 'max-md:full-bleed',
+						assetOnRight && 'md:order-1',
+						assetBelowContent && 'max-md:order-last',
+					)}
+				>
+					<Asset asset={asset} />
+				</figure>
 
-			<div className="richtext headings:text-balance mx-auto w-full max-w-lg">
-				<Pretitle>{pretitle}</Pretitle>
-				<PortableText
-					value={content}
-					components={{
-						types: {
-							'custom-html': ({ value }) => <CustomHTML {...value} />,
-							'reputation-block': ({ value }) => (
-								<Reputation className="!mt-4" reputation={value.reputation} />
-							),
-						},
-					}}
-				/>
-				<CTAList ctas={ctas} className="!mt-6" />
-			</div>
-		</section>
+				<div className="richtext headings:text-balance mx-auto w-full max-w-lg">
+					<Pretitle>{pretitle}</Pretitle>
+					<PortableText
+						value={content}
+						components={{
+							types: {
+								'custom-html': ({ value }) => <CustomHTML {...value} />,
+								'reputation-block': ({ value }) => (
+									<Reputation className="!mt-4" reputation={value.reputation} />
+								),
+							},
+						}}
+					/>
+					<CTAList ctas={ctas} className="!mt-6" />
+				</div>
+			</section>
+		</div>
 	)
 }
