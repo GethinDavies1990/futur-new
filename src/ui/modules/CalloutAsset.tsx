@@ -55,7 +55,7 @@ export default function CalloutAsset({
 					</div>
 
 					{/* Media on the Right */}
-					<div className="mx-auto w-full max-w-lg">
+					<div className="mx-auto w-full">
 						{media?.image ? (
 							<Image
 								src={media.image.asset.url}
@@ -71,7 +71,7 @@ export default function CalloutAsset({
 								loop
 								muted
 								playsInline
-								className="aspect-square w-full rounded"
+								className="aspect-video w-full rounded object-cover"
 							/>
 						) : null}
 					</div>
