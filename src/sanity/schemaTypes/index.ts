@@ -32,6 +32,7 @@ import moduleOptions from './objects/module-options'
 
 // modules
 import accordionList from './modules/accordion-list'
+import assetBlock from './modules/asset.block'
 import blogFrontpage from './modules/blog-frontpage'
 import blogList from './modules/blog-list'
 import blogPostContent from './modules/blog-post-content'
@@ -99,6 +100,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
 
 	// modules
 	accordionList,
+	assetBlock,
 	blogFrontpage,
 	blogList,
 	blogPostContent,

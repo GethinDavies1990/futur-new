@@ -28,6 +28,7 @@ import ContactForm from './ContactForm'
 import TestimonialListTitle from './TestimonialListTitle'
 import CalloutAsset from './CalloutAsset'
 import MediaCarousel from './MediaCarousel'
+import AssetBlock from './AssetBlock'
 
 import dynamic from 'next/dynamic'
 import { createDataAttribute } from 'next-sanity'
@@ -67,6 +68,7 @@ const MODULE_MAP = {
 	'contact-form': ContactForm,
 	video: Video,
 	'media-carousel': MediaCarousel,
+	'asset.block': AssetBlock,
 } as const
 
 export default function Modules({

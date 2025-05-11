@@ -6,6 +6,7 @@ export default defineField({
 	type: 'array',
 	of: [
 		{ type: 'accordion-list' },
+		{ type: 'asset.block' },
 		{ type: 'blog-frontpage' },
 		{ type: 'blog-list' },
 		{ type: 'blog-post-content' },

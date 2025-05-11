@@ -60,18 +60,18 @@ export const MODULES_QUERY = groq`
     link{ ${LINK_QUERY} }
   },
   _type == 'blog-list' => { filteredCategory-> },
- _type == 'work-list' => {
-  posts[]->{
-    _id,
-    metadata {
-      title,
-      description
-    },
-    categories[]->{
-      title
+  _type == 'work-list' => {
+    posts[]->{
+      _id,
+      metadata {
+        title,
+        description
+      },
+      categories[]->{
+        title
+      }
     }
-  }
-},
+  },
   _type == 'breadcrumbs' => { crumbs[]{ ${LINK_QUERY} } },
   _type == 'callout' => {
     content[]{
@@ -103,6 +103,20 @@ export const MODULES_QUERY = groq`
       }
     }
   },
+_type == "asset.block" => {
+  image {
+    asset->{
+      _id,
+      url,
+      metadata {
+        lqip,
+        dimensions { width, height },
+        aspectRatio
+      }
+    },
+    alt
+  }
+},
   _type == 'card-list' => {
     cards[]{
       ...,
