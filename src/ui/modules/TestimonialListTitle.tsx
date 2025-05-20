@@ -55,15 +55,15 @@ export default function TestimonialListTitle({
 						(testimonial, key) =>
 							testimonial && (
 								<article
-									className="relative grid basis-[min(450px,70vw)]! place-content-center rounded-lg border border-gray-600 bg-black py-6 text-gray-300"
+									className="relative grid basis-[min(450px,70vw)]! place-content-center rounded-lg border border-gray-600 bg-black py-4 text-center text-gray-300"
 									key={key}
 								>
-									<div className="frosted-glass absolute inset-0 -z-10 h-full w-full"></div>
-									<blockquote className="flex flex-col items-center gap-4">
+									<div className="absolute inset-0 -z-10 h-full w-full"></div>
+									<blockquote className="flex flex-col items-center justify-center gap-4">
 										{testimonial.author && (
-											<div className="inline-flex max-w-[25ch] items-center gap-2">
+											<div className="max-w-[25ch] items-center gap-2 text-center">
 												<Img
-													className="size-[25px] shrink-0 rounded-full object-cover"
+													className="mx-auto size-[25px] shrink-0 rounded-full object-cover"
 													image={testimonial.author.image}
 													width={80}
 													alt={
@@ -73,8 +73,8 @@ export default function TestimonialListTitle({
 													}
 												/>
 
-												<dl className="text-start">
-													<dt className="flex flex-wrap items-center gap-1">
+												<dl className="text-center">
+													<dt className="flex flex-wrap items-center gap-1 text-center">
 														{testimonial.author.name}
 													</dt>
 
@@ -87,7 +87,7 @@ export default function TestimonialListTitle({
 											</div>
 										)}
 									</blockquote>
-									<div className="mt-2 flex items-center justify-start">
+									<div className="mt-2 flex items-center justify-center">
 										{[...Array(5)].map((_, index) => (
 											<MdStar
 												key={index}

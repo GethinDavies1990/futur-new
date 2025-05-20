@@ -66,7 +66,7 @@ export default function Hero({
 						>
 							<div className="flex items-center">
 								{pretitle && (
-									<div>
+									<div className="flex items-center">
 										<RxShadow className="text-accent mr-1" />
 										<Pretitle className="text-gray-300">{pretitle}</Pretitle>
 									</div>
