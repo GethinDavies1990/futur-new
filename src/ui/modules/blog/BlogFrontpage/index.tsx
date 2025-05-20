@@ -43,29 +43,31 @@ export default async function BlogFrontpage({
 		stegaClean(mainPost) === 'featured' ? sortFeaturedPosts(posts) : posts
 
 	return (
-		<section className="section space-y-12">
-			<PostPreviewLarge post={firstPost} />
+		<div className="bg-gray-100">
+			<section className="section space-y-12 text-black">
+				<PostPreviewLarge post={firstPost} />
 
-			<hr />
+				<hr />
 
-			<FilterList />
+				<FilterList />
 
-			<Suspense
-				fallback={
-					<ul className="grid gap-x-8 gap-y-12 sm:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]">
-						{Array.from({ length: itemsPerPage ?? 6 }).map((_, i) => (
-							<li key={i}>
-								<PostPreview skeleton />
-							</li>
-						))}
-					</ul>
-				}
-			>
-				<Paginated
-					posts={sortFeaturedPosts(otherPosts, showFeaturedPostsFirst)}
-					itemsPerPage={itemsPerPage}
-				/>
-			</Suspense>
-		</section>
+				<Suspense
+					fallback={
+						<ul className="grid gap-x-8 gap-y-12 sm:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]">
+							{Array.from({ length: itemsPerPage ?? 6 }).map((_, i) => (
+								<li key={i}>
+									<PostPreview skeleton />
+								</li>
+							))}
+						</ul>
+					}
+				>
+					<Paginated
+						posts={sortFeaturedPosts(otherPosts, showFeaturedPostsFirst)}
+						itemsPerPage={itemsPerPage}
+					/>
+				</Suspense>
+			</section>
+		</div>
 	)
 }

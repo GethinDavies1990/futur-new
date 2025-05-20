@@ -32,11 +32,11 @@ export default async function LogoList({
 		<div className={autoScroll ? 'bg-black' : 'bg-canvas'}>
 			<section className="section headings:text-white text-gray-300">
 				{(pretitle || intro) && (
-					<header className="richtext mx-auto max-w-screen-sm text-center text-balance">
+					<header className="richtext mx-auto max-w-screen-md text-center">
 						<div className="mb-4 flex items-center justify-center">
 							<IoLogoCodepen
 								size={30}
-								className="bg-accent mr-2 rounded-full text-white"
+								className="mr-2 rounded-full text-white"
 							/>
 							<Pretitle className="text-gray-300">{pretitle}</Pretitle>
 						</div>
@@ -50,7 +50,7 @@ export default async function LogoList({
 						'mx-auto flex items-center',
 						autoScroll
 							? `${css.track} overflow-fade max-w-max overflow-hidden`
-							: 'mt-4 flex-wrap justify-center gap-8 rounded-lg border border-gray-600 bg-black py-10',
+							: 'mt-4 flex-wrap justify-center gap-12 rounded-lg py-20',
 					)}
 					style={
 						{

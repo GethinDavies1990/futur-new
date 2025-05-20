@@ -59,7 +59,7 @@ export default function ContactForm({
 	}
 
 	return (
-		<div className="headings:text-black rounded-t-4xl bg-blue-100 text-gray-600">
+		<div className="headings:text-black bg-blue-200 text-gray-600">
 			<div className="section">
 				<div className="flex flex-col gap-8 md:flex-row">
 					{/* Left Side: Text Content */}
