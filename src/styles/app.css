@@ -2,7 +2,7 @@
 @import './fonts.css';
 
 @theme {
-	--color-canvas: #0d0d0d;
+	--color-canvas: #000;
 	--color-ink: #000;
 	--color-accent: #70c1ff;
 	--color-offwhite: #fffafa;
