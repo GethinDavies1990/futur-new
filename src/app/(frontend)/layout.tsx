@@ -1,4 +1,4 @@
-import { GoogleTagManager } from '@next/third-parties/google'
+import { GoogleTagManager, GoogleAnalytics } from '@next/third-parties/google'
 import Root from '@/ui/Root'
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
 import SkipToContent from '@/ui/SkipToContent'
@@ -30,24 +30,56 @@ export default async function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<Root>
-			<GoogleTagManager gtmId="GTM-WCK4ZDHC" />
-			<body>
-				<NuqsAdapter>
-					<SkipToContent />
-					<Announcement />
-					<Header />
-					<main id="main-content" role="main" tabIndex={-1}>
-						{children}
-						<Toaster position="bottom-center" />
-					</main>
-					<Footer />
-					<VisualEditingControls />
-				</NuqsAdapter>
+		<>
+			<head>
+				{/* Google Tag Manager */}
+				<GoogleTagManager gtmId="GTM-WCK4ZDHC" />
 
-				<Analytics />
-				<SpeedInsights />
-			</body>
-		</Root>
+				{/* Google Analytics */}
+				<GoogleAnalytics gaId="G-FL9XRHBH81" />
+
+				{/* GTAG - Google Analytics Script */}
+				<script
+					async
+					src={`https://www.googletagmanager.com/gtag/js?id=G-FL9XRHBH81`}
+				></script>
+				<script
+					dangerouslySetInnerHTML={{
+						__html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-FL9XRHBH81');
+            `,
+					}}
+				/>
+			</head>
+			<Root>
+				<body>
+					'{' '}
+					<noscript>
+						<iframe
+							src="https://www.googletagmanager.com/ns.html?id=GTM-WCK4ZDHC"
+							height="0"
+							width="0"
+							style={{ display: 'none', visibility: 'hidden' }}
+						></iframe>
+					</noscript>
+					<NuqsAdapter>
+						<SkipToContent />
+						<Announcement />
+						<Header />
+						<main id="main-content" role="main" tabIndex={-1}>
+							{children}
+							<Toaster position="bottom-center" />
+						</main>
+						<Footer />
+						<VisualEditingControls />
+					</NuqsAdapter>
+					<Analytics />
+					<SpeedInsights />
+				</body>
+			</Root>
+		</>
 	)
 }
