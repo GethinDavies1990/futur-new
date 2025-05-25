@@ -65,21 +65,19 @@ export default function CardList({
 					{cards?.map((card, key) => (
 						<article
 							className={cn(
-								'relative flex min-h-[400px] flex-col justify-end overflow-hidden', // ensure card has height
+								'flex min-h-[400px] flex-col justify-end overflow-hidden', // ensure card has height
 								visualSeparation &&
-									'group headings:text-white rounded-lg border border-gray-600 bg-black text-gray-300 transition-all duration-700',
+									'group headings:text-white rounded-xl border border-gray-600 bg-black text-gray-300 transition-all duration-700',
 							)}
 							key={key}
 						>
 							{card.image && (
-								<figure className="absolute inset-0 z-0">
+								<figure className="inset-0 z-0">
 									<Img
-										className="h-full w-full object-cover"
+										className="aspect-square h-[200px] w-full rounded-2xl p-1"
 										image={card.image}
 										width={600}
 									/>
-									{/* Gradient overlay */}
-									<div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-90" />
 								</figure>
 							)}
 

@@ -316,7 +316,7 @@ body {
 	}
 
 	& a:not(:is(.action, .action-outline, .ghost)) {
-		@apply link;
+		@apply font-medium;
 	}
 
 	& :not(pre) > code {
