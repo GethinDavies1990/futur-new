@@ -13,7 +13,7 @@ export default function RichtextSubModule({
 	module: RichtextSubModuleType
 }) {
 	return (
-		<div className="richtext">
+		<div className="richtext headings:text-white text-gray-300">
 			<Pretitle>{module.pretitle}</Pretitle>
 			<PortableText value={module.content} />
 		</div>

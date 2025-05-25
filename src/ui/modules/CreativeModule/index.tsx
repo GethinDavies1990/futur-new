@@ -42,7 +42,7 @@ export default function CreativeModule({
 		<section {...moduleProps(props)}>
 			<div className="section space-y-8">
 				{intro && (
-					<header className="richtext mx-auto max-w-xl text-center text-balance">
+					<header className="richtext headings:text-white mx-auto max-w-xl text-center text-balance text-gray-300">
 						<PortableText value={intro} />
 					</header>
 				)}
@@ -96,7 +96,9 @@ export default function CreativeModule({
 												)}
 												style={{ height: getPixels(subModule?.size) }}
 											>
-												<Icon icon={subModule} key={ii} />
+												<div className="inline-flex rounded-full bg-white p-2">
+													<Icon icon={subModule} key={ii} />
+												</div>
 											</figure>
 										)
 
