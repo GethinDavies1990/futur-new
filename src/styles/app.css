@@ -178,7 +178,7 @@ body {
 }
 
 @utility text-gradient {
-	@apply from-accent to-accent/50 bg-linear-to-br bg-clip-text text-transparent;
+	@apply bg-linear-to-br from-gray-50 to-gray-400 bg-clip-text font-bold text-transparent;
 }
 
 /* ctas, links */
