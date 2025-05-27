@@ -71,7 +71,8 @@ export default function CreativeModule({
 							)}
 							style={
 								{
-									'--col-span': colSpan > 1 && `span ${colSpan}`,
+									'--col-span':
+										colSpan > 1 && `span ${colSpan}`,
 								} as React.CSSProperties
 							}
 							key={i}
@@ -91,26 +92,40 @@ export default function CreativeModule({
 										return (
 											<figure
 												className={cn(
-													stegaClean(textAlign) === 'center' &&
+													stegaClean(textAlign) ===
+														'center' &&
 														'[&_img]:mx-auto',
 												)}
-												style={{ height: getPixels(subModule?.size) }}
+												style={{
+													height: getPixels(
+														subModule?.size,
+													),
+												}}
 											>
 												<div className="inline-flex rounded-full bg-white p-2">
-													<Icon icon={subModule} key={ii} />
+													<Icon
+														icon={subModule}
+														key={ii}
+													/>
 												</div>
 											</figure>
 										)
 
 									case 'richtext':
-										return <RichtextSubModule module={subModule} key={ii} />
+										return (
+											<RichtextSubModule
+												module={subModule}
+												key={ii}
+											/>
+										)
 
 									case 'ctas':
 										return (
 											<CTAsSubModule
 												module={subModule}
 												className={cn(
-													stegaClean(textAlign) === 'center' &&
+													stegaClean(textAlign) ===
+														'center' &&
 														'justify-center',
 												)}
 												key={ii}
@@ -118,7 +133,11 @@ export default function CreativeModule({
 										)
 
 									case 'custom-html':
-										return <CustomHTMLSubmodule module={subModule} />
+										return (
+											<CustomHTMLSubmodule
+												module={subModule}
+											/>
+										)
 
 									default:
 										return null
