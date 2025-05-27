@@ -42,9 +42,14 @@ export default function HeroSplit({
 						value={content}
 						components={{
 							types: {
-								'custom-html': ({ value }) => <CustomHTML {...value} />,
+								'custom-html': ({ value }) => (
+									<CustomHTML {...value} />
+								),
 								'reputation-block': ({ value }) => (
-									<Reputation className="!mt-4" reputation={value.reputation} />
+									<Reputation
+										className="!mt-4"
+										reputation={value.reputation}
+									/>
 								),
 							},
 						}}

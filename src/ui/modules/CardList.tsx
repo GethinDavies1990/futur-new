@@ -36,7 +36,9 @@ export default function CardList({
 			<section className="section space-y-12" {...moduleProps(props)}>
 				{(pretitle || intro) && (
 					<header className="richtext headings:text-white text-left text-balance text-gray-300 no-underline decoration-yellow-500">
-						<Pretitle className="text-gray-300">{pretitle}</Pretitle>
+						<Pretitle className="text-gray-300">
+							{pretitle}
+						</Pretitle>
 						<PortableText value={intro} />
 						<CTAList className="justify-center" ctas={ctas} />
 					</header>
@@ -65,7 +67,7 @@ export default function CardList({
 					{cards?.map((card, key) => (
 						<article
 							className={cn(
-								'flex min-h-[400px] flex-col justify-end overflow-hidden', // ensure card has height
+								'flex min-h-[400px] flex-col justify-start overflow-hidden', // ensure card has height
 								visualSeparation &&
 									'group headings:text-white rounded-xl border border-gray-600 bg-black text-gray-300 transition-all duration-700',
 							)}
@@ -74,7 +76,7 @@ export default function CardList({
 							{card.image && (
 								<figure className="inset-0 z-0">
 									<Img
-										className="aspect-square h-[200px] w-full rounded-2xl p-1"
+										className="aspect-video h-full w-full rounded-2xl p-1 opacity-90"
 										image={card.image}
 										width={600}
 									/>
@@ -82,16 +84,18 @@ export default function CardList({
 							)}
 
 							{/* Content on top */}
-							<div className="relative z-10 p-4">
-								<div className="richtext grow">
+							<div className="relative z-10 mt-auto p-4">
+								<div className="richtext grow text-sm">
 									<PortableText value={card.content} />
 								</div>
 								<div className="mt-4 flex items-center justify-between">
 									<CTAList ctas={card.ctas} />
-									<BsArrowUpRightCircle
-										size={20}
-										className="group-hover:rotate-45"
-									/>
+									<div className="rounded-full bg-white p-1">
+										<BsArrowUpRightCircle
+											size={30}
+											className="text-black group-hover:rotate-45"
+										/>
+									</div>
 								</div>
 							</div>
 						</article>

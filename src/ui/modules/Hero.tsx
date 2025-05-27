@@ -32,7 +32,8 @@ export default function Hero({
 		<div className="bg-black bg-cover bg-center">
 			<section
 				className={cn(
-					hasImage && 'grid overflow-hidden *:col-span-full *:row-span-full',
+					hasImage &&
+						'grid overflow-hidden *:col-span-full *:row-span-full',
 				)}
 				{...moduleProps(props)}
 			>
@@ -49,17 +50,23 @@ export default function Hero({
 					<div className="section flex h-auto w-full flex-col pt-40">
 						<div
 							className={cn(
-								'richtext headings:text-white relative isolate max-w-xl text-gray-300',
+								'richtext headings:text-white relative isolate max-w-3xl text-gray-300',
 								hasImage && 'text-shadow',
 								{
 									'mb-8': stegaClean(alignItems) === 'start',
-									'my-auto': stegaClean(alignItems) === 'center',
+									'my-auto':
+										stegaClean(alignItems) === 'center',
 									'mt-auto': stegaClean(alignItems) === 'end',
 								},
 								{
-									'me-auto': ['left', 'start'].includes(stegaClean(textAlign)),
-									'mx-auto': stegaClean(textAlign) === 'center',
-									'ms-auto': ['right', 'end'].includes(stegaClean(textAlign)),
+									'me-auto': ['left', 'start'].includes(
+										stegaClean(textAlign),
+									),
+									'mx-auto':
+										stegaClean(textAlign) === 'center',
+									'ms-auto': ['right', 'end'].includes(
+										stegaClean(textAlign),
+									),
 								},
 							)}
 							style={{ textAlign: stegaClean(textAlign) }}
@@ -68,7 +75,9 @@ export default function Hero({
 								{pretitle && (
 									<div className="flex items-center">
 										<RxShadow className="text-accent mr-1" />
-										<Pretitle className="text-gray-300">{pretitle}</Pretitle>
+										<Pretitle className="text-gray-300">
+											{pretitle}
+										</Pretitle>
 									</div>
 								)}
 							</div>
@@ -77,20 +86,35 @@ export default function Hero({
 								value={content}
 								components={{
 									types: {
-										'custom-html': ({ value }) => <CustomHTML {...value} />,
+										'custom-html': ({ value }) => (
+											<CustomHTML {...value} />
+										),
 										'reputation-block': ({ value }) => (
 											<Reputation
 												className={cn(
 													'split !mt-4',
-													hasImage && '[&_strong]:text-accent',
+													hasImage &&
+														'[&_strong]:text-accent',
 													{
-														'justify-start': ['left', 'start'].includes(
-															stegaClean(textAlign),
+														'justify-start': [
+															'left',
+															'start',
+														].includes(
+															stegaClean(
+																textAlign,
+															),
 														),
 														'justify-center':
-															stegaClean(textAlign) === 'center',
-														'justify-end': ['right', 'end'].includes(
-															stegaClean(textAlign),
+															stegaClean(
+																textAlign,
+															) === 'center',
+														'justify-end': [
+															'right',
+															'end',
+														].includes(
+															stegaClean(
+																textAlign,
+															),
 														),
 													},
 												)}
@@ -104,9 +128,12 @@ export default function Hero({
 							<CTAList
 								ctas={ctas}
 								className={cn('!mt-4 flex items-center gap-2', {
-									'justify-start': stegaClean(textAlign) === 'left',
-									'justify-center': stegaClean(textAlign) === 'center',
-									'justify-end': stegaClean(textAlign) === 'right',
+									'justify-start':
+										stegaClean(textAlign) === 'left',
+									'justify-center':
+										stegaClean(textAlign) === 'center',
+									'justify-end':
+										stegaClean(textAlign) === 'right',
 								})}
 							/>
 						</div>
