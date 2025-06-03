@@ -32,17 +32,20 @@ export default async function LogoList({
 		<div className={autoScroll ? 'bg-black' : 'bg-canvas'}>
 			<section className="section headings:text-white text-gray-300">
 				{(pretitle || intro) && (
-					<header className="richtext mx-auto max-w-screen-md text-center">
-						<div className="mb-4 flex items-center justify-center">
+					<div className="text-center">
+						<div className="mx-auto mb-4 inline-flex max-w-screen-md items-center justify-center rounded-full bg-gradient-to-b from-[#C8FFC3] to-[#F5FF6D] px-6 py-1">
 							<IoLogoCodepen
-								size={30}
-								className="mr-2 rounded-full text-white"
+								size={20}
+								className="mr-1 rounded-full text-black"
 							/>
-							<Pretitle className="text-gray-300">{pretitle}</Pretitle>
+							<Pretitle className="text-gray-600">
+								{pretitle}
+							</Pretitle>
 						</div>
-
-						<PortableText value={intro} />
-					</header>
+						<header className="richtext mx-auto max-w-screen-md text-left">
+							<PortableText value={intro} />
+						</header>
+					</div>
 				)}
 
 				<figure
@@ -64,8 +67,15 @@ export default async function LogoList({
 							logo && (
 								<Img
 									className="h-[2.5em] w-[200px] shrink-0 object-contain px-4 py-2 max-sm:w-[150px]"
-									style={{ '--index': key } as React.CSSProperties}
-									image={logo.image?.[logoType] || logo.image?.default}
+									style={
+										{
+											'--index': key,
+										} as React.CSSProperties
+									}
+									image={
+										logo.image?.[logoType] ||
+										logo.image?.default
+									}
 									width={400}
 									alt={logo.name}
 									key={key}

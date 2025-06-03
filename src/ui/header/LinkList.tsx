@@ -16,7 +16,10 @@ export default function LinkList({
 			closeAfterNavigate
 		>
 			<summary
-				className={cn(summaryClassName, 'flex h-full items-center gap-1')}
+				className={cn(
+					summaryClassName,
+					'flex h-full items-center gap-1 py-1',
+				)}
 			>
 				{link?.label}
 				<CgChevronRight className="shrink-0 transition-transform group-open:rotate-90 md:rotate-90" />
@@ -26,7 +29,7 @@ export default function LinkList({
 				{links?.map((link, key) => (
 					<li key={key}>
 						<CTA
-							className="hover:link inline-block py-px text-xs"
+							className="hover:link inline-block px-2 py-2 text-xs"
 							link={link}
 						/>
 					</li>

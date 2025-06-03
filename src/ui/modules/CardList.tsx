@@ -35,13 +35,19 @@ export default function CardList({
 		<div className="py-10">
 			<section className="section space-y-12" {...moduleProps(props)}>
 				{(pretitle || intro) && (
-					<header className="richtext headings:text-white text-left text-balance text-gray-300 no-underline decoration-yellow-500">
-						<Pretitle className="text-gray-300">
-							{pretitle}
-						</Pretitle>
-						<PortableText value={intro} />
-						<CTAList className="justify-center" ctas={ctas} />
-					</header>
+					<div>
+						<div className="text-center">
+							<div className="mb-4 inline-flex rounded-full bg-gradient-to-b from-[#C8FFC3] to-[#F5FF6D] px-6 py-1">
+								<Pretitle className="text-gray-600">
+									{pretitle}
+								</Pretitle>
+							</div>
+						</div>
+						<header className="richtext headings:text-white text-left text-balance text-gray-300 no-underline">
+							<PortableText value={intro} />
+							<CTAList className="justify-center" ctas={ctas} />
+						</header>
+					</div>
 				)}
 
 				<div
