@@ -14,7 +14,7 @@ export default function TestimonialFeatured({
 	return (
 		<div className="py-10">
 			<section className="section">
-				<div className="frosted-glass section mx-auto max-w-screen-lg rounded-md bg-pink-100 px-6 text-gray-600">
+				<div className="frosted-glass section mx-auto max-w-screen-lg rounded-md bg-gradient-to-b from-[#CBF4DF] to-[#F0FCF5] px-6 text-gray-600">
 					<div className="flex flex-col items-center space-y-6 text-center">
 						{/* IMAGE at top */}
 						<Img
@@ -22,8 +22,9 @@ export default function TestimonialFeatured({
 							image={author?.image}
 							width={400}
 							alt={
-								[author?.name, author?.title].filter(Boolean).join(', ') ||
-								'Author'
+								[author?.name, author?.title]
+									.filter(Boolean)
+									.join(', ') || 'Author'
 							}
 						/>
 
@@ -36,7 +37,9 @@ export default function TestimonialFeatured({
 
 						{/* COMPANY */}
 						{author?.company && (
-							<div className="text-xs text-gray-500">{author.company}</div>
+							<div className="text-xs text-gray-500">
+								{author.company}
+							</div>
 						)}
 
 						{/* AUTHOR NAME + OPTIONAL SOURCE */}

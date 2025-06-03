@@ -59,7 +59,7 @@ export default function ContactForm({
 	}
 
 	return (
-		<div className="headings:text-black bg-blue-100 text-gray-600">
+		<div className="headings:text-black bg-gradient-to-b from-[#AECDFE] to-[#D8ECFF] text-gray-600">
 			<div className="section">
 				<div className="flex flex-col gap-8 md:flex-row">
 					{/* Left Side: Text Content */}
@@ -67,7 +67,9 @@ export default function ContactForm({
 						<div className="p-6 md:p-10">
 							<div className="text-left md:text-left">
 								<div className="flex items-center">
-									<Pretitle className="mr-2 text-gray-600">{pretitle}</Pretitle>
+									<Pretitle className="mr-2 text-gray-600">
+										{pretitle}
+									</Pretitle>
 									<TfiArrowRight size={14} />
 								</div>
 
@@ -78,7 +80,10 @@ export default function ContactForm({
 										components={{
 											types: {
 												code: ({ value }) => (
-													<Code value={value} theme="snazzy-light" />
+													<Code
+														value={value}
+														theme="snazzy-light"
+													/>
 												),
 											},
 										}}
@@ -134,8 +139,8 @@ export default function ContactForm({
 								className="focus:ring-accent w-full rounded-sm bg-gray-100 p-3 focus:ring-1 focus:outline-none"
 							></textarea>
 							<small className="text-gray-600">
-								By submitting this form I accept the Privacy Policy of this
-								site.
+								By submitting this form I accept the Privacy
+								Policy of this site.
 							</small>
 							<div className="flex justify-start">
 								<button type="submit" className="action">
