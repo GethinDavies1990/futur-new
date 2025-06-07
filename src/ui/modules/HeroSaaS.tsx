@@ -34,7 +34,9 @@ export default function HeroSaaS({
 			>
 				<div className="richtext mx-auto text-balance">
 					<div>
-						<Pretitle className="text-gray-600">{pretitle}</Pretitle>
+						<Pretitle className="texy-xs text-gray-600">
+							{pretitle}
+						</Pretitle>
 					</div>
 					<div className="headings:text-black text-gray-600np">
 						<PortableText
@@ -48,7 +50,9 @@ export default function HeroSaaS({
 											theme="snazzy-light"
 										/>
 									),
-									'custom-html': ({ value }) => <CustomHTML {...value} />,
+									'custom-html': ({ value }) => (
+										<CustomHTML {...value} />
+									),
 									'reputation-block': ({ value }) => (
 										<Reputation
 											className="!mt-4 justify-center"
