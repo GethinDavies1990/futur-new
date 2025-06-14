@@ -149,7 +149,7 @@ body {
 }
 
 @utility h1 {
-	@apply h-base text-4xl uppercase md:text-4xl lg:text-6xl;
+	@apply h-base text-4xl uppercase md:text-4xl lg:text-5xl;
 }
 @utility h2 {
 	@apply h-base text-2xl font-medium uppercase md:text-3xl lg:text-4xl;
