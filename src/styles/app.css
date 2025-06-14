@@ -15,7 +15,7 @@ body {
 }
 
 @theme {
-	--font-futsat: 'Futsat', sans-serif;
+	--font-krona: 'Krona_One', sans-serif;
 	--font-figtree: 'Figtree', sans-serif;
 }
 
@@ -144,7 +144,7 @@ body {
 /* typography */
 
 @utility h-base {
-	font-family: var(--font-futsat);
+	font-family: var(--font-krona);
 	@apply leading-tight;
 }
 

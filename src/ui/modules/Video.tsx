@@ -47,7 +47,9 @@ export default function Video({
 										theme="snazzy-light"
 									/>
 								),
-								'custom-html': ({ value }) => <CustomHTML {...value} />,
+								'custom-html': ({ value }) => (
+									<CustomHTML {...value} />
+								),
 								'reputation-block': ({ value }) => (
 									<Reputation
 										className="!mt-4 justify-center"

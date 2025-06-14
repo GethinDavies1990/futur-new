@@ -5,16 +5,16 @@ import SkipToContent from '@/ui/SkipToContent'
 import Announcement from '@/ui/Announcement'
 import Header from '@/ui/header'
 import Footer from '@/ui/footer'
-import { Fustat, Figtree } from 'next/font/google'
+import { Krona_One, Figtree } from 'next/font/google'
 import VisualEditingControls from '@/ui/VisualEditingControls'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Toaster } from 'react-hot-toast'
 import '@/styles/app.css'
 
-const fustat = Fustat({
+const krona = Krona_One({
 	subsets: ['latin'],
-	weight: ['200', '300', '400', '500', '600', '700', '800'],
+	weight: ['400'],
 	preload: true,
 })
 
