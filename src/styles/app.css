@@ -149,19 +149,19 @@ body {
 }
 
 @utility h1 {
-	@apply h-base text-3xl md:text-4xl lg:text-5xl;
+	@apply h-base text-4xl uppercase md:text-4xl lg:text-6xl;
 }
 @utility h2 {
-	@apply h-base text-2xl font-medium md:text-3xl lg:text-4xl;
+	@apply h-base text-2xl font-medium uppercase md:text-3xl lg:text-4xl;
 }
 @utility h3 {
-	@apply h-base text-2xl font-medium lg:text-3xl;
+	@apply h-base text-2xl font-medium uppercase lg:text-3xl;
 }
 @utility h4 {
-	@apply h-base text-xl lg:text-2xl;
+	@apply h-base text-xl uppercase lg:text-2xl;
 }
 @utility h5 {
-	@apply h-base text-lg lg:text-xl;
+	@apply h-base text-lg uppercase lg:text-xl;
 }
 @utility h6 {
 	@apply h-base;
@@ -178,7 +178,10 @@ body {
 }
 
 @utility text-gradient {
-	@apply bg-linear-to-br from-gray-50 to-gray-400 bg-clip-text font-bold text-transparent;
+	@apply bg-clip-text text-transparent;
+	background-image: url('/bg-text-7.png');
+	background-size: cover;
+	background-position: center;
 }
 
 /* ctas, links */

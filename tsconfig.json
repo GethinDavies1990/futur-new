@@ -30,6 +30,6 @@
 		"**/*.tsx",
 		".next/types/**/*.ts",
 		"src/app/api/send/route.js"
-	],
+, "next.config.js"	],
 	"exclude": ["node_modules"]
 }

@@ -16,6 +16,8 @@ const krona = Krona_One({
 	subsets: ['latin'],
 	weight: ['400'],
 	preload: true,
+	display: 'swap',
+	variable: '--font-krona',
 })
 
 const figtree = Figtree({
@@ -72,7 +74,7 @@ export default async function RootLayout({
 				/>
 			</head>
 			<Root>
-				<body>
+				<body className={figtree.className + ' ' + krona.variable}>
 					'{' '}
 					<noscript>
 						<iframe

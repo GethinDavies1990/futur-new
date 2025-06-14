@@ -8,8 +8,14 @@ export default function Pretitle({
 	if (!children) return null
 
 	return (
-		<h2 className={cn('technical text-ink/65 text-lg', className)}>
+		<h3
+			className={cn(
+				'technical text-figtree !not-uppercase text-ink/65 !text-sm !font-normal !tracking-normal',
+				className,
+			)}
+			style={{ fontFamily: 'var(--font-figtree)' }}
+		>
 			{stegaClean(children)}
-		</h2>
+		</h3>
 	)
 }

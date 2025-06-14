@@ -50,7 +50,7 @@ export default function Hero({
 					<div className="section flex h-auto w-full flex-col pt-40">
 						<div
 							className={cn(
-								'richtext headings:text-white relative isolate max-w-3xl text-gray-300',
+								'richtext headings:text-white relative isolate max-w-6xl text-gray-300',
 								hasImage && 'text-shadow',
 								{
 									'mb-8': stegaClean(alignItems) === 'start',
@@ -75,7 +75,7 @@ export default function Hero({
 								{pretitle && (
 									<div className="flex items-center">
 										<RxShadow className="text-accent mr-1" />
-										<Pretitle className="text-xs text-gray-300">
+										<Pretitle className="font-figtree text-xs text-gray-300">
 											{pretitle}
 										</Pretitle>
 									</div>
