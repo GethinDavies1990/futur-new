@@ -179,7 +179,7 @@ body {
 
 @utility text-gradient {
 	@apply bg-clip-text text-transparent;
-	background-image: url('/bg-text-7.png');
+	background-image: url('/bg-text-4.png');
 	background-size: cover;
 	background-position: center;
 }
