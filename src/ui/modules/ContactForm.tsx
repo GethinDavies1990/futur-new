@@ -59,7 +59,12 @@ export default function ContactForm({
 	}
 
 	return (
-		<div className="headings:text-black bg-gradient-to-b from-[#AECDFE] to-[#D8ECFF] text-gray-600">
+		<div
+			className="headings:text-black bg-cover bg-center text-gray-600"
+			style={{
+				backgroundImage: "url('/blue-bg.png')",
+			}}
+		>
 			<div className="section">
 				<div className="flex flex-col gap-8 md:flex-row">
 					{/* Left Side: Text Content */}

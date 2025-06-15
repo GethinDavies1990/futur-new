@@ -21,19 +21,23 @@ export default function TestimonialListTitle({
 }>) {
 	return (
 		<div className="py-10">
-			<section className="section space-y-8 text-left">
+			<section className="section space-y-8">
 				{(pretitle || intro) && (
 					<header className="richtext headings:text-white grid items-start justify-between gap-8 text-gray-300 md:grid-cols-2 md:gap-x-12">
 						<div className="flex items-center justify-start">
 							<RxShadow className="text-accent mr-2" size={20} />
-							<Pretitle className="text-gray-300">{pretitle}</Pretitle>
+							<Pretitle className="text-gray-300">
+								{pretitle}
+							</Pretitle>
 						</div>
 						<div className="richtext headings:text-balance mx-auto w-full max-w-lg">
 							<PortableText
 								value={intro}
 								components={{
 									types: {
-										'custom-html': ({ value }) => <CustomHTML {...value} />,
+										'custom-html': ({ value }) => (
+											<CustomHTML {...value} />
+										),
 									},
 								}}
 							/>
@@ -45,7 +49,7 @@ export default function TestimonialListTitle({
 					className={cn(
 						'gap-4',
 						stegaClean(layout) === 'carousel'
-							? 'carousel max-xl:full-bleed md:overflow-fade pb-4 max-md:px-4 md:gap-8 md:before:m-auto md:after:m-auto'
+							? 'carousel max-xl:full-bleed md:overflow-fade pb-4 text-center max-md:px-4 md:gap-8 md:before:m-auto md:after:m-auto'
 							: 'grid sm:grid-cols-[repeat(auto-fill,minmax(300px,1fr))]',
 						stegaClean(layoutMobile) === 'carousel' &&
 							'max-md:carousel max-md:full-bleed max-md:px-4 max-md:pb-4',
@@ -55,32 +59,48 @@ export default function TestimonialListTitle({
 						(testimonial, key) =>
 							testimonial && (
 								<article
-									className="relative grid basis-[min(450px,70vw)]! place-content-center rounded-lg border border-gray-600 bg-black py-4 text-center text-gray-300"
+									className="relative grid basis-[min(550px,100vw)]! place-content-center rounded-lg border border-blue-300 bg-black py-6 text-center text-gray-300"
 									key={key}
 								>
-									<div className="absolute inset-0 -z-10 h-full w-full"></div>
-									<blockquote className="flex flex-col items-center justify-center gap-4">
+									<div className="absolute inset-0 -z-10 h-full w-[90%]"></div>
+									<blockquote className="flex items-center justify-center gap-4">
 										{testimonial.author && (
-											<div className="max-w-[25ch] items-center gap-2 text-center">
+											<div className="max-w-[35ch] items-center gap-2 text-center">
 												<Img
-													className="mx-auto size-[25px] shrink-0 rounded-full object-cover"
-													image={testimonial.author.image}
+													className="mx-auto mb-4 size-[35px] shrink-0 rounded-full object-cover"
+													image={
+														testimonial.author.image
+													}
 													width={80}
 													alt={
-														[testimonial.author.name, testimonial.author.title]
+														[
+															testimonial.author
+																.name,
+															testimonial.author
+																.title,
+														]
 															.filter(Boolean)
-															.join(', ') || 'Author'
+															.join(', ') ||
+														'Author'
 													}
 												/>
 
 												<dl className="text-center">
 													<dt className="flex flex-wrap items-center gap-1 text-center">
-														{testimonial.author.name}
+														{
+															testimonial.author
+																.name
+														}
 													</dt>
 
-													{testimonial.author.title && (
-														<dd className="text-xs text-balance">
-															{testimonial.author.title}
+													{testimonial.author
+														.title && (
+														<dd className="text-md">
+															{
+																testimonial
+																	.author
+																	.title
+															}
 														</dd>
 													)}
 												</dl>
