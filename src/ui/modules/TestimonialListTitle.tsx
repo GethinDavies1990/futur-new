@@ -20,7 +20,7 @@ export default function TestimonialListTitle({
 	layoutMobile: 'grid' | 'carousel'
 }>) {
 	return (
-		<div className="py-10">
+		<div className="py-20">
 			<section className="section space-y-8">
 				{(pretitle || intro) && (
 					<header className="richtext headings:text-white grid items-start justify-between gap-8 text-gray-300 md:grid-cols-2 md:gap-x-12">

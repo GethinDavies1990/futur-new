@@ -14,7 +14,7 @@ export default function ContentSection({
 	ctas: Sanity.CTA[]
 }>) {
 	return (
-		<section className="section headings:text-white space-y-8 py-10 text-gray-300">
+		<section className="section headings:text-white space-y-8 py-20 text-gray-300">
 			<header className="richtext grid items-start justify-between gap-8 md:grid-cols-2 md:gap-x-12">
 				<div className="flex max-w-lg items-center justify-start">
 					<Pretitle className="text-gray-300">{pretitle}</Pretitle>
