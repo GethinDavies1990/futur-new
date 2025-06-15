@@ -62,8 +62,8 @@ export default function Video({
 					{content && (
 						<Image
 							src="/shopify-experts.png"
-							width={200}
-							height={200}
+							width={300}
+							height={300}
 							alt="Shopify Experts logo"
 							className="mx-auto mt-4"
 						/>

@@ -14,17 +14,16 @@ export default async function Footer() {
 
 	return (
 		<>
-			<div className="mx-auto h-auto bg-white py-10">
-				<div className="mx-auto w-[500px] bg-white">
-					<Image
-						src="/futur-glass.png"
-						width={500}
-						height={500}
-						alt="Futur Media Ltd"
-						className="mx-auto h-auto w-[300px] md:w-[400px]"
-					/>
-				</div>
+			<div className="mx-auto h-auto bg-black py-10">
+				<Image
+					src="/futur-chrome.png"
+					width={500}
+					height={500}
+					alt="Futur Media Ltd"
+					className="mx-auto h-auto"
+				/>
 			</div>
+
 			<footer className="text-canvas bg-black" role="contentinfo">
 				<div className="section flex flex-wrap justify-between gap-x-12 gap-y-8 max-sm:flex-col">
 					<div className="flex flex-col gap-3 self-stretch">
