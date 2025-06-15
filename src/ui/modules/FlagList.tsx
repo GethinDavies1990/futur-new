@@ -48,7 +48,7 @@ export default function FlagList({
 									className="mb-2"
 									style={{ height: getPixels(icon?.size) }}
 								>
-									<div className="inline-flex rounded-full bg-white p-1">
+									<div className="inline-flex rounded-full p-1">
 										<Icon icon={icon} />
 									</div>
 								</figure>
