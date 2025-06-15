@@ -199,10 +199,10 @@ body {
 }
 
 @utility action {
-	@apply action-base cursor-pointer rounded-full border border-transparent border-white bg-[url('/blue-bg.png')] bg-cover bg-center bg-no-repeat text-balance text-black shadow-lg transition-all duration-700 hover:border-white hover:bg-black hover:text-white;
+	@apply action-base cursor-pointer rounded-full border border-white bg-[url('/blue-bg.png')] bg-cover bg-center bg-no-repeat text-balance text-black shadow-lg transition-all duration-700 hover:border-white hover:bg-black hover:text-white;
 }
 @utility pill-button {
-	@apply cursor-pointer rounded-sm border border-white bg-white p-2 text-xs text-black transition duration-500 hover:bg-black hover:text-white;
+	@apply cursor-pointer rounded-sm border border-white bg-black p-2 text-xs text-white transition duration-500 hover:bg-black hover:text-white;
 }
 
 @utility action-outline {

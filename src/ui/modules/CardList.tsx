@@ -32,18 +32,18 @@ export default function CardList({
 	const isCarousel = stegaClean(layout) === 'carousel'
 
 	return (
-		<div className="py-10">
+		<div className="bg-white py-10">
 			<section className="section space-y-12" {...moduleProps(props)}>
 				{(pretitle || intro) && (
 					<div>
 						<div className="text-center">
-							<div className="mb-4 inline-flex rounded-full bg-gradient-to-b from-[#C8FFC3] to-[#F5FF6D] px-6 py-1">
+							<div className="mb-6 inline-flex rounded-full bg-[url('/blue-bg.png')] bg-cover bg-center bg-no-repeat px-8 py-2">
 								<Pretitle className="text-gray-600">
 									{pretitle}
 								</Pretitle>
 							</div>
 						</div>
-						<header className="richtext headings:text-white text-left text-balance text-gray-300 no-underline">
+						<header className="richtext headings:text-black text-left text-balance text-gray-600 no-underline">
 							<PortableText value={intro} />
 							<CTAList className="justify-center" ctas={ctas} />
 						</header>
@@ -75,7 +75,7 @@ export default function CardList({
 							className={cn(
 								'flex min-h-[400px] flex-col justify-start overflow-hidden', // ensure card has height
 								visualSeparation &&
-									'group headings:text-white rounded-xl border border-gray-600 bg-black text-gray-300 transition-all duration-700',
+									'group headings:text-black rounded-xl border border-gray-200 bg-white text-gray-600 transition-all duration-700',
 							)}
 							key={key}
 						>

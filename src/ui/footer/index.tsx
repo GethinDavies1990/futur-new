@@ -15,13 +15,13 @@ export default async function Footer() {
 	return (
 		<>
 			<div className="mx-auto h-auto bg-white py-10">
-				<div className="mx-auto w-[500px] rounded-3xl bg-white">
+				<div className="mx-auto w-[500px] bg-white">
 					<Image
 						src="/futur-glass.png"
 						width={500}
 						height={500}
 						alt="Futur Media Ltd"
-						className="mx-auto h-auto w-[400px]"
+						className="mx-auto h-auto w-[300px] md:w-[400px]"
 					/>
 				</div>
 			</div>
