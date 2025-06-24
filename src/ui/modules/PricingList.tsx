@@ -21,7 +21,7 @@ export default function PricingList({
 			)}
 
 			<div
-				className="max-lg:carousel max-lg:full-bleed grid grid-cols-[repeat(var(--col,1),1fr)] items-stretch gap-6 max-lg:px-4"
+				className="grid w-full grid-cols-1 items-stretch gap-6 max-lg:-mx-4 max-lg:w-screen max-lg:px-4 lg:grid-cols-2"
 				style={{ '--col': tiers?.length } as React.CSSProperties}
 			>
 				{tiers?.map(
