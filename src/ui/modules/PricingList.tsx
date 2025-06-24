@@ -14,7 +14,7 @@ export default function PricingList({
 	return (
 		<section className="section space-y-8" {...moduleProps(props)}>
 			{(pretitle || intro) && (
-				<header className="richtext text-center">
+				<header className="richtext headings:text-white text-center text-gray-300">
 					<Pretitle>{pretitle}</Pretitle>
 					<PortableText value={intro} />
 				</header>
@@ -28,38 +28,49 @@ export default function PricingList({
 					(tier) =>
 						!!tier && (
 							<article
-								className="border-ink/10 richtext space-y-4 rounded border p-4"
+								className="richtext space-y-4 rounded border border-white/20 p-4"
 								key={tier._id}
 							>
-								<div className="h3 flex flex-wrap items-center gap-x-4">
+								<div className="h3 flex flex-wrap items-center gap-x-4 text-white">
 									{tier.title}
 
-									<Pretitle className="ms-auto text-xs">
+									<Pretitle className="bg-accent ms-auto rounded-sm px-3 py-2 text-xs text-black">
 										{tier.highlight}
 									</Pretitle>
 								</div>
 
 								{tier.price?.base !== undefined && (
-									<div className="flex flex-wrap items-end gap-x-1">
+									<div className="text-accent flex flex-wrap items-end gap-x-1">
 										{tier.price.base !== undefined &&
 											!isNaN(tier.price.base) && (
-												<b className="h1">{formatPrice(tier.price.base)}</b>
+												<b className="h3">
+													{formatPrice(
+														tier.price.base,
+													)}
+												</b>
 											)}
 										{tier.price.suffix && (
-											<span className={cn(isNaN(tier.price.base) && 'h1')}>
+											<span
+												className={cn(
+													isNaN(tier.price.base) &&
+														'h1',
+												)}
+											>
 												{tier.price.suffix}
 											</span>
 										)}
 										{tier.price.strikethrough && (
-											<s className="font-bold decoration-red-500">
-												{formatPrice(tier.price?.strikethrough)}
+											<s className="font-bold text-gray-300 decoration-red-500">
+												{formatPrice(
+													tier.price?.strikethrough,
+												)}
 											</s>
 										)}
 									</div>
 								)}
 
 								<CTAList className="grid" ctas={tier.ctas} />
-								<div className="richtext">
+								<div className="richtext headings:text-white text-gray-300">
 									<PortableText value={tier.content} />
 								</div>
 							</article>
