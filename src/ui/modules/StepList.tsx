@@ -21,13 +21,13 @@ export default function StepList({
 				</header>
 			)}
 
-			<ol className="grid gap-8 md:grid-cols-[repeat(auto-fit,minmax(250px,1fr))]">
+			<ol className="grid gap-8 md:grid-cols-[repeat(auto-fit,minmax(400px,1fr))]">
 				{steps?.map((step, index) => (
 					<li
 						className="grid grid-cols-[auto_1fr] gap-2 rounded-xl border border-gray-600 bg-black p-2"
 						key={index}
 					>
-						<b className="aspect-square h-[1em] rounded-full bg-gray-900 p-1 text-center text-3xl text-white tabular-nums">
+						<b className="bg-accent aspect-square h-[2em] rounded-full p-1 text-center text-2xl text-white tabular-nums">
 							{index + 1}
 						</b>
 

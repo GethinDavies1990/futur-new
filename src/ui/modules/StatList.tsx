@@ -36,14 +36,24 @@ export default function StatList({
 						key={key}
 					>
 						<dt className="text-xl font-bold">
-							{prefix && <span className="text-accent/50">{prefix}</span>}
+							{prefix && (
+								<span className="text-accent">{prefix}</span>
+							)}
 
-							<span className="text-gradient text-6xl">{value}</span>
+							<span className="text-accent text-6xl">
+								{value}
+							</span>
 
-							{suffix && <span className="text-accent/50">{suffix}</span>}
+							{suffix && (
+								<span className="text-accent">{suffix}</span>
+							)}
 						</dt>
 
-						{text && <dd className="font-bold text-balance">{text}</dd>}
+						{text && (
+							<dd className="font-bold text-balance text-white">
+								{text}
+							</dd>
+						)}
 					</div>
 				))}
 			</dl>
