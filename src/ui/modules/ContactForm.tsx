@@ -8,8 +8,6 @@ import { toast } from 'react-hot-toast'
 import BookCallButton from '@/ui/BookCallButton'
 import { useRouter } from 'next/navigation'
 
-const router = useRouter()
-
 export default function ContactForm({
 	content,
 	pretitle,
@@ -25,6 +23,7 @@ export default function ContactForm({
 		message: '',
 	})
 
+	const router = useRouter()
 	const handleChange = (
 		e: React.ChangeEvent<
 			HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
