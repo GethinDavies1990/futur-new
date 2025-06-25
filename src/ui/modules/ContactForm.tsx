@@ -6,6 +6,9 @@ import Pretitle from '../Pretitle'
 import { PortableText } from 'next-sanity'
 import { toast } from 'react-hot-toast'
 import BookCallButton from '@/ui/BookCallButton'
+import { useRouter } from 'next/navigation'
+
+const router = useRouter()
 
 export default function ContactForm({
 	content,
@@ -53,6 +56,7 @@ export default function ContactForm({
 			toast.success(
 				`Hey ${data.firstName} ${data.lastName}, your message was sent successfully!`,
 			)
+			router.push('/thank-you')
 		} else {
 			toast.error('Failed to send message. Please try again.')
 		}
