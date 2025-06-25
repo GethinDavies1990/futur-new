@@ -40,27 +40,10 @@ export default async function RootLayout({
 				{/* Google Analytics */}
 				<GoogleAnalytics gaId="G-FL9XRHBH81" />
 
-				<script
-					dangerouslySetInnerHTML={{
-						__html: `
-      (function(w,d,s,l,i){
-        w[l]=w[l]||[];
-        w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'});
-        var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),
-        dl=l!='dataLayer'?'&l='+l:'';
-        j.async=true;
-        j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
-        f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-WCK4ZDHC');
-    `,
-					}}
-				/>
-
-				{/* GTAG - Google Analytics Script */}
+				{/* GTAG - Google Analytics and Google Ads */}
 				<script
 					async
-					src={`https://www.googletagmanager.com/gtag/js?id=G-FL9XRHBH81`}
+					src="https://www.googletagmanager.com/gtag/js?id=G-FL9XRHBH81"
 				></script>
 				<script
 					dangerouslySetInnerHTML={{
@@ -68,14 +51,14 @@ export default async function RootLayout({
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-FL9XRHBH81');
+              gtag('config', 'G-FL9XRHBH81'); // Google Analytics
+              gtag('config', 'AW-17263022960'); // Google Ads
             `,
 					}}
 				/>
 			</head>
 			<Root>
 				<body className={figtree.className + ' ' + krona.variable}>
-					'{' '}
 					<noscript>
 						<iframe
 							src="https://www.googletagmanager.com/ns.html?id=GTM-WCK4ZDHC"
@@ -102,3 +85,4 @@ export default async function RootLayout({
 		</>
 	)
 }
+
