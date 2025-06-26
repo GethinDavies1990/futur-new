@@ -50,7 +50,7 @@ export default function StatList({
 						</dt>
 
 						{text && (
-							<dd className="font-bold text-balance text-white">
+							<dd className="font-semibold text-balance text-gray-500">
 								{text}
 							</dd>
 						)}

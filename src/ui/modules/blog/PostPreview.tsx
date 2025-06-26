@@ -16,8 +16,8 @@ export default function PostPreview({
 	if (!post && !skeleton) return null
 
 	return (
-		<div className="group relative isolate flex h-full flex-col space-y-2 rounded-lg border border-gray-600 bg-black p-2">
-			<figure className="bg-ink relative aspect-video overflow-hidden rounded-xl">
+		<div className="group relative isolate flex h-full flex-col space-y-2 p-1">
+			<figure className="relative aspect-video overflow-hidden rounded-xl">
 				<Img
 					className="aspect-video w-full object-cover transition-all group-hover:scale-105 group-hover:brightness-110"
 					image={post?.metadata.image}
@@ -33,7 +33,10 @@ export default function PostPreview({
 			</figure>
 
 			<div className={cn('h4', skeleton && 'skeleton-2')}>
-				<Link className="text-white" href={resolveUrl(post, { base: false })}>
+				<Link
+					className="text-black"
+					href={resolveUrl(post, { base: false })}
+				>
 					<span className="absolute inset-0" />
 					{post?.metadata.title}
 				</Link>
@@ -47,7 +50,7 @@ export default function PostPreview({
 
 			{(post?.authors?.length || skeleton) && (
 				<Authors
-					className="flex flex-wrap items-center gap-4 text-sm text-gray-300"
+					className="flex flex-wrap items-center gap-4 text-sm text-gray-500"
 					authors={post?.authors}
 					skeleton={skeleton}
 				/>
@@ -55,7 +58,7 @@ export default function PostPreview({
 
 			<hr />
 
-			<div className="empty:skeleton flex flex-wrap items-center justify-between gap-x-4 text-xs text-gray-300">
+			<div className="empty:skeleton flex flex-wrap items-center justify-between gap-x-4 text-xs text-gray-500">
 				<Date value={post?.publishDate} />
 				<Categories
 					className="flex flex-wrap gap-x-2 text-xs"

@@ -14,7 +14,7 @@ export default function PricingList({
 	return (
 		<section className="section space-y-8" {...moduleProps(props)}>
 			{(pretitle || intro) && (
-				<header className="richtext headings:text-white text-center text-gray-300">
+				<header className="richtext headings:text-black text-center text-gray-500">
 					<Pretitle>{pretitle}</Pretitle>
 					<PortableText value={intro} />
 				</header>
@@ -28,10 +28,10 @@ export default function PricingList({
 					(tier) =>
 						!!tier && (
 							<article
-								className="richtext space-y-4 rounded border border-white/20 p-4"
+								className="richtext space-y-4 rounded border border-gray-200 bg-gray-100 p-4"
 								key={tier._id}
 							>
-								<div className="h3 flex flex-wrap items-center gap-x-4 text-white">
+								<div className="h3 flex flex-wrap items-center gap-x-4 text-black">
 									{tier.title}
 
 									<Pretitle className="bg-accent ms-auto rounded-sm px-3 py-2 text-xs text-black">
@@ -60,7 +60,7 @@ export default function PricingList({
 											</span>
 										)}
 										{tier.price.strikethrough && (
-											<s className="font-bold text-gray-300 decoration-red-500">
+											<s className="font-bold text-gray-500 decoration-red-500">
 												{formatPrice(
 													tier.price?.strikethrough,
 												)}
@@ -70,7 +70,7 @@ export default function PricingList({
 								)}
 
 								<CTAList className="grid" ctas={tier.ctas} />
-								<div className="richtext headings:text-white text-gray-300">
+								<div className="richtext headings:text-black text-gray-500">
 									<PortableText value={tier.content} />
 								</div>
 							</article>

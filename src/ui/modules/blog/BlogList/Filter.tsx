@@ -20,8 +20,10 @@ export default function Filter({
 		<button
 			className={cn(
 				css.filter,
-				'!py-1',
-				category === value ? 'action' : 'ghost border border-transparent',
+				'',
+				category === value
+					? 'border-accent mx-2 rounded-md border'
+					: 'mx-2 rounded-md',
 			)}
 			onClick={() => {
 				setCategory(value)

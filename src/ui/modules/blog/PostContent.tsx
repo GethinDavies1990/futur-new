@@ -19,7 +19,7 @@ export default function PostContent({
 
 	return (
 		<article {...moduleProps(props)}>
-			<header className="section headings:text-white space-y-6 py-30 text-center text-gray-300">
+			<header className="section headings:text-black space-y-6 py-30 text-center text-gray-500">
 				<h1 className="h1 text-balance">{post.metadata.title}</h1>
 				<div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs">
 					<Date value={post.publishDate} />
@@ -53,7 +53,7 @@ export default function PostContent({
 				)}
 			>
 				{showTOC && (
-					<aside className="lg:sticky-below-header mx-auto w-full max-w-lg self-start rounded-md bg-gray-100 text-gray-600 [--offset:1rem] lg:order-1 lg:w-3xs lg:p-8">
+					<aside className="lg:sticky-below-header mx-auto w-full max-w-lg self-start rounded-md bg-gray-50 text-gray-600 [--offset:1rem] lg:order-1 lg:w-3xs lg:p-8">
 						<TableOfContents headings={post.headings} />
 					</aside>
 				)}
@@ -62,7 +62,7 @@ export default function PostContent({
 					value={post.body}
 					className={cn(
 						css.body,
-						'headings:text-white grid max-w-screen-md text-gray-300',
+						'headings:text-black grid max-w-screen-md text-gray-500',
 					)}
 				>
 					<hr />

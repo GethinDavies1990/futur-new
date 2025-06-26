@@ -27,9 +27,9 @@ export default function CalloutAsset({
 	return (
 		<div className="py-20">
 			<section className="section">
-				<div className="headings:text-white grid grid-cols-1 items-center gap-10 md:grid-cols-2">
+				<div className="headings:text-black grid grid-cols-1 items-center gap-10 md:grid-cols-2">
 					{/* Content on the Left */}
-					<div className="richtext text-gray-300">
+					<div className="richtext text-gray-500">
 						<PortableText
 							value={content}
 							components={{
@@ -71,7 +71,7 @@ export default function CalloutAsset({
 								loop
 								muted
 								playsInline
-								className="aspect-video w-full rounded object-cover"
+								className="aspect-video w-full rounded object-cover shadow-lg"
 							/>
 						) : null}
 					</div>

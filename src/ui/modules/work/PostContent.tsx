@@ -25,22 +25,27 @@ export default function WorkPostContent({
 				<div className="section max-w-5xl">
 					<Content
 						value={workPost.bodySecondary}
-						className={cn(css.body, 'headings:text-white text-gray-300')}
+						className={cn(
+							css.body,
+							'headings:text-black text-gray-500',
+						)}
 					>
-						<hr />
+						<hr className="py-2" />
 					</Content>
 					<div className="flex justify-between gap-4">
-						<div className="mb-2 flex-row text-gray-300">
+						<div className="mb-2 flex-row text-black">
 							<p className="mb-2 font-bold">Client:</p>
 							<p>{workPost.company}</p>
 						</div>{' '}
-						<div className="mb-6 flex-row text-gray-300">
+						<div className="mb-6 flex-row text-black">
 							<p className="mb-2 font-bold">Launch Date</p>{' '}
 							<Date value={workPost.publishDate} />
 						</div>
 					</div>
 					<div className="flex-row">
-						<p className="mb-2 font-bold text-gray-300">Deliverables:</p>
+						<p className="mb-2 font-bold text-black">
+							Deliverables:
+						</p>
 						<Categories
 							className="flex flex-wrap gap-x-2"
 							categories={workPost.categories}
@@ -64,7 +69,7 @@ export default function WorkPostContent({
 					value={workPost.body}
 					className={cn(
 						css.body,
-						'headings:text-white max-w-5xl text-gray-300',
+						'headings:text-black max-w-5xl text-gray-500',
 					)}
 				>
 					<hr />

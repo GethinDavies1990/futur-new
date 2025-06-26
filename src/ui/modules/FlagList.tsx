@@ -21,17 +21,17 @@ export default function FlagList({
 		<div className="py-10">
 			<section className="section space-y-8">
 				{(pretitle || intro) && (
-					<header className="richtext headings:text-white mx-auto text-left text-balance text-gray-300">
+					<header className="richtext headings:text-black mx-auto text-left text-balance text-gray-500">
 						<Pretitle>{pretitle}</Pretitle>
 						<PortableText value={intro} />
 					</header>
 				)}
 
-				<div className="headings:text-white headings:no-underline text-md grid items-start gap-x-8 gap-y-6 text-gray-300 md:grid-cols-[repeat(3,minmax(200px,1fr))]">
+				<div className="headings:text-black headings:no-underline text-md grid items-stretch gap-x-8 gap-y-6 text-gray-500 md:grid-cols-[repeat(2,minmax(200px,1fr))]">
 					{items?.map(({ icon, content }, key) => (
 						<article
 							className={cn(
-								'frosted-glass grid gap-4 rounded-lg border-t-1 border-gray-600 p-4 text-sm',
+								'frosted-glass grid gap-4 rounded-lg border-1 border-gray-200 bg-gray-100 p-4 text-sm',
 								stegaClean(iconPosition) === 'left' &&
 									icon &&
 									'grid-cols-[var(--size)_1fr]',

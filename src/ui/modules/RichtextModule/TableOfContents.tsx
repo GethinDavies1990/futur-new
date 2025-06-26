@@ -51,10 +51,13 @@ export default function TableOfContents({
 
 	return (
 		<details
-			className={cn(css.root, 'group accordion max-lg:bg-ink/3 max-lg:p-3')}
+			className={cn(
+				css.root,
+				'group accordion rounded-sm border border-gray-200 max-lg:bg-gray-100 max-lg:p-3',
+			)}
 			open
 		>
-			<summary className="font-bold lg:group-open:after:invisible">
+			<summary className="font-bold text-black lg:group-open:after:invisible">
 				Table of Contents
 			</summary>
 

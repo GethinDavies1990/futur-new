@@ -23,10 +23,10 @@ export default function TestimonialListTitle({
 		<div className="py-20">
 			<section className="section space-y-8">
 				{(pretitle || intro) && (
-					<header className="richtext headings:text-white grid items-start justify-between gap-8 text-gray-300 md:grid-cols-2 md:gap-x-12">
+					<header className="richtext headings:text-black grid items-start justify-between gap-8 text-gray-500 md:grid-cols-2 md:gap-x-12">
 						<div className="flex items-center justify-start">
 							<RxShadow className="text-accent mr-2" size={20} />
-							<Pretitle className="text-gray-300">
+							<Pretitle className="text-gray-500">
 								{pretitle}
 							</Pretitle>
 						</div>
@@ -59,7 +59,7 @@ export default function TestimonialListTitle({
 						(testimonial, key) =>
 							testimonial && (
 								<article
-									className="relative grid basis-[min(550px,100vw)]! place-content-center rounded-lg border border-blue-300 bg-black py-6 text-center text-gray-300"
+									className="relative grid basis-[min(550px,100vw)]! place-content-center rounded-lg border border-gray-200 bg-gray-100 py-6 text-center text-gray-500 shadow-lg"
 									key={key}
 								>
 									<div className="absolute inset-0 -z-10 h-full w-[90%]"></div>

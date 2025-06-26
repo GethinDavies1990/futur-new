@@ -11,7 +11,7 @@
 }
 
 body {
-	background-color: var(--color-canvas);
+	background-color: var(--color-offwhite);
 }
 
 @theme {
@@ -152,16 +152,16 @@ body {
 	@apply h-base text-4xl uppercase md:text-4xl lg:text-5xl;
 }
 @utility h2 {
-	@apply h-base text-2xl font-medium uppercase md:text-3xl lg:text-4xl;
+	@apply h-base font-figtree text-2xl font-semibold uppercase md:text-3xl lg:text-4xl;
 }
 @utility h3 {
-	@apply h-base text-2xl font-medium uppercase lg:text-3xl;
+	@apply h-base font-figtree text-2xl font-medium uppercase lg:text-3xl;
 }
 @utility h4 {
-	@apply h-base text-xl uppercase lg:text-2xl;
+	@apply h-base font-figtree text-xl uppercase lg:text-2xl;
 }
 @utility h5 {
-	@apply h-base text-lg uppercase lg:text-xl;
+	@apply h-base font-figtree text-lg uppercase lg:text-xl;
 }
 @utility h6 {
 	@apply h-base;
@@ -206,7 +206,7 @@ body {
 }
 
 @utility action-outline {
-	@apply action-base frosted-glass cursor-pointer rounded-full border border-white text-balance text-white transition-all duration-700 hover:bg-white/30;
+	@apply action-base frosted-glass hover:bg-accent/30 cursor-pointer rounded-full border border-black text-balance text-black transition-all duration-700;
 }
 
 @utility ghost {
@@ -308,6 +308,10 @@ body {
 	& h6 {
 		@apply h6;
 	}
+
+	/* & :is(a) {
+		@apply text-gradient;
+	} */
 
 	& :is(ul, ol) {
 		list-style: revert;

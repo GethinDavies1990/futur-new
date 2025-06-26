@@ -12,7 +12,7 @@ export default async function Breadcrumbs({
 	currentPage: Sanity.Page | Sanity.BlogPost | Sanity.WorkPost
 }>) {
 	return (
-		<nav className="section py-4 text-sm">
+		<nav className="section border-accent border-t-1 py-4 text-sm">
 			<ol
 				className="flex flex-wrap items-center gap-x-2 gap-y-1"
 				itemScope
@@ -67,14 +67,14 @@ function Crumb({
 
 	return (
 		<li
-			className="line-clamp-1 text-white"
+			className="line-clamp-1 text-black"
 			itemProp="itemListElement"
 			itemScope
 			itemType="https://schema.org/ListItem"
 		>
 			{link ? (
 				<CTA
-					className="text-white hover:underline"
+					className="text-black hover:underline"
 					link={{ _type: 'link', ...link }}
 					itemProp="item"
 				>

@@ -34,7 +34,9 @@ export default function AccordionList({
 			<section
 				className={cn(
 					'section',
-					layout === 'horizontal' ? 'grid gap-8 md:grid-cols-2' : 'space-y-8',
+					layout === 'horizontal'
+						? 'grid gap-8 md:grid-cols-2'
+						: 'space-y-8',
 				)}
 				{...(generateSchema && {
 					itemScope: true,
@@ -42,11 +44,13 @@ export default function AccordionList({
 				})}
 				{...moduleProps(props)}
 			>
-				<header className="richtext headings:text-white grid items-start justify-between gap-8 text-gray-300 md:grid-cols-2 md:gap-x-12">
+				<header className="richtext headings:text-black grid items-start justify-between gap-8 text-gray-500 md:grid-cols-2 md:gap-x-12">
 					<div className="flex-col items-center justify-start">
 						<div className="flex-row items-center justify-center">
 							<div>
-								<small className="text-left">👋 Speak to us</small>
+								<small className="text-left">
+									👋 Speak to us
+								</small>
 							</div>
 							<Link
 								target="_blank"
@@ -77,7 +81,7 @@ export default function AccordionList({
 							})}
 						>
 							<summary
-								className="py-4 font-light text-white"
+								className="py-4 font-light text-black"
 								{...(generateSchema && {
 									itemProp: 'name',
 								})}
@@ -94,7 +98,7 @@ export default function AccordionList({
 								})}
 							>
 								<div
-									className="richtext rounded-md border border-gray-600 bg-black p-6 text-sm text-gray-300"
+									className="richtext rounded-md border border-gray-600 bg-gray-100 p-6 text-sm text-gray-500"
 									itemProp="text"
 								>
 									<PortableText

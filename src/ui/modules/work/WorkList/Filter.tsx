@@ -22,8 +22,8 @@ export default function Filter({
 				css.filter,
 				'',
 				category === value
-					? 'mx-2 rounded-full border border-gray-300 bg-gray-600'
-					: 'mx-2 rounded-full bg-gray-100',
+					? 'border-accent mx-2 rounded-md border'
+					: 'mx-2 rounded-md',
 			)}
 			onClick={() => {
 				setCategory(value)

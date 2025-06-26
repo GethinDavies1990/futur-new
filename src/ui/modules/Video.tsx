@@ -29,9 +29,9 @@ export default function Video({
 				className="section space-y-8 py-20 text-center"
 				{...moduleProps(props)}
 			>
-				<div className="richtext mx-auto max-w-3xl text-2xl text-balance text-white">
+				<div className="richtext mx-auto max-w-3xl text-2xl text-balance text-gray-500">
 					{pretitle && (
-						<Pretitle className="text-xs font-medium text-white">
+						<Pretitle className="text-xs font-medium text-gray-500">
 							{pretitle}
 						</Pretitle>
 					)}
@@ -76,7 +76,7 @@ export default function Video({
 				{videoSrc && (
 					<div>
 						<video
-							className="anim-fade-to-t z-20 block h-full w-full rounded-lg object-cover [animation-duration:1s] md:h-full"
+							className="anim-fade-to-t z-20 block h-full w-full rounded-lg object-cover shadow-lg [animation-duration:1s] md:h-full"
 							autoPlay
 							loop
 							muted

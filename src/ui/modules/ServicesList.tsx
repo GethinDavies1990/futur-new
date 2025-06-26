@@ -31,7 +31,9 @@ export default function ServicesList({
 					<header className="richtext headings:text-white grid items-start justify-start gap-8 text-gray-300 md:grid-cols-2 md:gap-x-12">
 						<div className="flex items-center justify-start">
 							<RxShadow className="text-accent mr-2" size={20} />
-							<Pretitle className="text-gray-300">{pretitle}</Pretitle>
+							<Pretitle className="text-gray-300">
+								{pretitle}
+							</Pretitle>
 						</div>
 						<div className="richtext headings:text-balance mx-auto w-full max-w-lg">
 							<PortableText value={intro} />
@@ -47,26 +49,38 @@ export default function ServicesList({
 								key={service._id}
 							>
 								{/* LEFT: Content */}
-								<div className="max-w-[500px] space-y-6 rounded-md border-1 border-gray-600 bg-black p-6">
+								<div className="bg-offwhite max-w-[500px] space-y-6 p-6">
 									<div className="flex items-center justify-between">
-										<div className="h3 text-white">{service.title}</div>
+										<div className="h3 text-black">
+											{service.title}
+										</div>
 										{service.highlight && (
-											<Pretitle className="bg-accent/80 rounded-sm p-1 text-xs text-white">
+											<Pretitle className="bg-accent/80 rounded-sm p-1 text-xs text-black">
 												{service.highlight}
 											</Pretitle>
 										)}
 									</div>
 
-									<div className="richtext text-xs text-gray-300">
+									<div className="richtext text-sm text-gray-500">
 										<PortableText
 											value={service.content}
 											components={{
 												types: {
-													'custom-html': ({ value }) => (
-														<CustomHTML {...value} />
+													'custom-html': ({
+														value,
+													}) => (
+														<CustomHTML
+															{...value}
+														/>
 													),
-													'reputation-block': ({ value }) => (
-														<Reputation reputation={value.reputation} />
+													'reputation-block': ({
+														value,
+													}) => (
+														<Reputation
+															reputation={
+																value.reputation
+															}
+														/>
 													),
 												},
 											}}
@@ -75,57 +89,102 @@ export default function ServicesList({
 
 									<div className="flex items-center justify-between gap-2 text-xs">
 										<div className="flex items-center">
-											<div className="mr-4 text-gray-300">Starts at</div>
-											{service.price?.base !== undefined && (
-												<div className="flex items-end gap-x-1 font-semibold text-white">
-													{!isNaN(service.price.base) && (
+											<div className="mr-4 text-gray-500">
+												Starts at
+											</div>
+											{service.price?.base !==
+												undefined && (
+												<div className="flex items-end gap-x-1 font-semibold text-black">
+													{!isNaN(
+														service.price.base,
+													) && (
 														<b className="h5">
-															{formatPrice(service.price.base)}
+															{formatPrice(
+																service.price
+																	.base,
+															)}
 														</b>
 													)}
 													{service.price.suffix && (
 														<span
-															className={cn(isNaN(service.price.base) && 'h5')}
+															className={cn(
+																isNaN(
+																	service
+																		.price
+																		.base,
+																) && 'h5',
+															)}
 														>
-															{service.price.suffix}
+															{
+																service.price
+																	.suffix
+															}
 														</span>
 													)}
-													{service.price.strikethrough && (
+													{service.price
+														.strikethrough && (
 														<s className="font-bold decoration-red-500">
-															{formatPrice(service.price.strikethrough)}
+															{formatPrice(
+																service.price
+																	.strikethrough,
+															)}
 														</s>
 													)}
 												</div>
 											)}
 										</div>
 
-										<CTAList className="" ctas={service.ctas} />
+										<CTAList
+											className=""
+											ctas={service.ctas}
+										/>
 									</div>
 
 									{service.testimonial?.length > 0 && (
-										<div className="bg-canvas mt-4 rounded-lg border border-gray-800 p-6">
-											<div className="text-sm text-gray-300">
-												"{service.testimonial[0].author?.title}"
+										<div className="mt-4 rounded-lg border border-gray-200 bg-gray-100 p-6">
+											<div className="text-sm text-gray-500">
+												"
+												{
+													service.testimonial[0]
+														.author?.title
+												}
+												"
 											</div>
 											<div className="mt-4 flex items-center gap-2">
 												<Img
 													className="size-[25px] shrink-0 rounded-full object-cover"
-													image={service.testimonial[0].author.image}
+													image={
+														service.testimonial[0]
+															.author.image
+													}
 													width={80}
 													alt={
 														[
-															service.testimonial.author?.name,
-															service.testimonial.author?.title,
+															service.testimonial
+																.author?.name,
+															service.testimonial
+																.author?.title,
 														]
 															.filter(Boolean)
-															.join(', ') || 'Author'
+															.join(', ') ||
+														'Author'
 													}
 												/>
-												<div className="text-xs text-gray-300">
+												<div className="text-xs text-black">
 													<div className="font-bold">
-														{service.testimonial[0].author?.name}
+														{
+															service
+																.testimonial[0]
+																.author?.name
+														}
 													</div>
-													<div>{service.testimonial[0].author?.company}</div>
+													<div>
+														{
+															service
+																.testimonial[0]
+																.author?.company
+														}
+													</div>
 												</div>
 											</div>
 										</div>

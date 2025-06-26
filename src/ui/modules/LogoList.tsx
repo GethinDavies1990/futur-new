@@ -32,8 +32,8 @@ export default async function LogoList({
 		<div
 			className={
 				autoScroll
-					? 'bg-black'
-					: "section rounded-xl bg-[url('/blue-bg.png')] bg-cover bg-center bg-no-repeat"
+					? 'bg-black pb-8'
+					: "section w-[80%] rounded-xl bg-[url('/blue-bg.png')] bg-cover bg-center bg-no-repeat"
 			}
 		>
 			<section className="headings:text-black text-gray-600">
