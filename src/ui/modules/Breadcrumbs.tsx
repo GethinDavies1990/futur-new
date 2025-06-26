@@ -23,14 +23,17 @@ export default async function Breadcrumbs({
 						<Crumb link={crumb} position={key + 1} />
 
 						{key < crumbs.length - 1 || !hideCurrent ? (
-							<li className="text-ink/20" role="presentation">
+							<li className="text-accent" role="presentation">
 								/
 							</li>
 						) : null}
 					</Fragment>
 				))}
 
-				<Crumb position={(crumbs?.length || 0) + 2} hidden={hideCurrent}>
+				<Crumb
+					position={(crumbs?.length || 0) + 2}
+					hidden={hideCurrent}
+				>
 					{currentPage?.title || currentPage?.metadata.title}
 				</Crumb>
 			</ol>
@@ -52,7 +55,10 @@ function Crumb({
 		<>
 			<span itemProp="name" hidden={hidden}>
 				{stegaClean(
-					children || link?.label || link?.internal?.title || link?.external,
+					children ||
+						link?.label ||
+						link?.internal?.title ||
+						link?.external,
 				)}
 			</span>
 			<meta itemProp="position" content={position.toString()} />
@@ -61,14 +67,14 @@ function Crumb({
 
 	return (
 		<li
-			className="line-clamp-1"
+			className="line-clamp-1 text-white"
 			itemProp="itemListElement"
 			itemScope
 			itemType="https://schema.org/ListItem"
 		>
 			{link ? (
 				<CTA
-					className="hover:underline"
+					className="text-white hover:underline"
 					link={{ _type: 'link', ...link }}
 					itemProp="item"
 				>

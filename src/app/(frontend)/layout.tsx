@@ -36,26 +36,6 @@ export default async function RootLayout({
 			<head>
 				{/* Google Tag Manager */}
 				<GoogleTagManager gtmId="GTM-WCK4ZDHC" />
-
-				{/* Google Analytics */}
-				<GoogleAnalytics gaId="G-FL9XRHBH81" />
-
-				{/* GTAG - Google Analytics and Google Ads */}
-				<script
-					async
-					src="https://www.googletagmanager.com/gtag/js?id=G-FL9XRHBH81"
-				></script>
-				<script
-					dangerouslySetInnerHTML={{
-						__html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-FL9XRHBH81'); // Google Analytics
-              gtag('config', 'AW-17263022960'); // Google Ads
-            `,
-					}}
-				/>
 			</head>
 			<Root>
 				<body className={figtree.className + ' ' + krona.variable}>
@@ -85,4 +65,3 @@ export default async function RootLayout({
 		</>
 	)
 }
-
