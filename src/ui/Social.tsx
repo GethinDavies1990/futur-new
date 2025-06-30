@@ -46,27 +46,30 @@ export default async function Social({ className }: ComponentProps<'div'>) {
 
 function Icon({
 	url,
+	'aria-label': ariaLabel,
 	...props
 }: { url?: string } & React.ComponentProps<'svg'>) {
 	if (!url) return null
 
+	const iconProps = { 'aria-label': ariaLabel, role: 'img', ...props }
+
 	return url?.includes('bsky.app') ? (
-		<FaBluesky {...props} />
+		<FaBluesky {...iconProps} />
 	) : url?.includes('facebook.com') ? (
-		<FaFacebook {...props} />
+		<FaFacebook {...iconProps} />
 	) : url?.includes('github.com') ? (
-		<FaGithub {...props} />
+		<FaGithub {...iconProps} />
 	) : url?.includes('instagram.com') ? (
-		<FaInstagramSquare {...props} />
+		<FaInstagramSquare {...iconProps} />
 	) : url?.includes('linkedin.com') ? (
-		<FaLinkedin {...props} />
+		<FaLinkedin {...iconProps} />
 	) : url?.includes('tiktok.com') ? (
-		<FaTiktok {...props} />
+		<FaTiktok {...iconProps} />
 	) : url?.includes('twitter.com') || url?.includes('x.com') ? (
-		<FaXTwitter {...props} />
+		<FaXTwitter {...iconProps} />
 	) : url?.includes('youtube.com') ? (
-		<FaYoutube {...props} />
+		<FaYoutube {...iconProps} />
 	) : (
-		<IoIosLink {...props} />
+		<IoIosLink {...iconProps} />
 	)
 }
