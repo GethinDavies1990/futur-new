@@ -149,13 +149,13 @@ body {
 }
 
 @utility h1 {
-	@apply h-base text-4xl uppercase md:text-4xl lg:text-5xl;
+	@apply h-base text-4xl font-black uppercase md:text-4xl lg:text-5xl;
 }
 @utility h2 {
-	@apply h-base font-figtree text-2xl font-semibold uppercase md:text-3xl lg:text-4xl;
+	@apply h-base text-2xl font-thin uppercase md:text-3xl lg:text-4xl;
 }
 @utility h3 {
-	@apply h-base font-figtree text-2xl font-medium uppercase lg:text-3xl;
+	@apply h-base font-figtree text-2xl font-thin uppercase lg:text-3xl;
 }
 @utility h4 {
 	@apply h-base font-figtree text-xl uppercase lg:text-2xl;
