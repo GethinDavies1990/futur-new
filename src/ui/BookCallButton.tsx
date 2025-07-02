@@ -6,7 +6,7 @@ import Image from 'next/image'
 
 function BookCallButton() {
 	return (
-		<Link
+		<a
 			target="_blank"
 			rel="noopener noreferrer"
 			href="https://cal.com/wearefutur/chat-with-gethin-futur-media?overlayCalendar=true"
@@ -43,7 +43,7 @@ function BookCallButton() {
 					className="text-white group-hover:text-black"
 				/>
 			</div>
-		</Link>
+		</a>
 	)
 }
 
