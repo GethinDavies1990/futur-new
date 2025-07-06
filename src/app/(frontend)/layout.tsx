@@ -5,16 +5,16 @@ import SkipToContent from '@/ui/SkipToContent'
 import Announcement from '@/ui/Announcement'
 import Header from '@/ui/header'
 import Footer from '@/ui/footer'
-import { Krona_One, Figtree, Anton } from 'next/font/google'
+import { Krona_One, Figtree, Anton, Inter } from 'next/font/google'
 import VisualEditingControls from '@/ui/VisualEditingControls'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Toaster } from 'react-hot-toast'
 import '@/styles/app.css'
 
-const krona = Anton({
+const krona = Inter({
 	subsets: ['latin'],
-	weight: ['400'],
+	weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
 	preload: true,
 	display: 'swap',
 	variable: '--font-krona',

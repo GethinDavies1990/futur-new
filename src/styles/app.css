@@ -4,7 +4,7 @@
 @theme {
 	--color-canvas: #000;
 	--color-ink: #000;
-	--color-accent: #70c1ff;
+	--color-accent: #1be7ff;
 	--color-offwhite: #fffafa;
 
 	--max-height-fold: calc(100svh - var(--header-height));
@@ -149,10 +149,10 @@ body {
 }
 
 @utility h1 {
-	@apply h-base text-4xl font-black uppercase md:text-4xl lg:text-5xl;
+	@apply h-base text-4xl font-semibold uppercase md:text-4xl lg:text-6xl;
 }
 @utility h2 {
-	@apply h-base text-2xl font-thin uppercase md:text-3xl lg:text-4xl;
+	@apply h-base text-2xl font-semibold uppercase md:text-3xl lg:text-4xl;
 }
 @utility h3 {
 	@apply h-base font-figtree text-2xl font-thin uppercase lg:text-3xl;
@@ -178,10 +178,7 @@ body {
 }
 
 @utility text-gradient {
-	@apply bg-clip-text text-transparent;
-	background-image: url('/blue-bg.png');
-	background-size: cover;
-	background-position: center;
+	@apply from-accent bg-gradient-to-br to-white bg-clip-text text-transparent;
 }
 
 /* ctas, links */
@@ -199,7 +196,7 @@ body {
 }
 
 @utility action {
-	@apply action-base cursor-pointer rounded-full border border-white bg-[url('/blue-bg.png')] bg-cover bg-center bg-no-repeat text-balance text-black shadow-lg transition-all duration-700 hover:border-white hover:bg-black hover:text-white;
+	@apply action-base bg-accent cursor-pointer rounded-full border border-white bg-cover bg-center bg-no-repeat text-balance text-black shadow-lg transition-all duration-700 hover:border-white hover:bg-black hover:text-white;
 }
 @utility pill-button {
 	@apply cursor-pointer rounded-sm border border-white bg-black p-2 text-xs text-white transition duration-500 hover:bg-black hover:text-white;

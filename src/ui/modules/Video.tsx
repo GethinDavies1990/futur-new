@@ -26,14 +26,12 @@ export default function Video({
 	return (
 		<div>
 			<section
-				className="section space-y-8 py-20 text-center"
+				className="section space-y-8 py-20"
 				{...moduleProps(props)}
 			>
-				<div className="richtext mx-auto max-w-3xl text-2xl text-balance text-gray-500">
+				<div className="richtext mx-auto max-w-3xl text-center text-2xl text-balance text-gray-500">
 					{pretitle && (
-						<Pretitle className="text-xs font-medium text-gray-500">
-							{pretitle}
-						</Pretitle>
+						<Pretitle className="text-center">{pretitle}</Pretitle>
 					)}
 
 					<PortableText

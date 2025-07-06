@@ -29,22 +29,14 @@ export default async function LogoList({
 		}))
 
 	return (
-		<div
-			className={
-				autoScroll
-					? 'bg-black pb-8'
-					: "section w-[80%] rounded-xl bg-[url('/blue-bg.png')] bg-cover bg-center bg-no-repeat"
-			}
-		>
-			<section className="headings:text-black text-gray-600">
+		<div className={autoScroll ? 'bg-black pb-8' : 'bg-black py-30'}>
+			<section className="section">
 				{(pretitle || intro) && (
 					<div className="text-center">
 						<div className="mx-auto mb-4 inline-flex max-w-screen-md items-center justify-center rounded-full bg-cover bg-center px-6 py-2">
-							<Pretitle className="text-gray-600">
-								{pretitle}
-							</Pretitle>
+							<Pretitle>{pretitle}</Pretitle>
 						</div>
-						<header className="richtext mx-auto max-w-screen-md text-center">
+						<header className="richtext headings:text-white mx-auto max-w-screen-md text-center text-gray-300">
 							<PortableText value={intro} />
 						</header>
 					</div>

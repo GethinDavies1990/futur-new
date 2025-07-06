@@ -47,7 +47,7 @@ export default function Hero({
 				)}
 
 				{content && (
-					<div className="section flex h-auto w-full flex-col pt-40">
+					<div className="section flex h-auto w-full flex-col">
 						<div
 							className={cn(
 								'richtext headings:text-white relative isolate max-w-6xl text-gray-300',
@@ -71,11 +71,10 @@ export default function Hero({
 							)}
 							style={{ textAlign: stegaClean(textAlign) }}
 						>
-							<div className="flex items-center">
+							<div className="anim-fade-to-r flex items-center">
 								{pretitle && (
 									<div className="flex items-center">
-										<RxShadow className="text-accent mr-1" />
-										<Pretitle className="font-figtree text-xs text-gray-300">
+										<Pretitle className="text-accent">
 											{pretitle}
 										</Pretitle>
 									</div>
