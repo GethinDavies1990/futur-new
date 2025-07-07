@@ -29,34 +29,38 @@ export default function Video({
 				className="section space-y-8 py-20"
 				{...moduleProps(props)}
 			>
-				<div className="richtext mx-auto max-w-3xl text-center text-2xl text-balance text-gray-500">
+				<div className="mx-auto max-w-3xl text-center">
 					{pretitle && (
-						<Pretitle className="text-center">{pretitle}</Pretitle>
+						<Pretitle className="text-center uppercase">
+							{pretitle}
+						</Pretitle>
 					)}
+					<div className="richtext text-center text-balance text-black">
+						<PortableText
+							value={content}
+							components={{
+								types: {
+									code: ({ value }) => (
+										<Code
+											value={value}
+											className="mx-auto mt-6! max-w-max"
+											theme="snazzy-light"
+										/>
+									),
+									'custom-html': ({ value }) => (
+										<CustomHTML {...value} />
+									),
+									'reputation-block': ({ value }) => (
+										<Reputation
+											className="!mt-4 justify-center"
+											reputation={value.reputation}
+										/>
+									),
+								},
+							}}
+						/>
+					</div>
 
-					<PortableText
-						value={content}
-						components={{
-							types: {
-								code: ({ value }) => (
-									<Code
-										value={value}
-										className="mx-auto mt-6! max-w-max"
-										theme="snazzy-light"
-									/>
-								),
-								'custom-html': ({ value }) => (
-									<CustomHTML {...value} />
-								),
-								'reputation-block': ({ value }) => (
-									<Reputation
-										className="!mt-4 justify-center"
-										reputation={value.reputation}
-									/>
-								),
-							},
-						}}
-					/>
 					{content && (
 						<Image
 							src="/shopify-experts.png"

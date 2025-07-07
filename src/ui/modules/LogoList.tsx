@@ -33,8 +33,10 @@ export default async function LogoList({
 			<section className="section">
 				{(pretitle || intro) && (
 					<div className="text-center">
-						<div className="mx-auto mb-4 inline-flex max-w-screen-md items-center justify-center rounded-full bg-cover bg-center px-6 py-2">
-							<Pretitle>{pretitle}</Pretitle>
+						<div className="mx-auto mb-4 bg-center px-6 py-2">
+							<Pretitle className="uppercase">
+								{pretitle}
+							</Pretitle>
 						</div>
 						<header className="richtext headings:text-white mx-auto max-w-screen-md text-center text-gray-300">
 							<PortableText value={intro} />

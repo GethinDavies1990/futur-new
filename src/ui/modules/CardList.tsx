@@ -37,11 +37,9 @@ export default function CardList({
 				{(pretitle || intro) && (
 					<div>
 						<div className="text-center">
-							<div className="mb-6 inline-flex rounded-full bg-[url('/blue-bg.png')] bg-cover bg-center bg-no-repeat px-8 py-2">
-								<Pretitle className="text-gray-600">
-									{pretitle}
-								</Pretitle>
-							</div>
+							<Pretitle className="uppercase">
+								{pretitle}
+							</Pretitle>
 						</div>
 						<header className="richtext headings:text-black text-left text-balance text-gray-600 no-underline">
 							<PortableText value={intro} />

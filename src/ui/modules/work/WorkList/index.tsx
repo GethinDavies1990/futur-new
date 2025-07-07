@@ -66,11 +66,11 @@ export default async function WorkList({
 		<div className="bg-white">
 			<section className="section space-y-8" {...moduleProps(props)}>
 				{intro && (
-					<header className="richtext headings:text-black text-gray-500">
-						<Pretitle className="text-gray-500">
-							{pretitle}
-						</Pretitle>
-						<PortableText value={intro} />
+					<header>
+						<Pretitle className="uppercase">{pretitle}</Pretitle>
+						<div className="richtext headings:text-black text-gray-500">
+							<PortableText value={intro} />
+						</div>
 					</header>
 				)}
 

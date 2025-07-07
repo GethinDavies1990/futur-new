@@ -15,9 +15,9 @@ export default function ContentSection({
 }>) {
 	return (
 		<section className="section space-y-8 py-20">
-			<header className="richtext grid items-start justify-between gap-8 md:grid-cols-2 md:gap-x-12">
+			<header className="grid items-start justify-between gap-8 md:grid-cols-2 md:gap-x-12">
 				<div className="flex max-w-lg items-center justify-start">
-					<Pretitle>{pretitle}</Pretitle>
+					<Pretitle className="uppercase">{pretitle}</Pretitle>
 				</div>
 				<div className="richtext headings:text-balance headings:text-black mx-auto w-full max-w-3xl text-gray-500">
 					<PortableText

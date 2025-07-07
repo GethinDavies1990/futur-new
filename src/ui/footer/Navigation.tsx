@@ -12,20 +12,23 @@ export default async function Menu() {
 				switch (item._type) {
 					case 'link':
 						return (
-							<CTA className="hover:link text-white" link={item} key={key} />
+							<CTA
+								className="hover:link text-white"
+								link={item}
+								key={key}
+							/>
 						)
 
 					case 'link.list':
 						return (
 							<div className="space-y-2 text-start" key={key}>
-								<div className="flex items-center text-lg text-white">
+								<div className="text-accent flex items-center text-lg uppercase">
+									<div className="text-accent mr-2">[</div>
 									<CTA link={item.link}>
-										{stegaClean(item.link?.label) || item.link?.internal?.title}
+										{stegaClean(item.link?.label) ||
+											item.link?.internal?.title}
 									</CTA>
-									<BsArrowDownLeftCircle
-										className="text-accent ml-2"
-										size={12}
-									/>
+									<div className="text-accent ml-2">]</div>
 								</div>
 
 								<ul>

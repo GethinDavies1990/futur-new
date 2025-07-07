@@ -50,7 +50,7 @@ export default function Hero({
 					<div className="section flex h-auto w-full flex-col">
 						<div
 							className={cn(
-								'richtext headings:text-white relative isolate max-w-6xl text-gray-300',
+								'relative isolate max-w-6xl text-white',
 								hasImage && 'text-shadow',
 								{
 									'mb-8': stegaClean(alignItems) === 'start',
@@ -74,56 +74,59 @@ export default function Hero({
 							<div className="anim-fade-to-r flex items-center">
 								{pretitle && (
 									<div className="flex items-center">
-										<Pretitle className="text-accent">
+										<Pretitle className="uppercase">
 											{pretitle}
 										</Pretitle>
 									</div>
 								)}
 							</div>
-
-							<PortableText
-								value={content}
-								components={{
-									types: {
-										'custom-html': ({ value }) => (
-											<CustomHTML {...value} />
-										),
-										'reputation-block': ({ value }) => (
-											<Reputation
-												className={cn(
-													'split !mt-4',
-													hasImage &&
-														'[&_strong]:text-accent',
-													{
-														'justify-start': [
-															'left',
-															'start',
-														].includes(
-															stegaClean(
-																textAlign,
+							<div className="richtext">
+								<PortableText
+									value={content}
+									components={{
+										types: {
+											'custom-html': ({ value }) => (
+												<CustomHTML {...value} />
+											),
+											'reputation-block': ({ value }) => (
+												<Reputation
+													className={cn(
+														'split !mt-4',
+														hasImage &&
+															'[&_strong]:text-accent',
+														{
+															'justify-start': [
+																'left',
+																'start',
+															].includes(
+																stegaClean(
+																	textAlign,
+																),
 															),
-														),
-														'justify-center':
-															stegaClean(
-																textAlign,
-															) === 'center',
-														'justify-end': [
-															'right',
-															'end',
-														].includes(
-															stegaClean(
-																textAlign,
+															'justify-center':
+																stegaClean(
+																	textAlign,
+																) === 'center',
+															'justify-end': [
+																'right',
+																'end',
+															].includes(
+																stegaClean(
+																	textAlign,
+																),
 															),
-														),
-													},
-												)}
-												reputation={value.reputation}
-											/>
-										),
-									},
-								}}
-							/>
-
+														},
+													)}
+													reputation={
+														value.reputation
+													}
+												/>
+											),
+										},
+									}}
+								/>
+							</div>
+							headings:text-white
 							<CTAList
 								ctas={ctas}
 								className={cn('!mt-4 flex items-center gap-2', {

@@ -62,12 +62,7 @@ export default function ContactForm({
 	}
 
 	return (
-		<div
-			className="headings:text-black bg-cover bg-center text-gray-600"
-			style={{
-				backgroundImage: "url('/blue-bg.png')",
-			}}
-		>
+		<div className="headings:text-black bg-accent bg-cover bg-center text-gray-600">
 			<div className="section">
 				<div className="flex flex-col gap-8 md:flex-row">
 					{/* Left Side: Text Content */}
@@ -75,10 +70,15 @@ export default function ContactForm({
 						<div className="p-6 md:p-10">
 							<div className="text-left md:text-left">
 								<div className="flex items-center">
-									<Pretitle className="mr-2 text-gray-600">
+									<div className="mb-4 text-2xl text-black">
+										[
+									</div>
+									<Pretitle className="text-white uppercase">
 										{pretitle}
 									</Pretitle>
-									<TfiArrowRight size={14} />
+									<div className="mb-4 text-2xl text-black">
+										]
+									</div>
 								</div>
 
 								<div className="h-5" />

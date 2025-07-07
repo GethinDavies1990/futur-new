@@ -21,9 +21,11 @@ export default function FlagList({
 		<div className="py-10">
 			<section className="section space-y-8">
 				{(pretitle || intro) && (
-					<header className="richtext headings:text-black mx-auto text-left text-balance text-gray-500">
-						<Pretitle>{pretitle}</Pretitle>
-						<PortableText value={intro} />
+					<header className="">
+						<Pretitle className="uppercase">{pretitle}</Pretitle>
+						<div className="richtext headings:text-black text-balance">
+							<PortableText value={intro} />
+						</div>
 					</header>
 				)}
 

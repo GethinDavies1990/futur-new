@@ -23,14 +23,13 @@ export default function TestimonialListTitle({
 		<div className="py-20">
 			<section className="section space-y-8">
 				{(pretitle || intro) && (
-					<header className="richtext headings:text-black grid items-start justify-between gap-8 text-gray-500 md:grid-cols-2 md:gap-x-12">
+					<header className="grid items-start justify-between gap-8 md:grid-cols-2 md:gap-x-12">
 						<div className="flex items-center justify-start">
-							<RxShadow className="text-accent mr-2" size={20} />
-							<Pretitle className="text-gray-500">
+							<Pretitle className="uppercase">
 								{pretitle}
 							</Pretitle>
 						</div>
-						<div className="richtext headings:text-balance mx-auto w-full max-w-lg">
+						<div className="richtext headings:text-balance headings:text-black mx-auto w-full max-w-lg">
 							<PortableText
 								value={intro}
 								components={{

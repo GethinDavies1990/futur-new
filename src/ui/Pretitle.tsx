@@ -8,11 +8,11 @@ export default function Pretitle({
 	if (!children) return null
 
 	return (
-		<div className="flex items-center justify-center">
+		<div className="mb-4 flex items-center justify-center">
 			<div className="text-accent mr-2 text-2xl">[</div>
 			<h3
 				className={cn(
-					'technical text-figtree !not-uppercase text-accent !text-sm !font-normal !tracking-normal',
+					'technical text-figtree text-accent letter-spacing-1 font-bold !tracking-normal',
 					className,
 				)}
 				style={{ fontFamily: 'var(--font-figtree)' }}
