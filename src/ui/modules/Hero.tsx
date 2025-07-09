@@ -126,7 +126,6 @@ export default function Hero({
 									}}
 								/>
 							</div>
-							headings:text-white
 							<CTAList
 								ctas={ctas}
 								className={cn('!mt-4 flex items-center gap-2', {
