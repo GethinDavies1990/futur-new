@@ -66,7 +66,7 @@ export default async function BlogList({
 		<div className="">
 			<section className="section space-y-8" {...moduleProps(props)}>
 				{intro && (
-					<header className="richtext headings:text-white text-gray-300">
+					<header className="richtext headings:text-black text-gray-600">
 						<Pretitle>{pretitle}</Pretitle>
 						<PortableText value={intro} />
 					</header>
