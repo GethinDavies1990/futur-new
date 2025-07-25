@@ -74,9 +74,15 @@ export default function Hero({
 							<div className="anim-fade-to-r flex items-center">
 								{pretitle && (
 									<div className="flex items-center">
-										<Pretitle className="uppercase">
+										<div className="text-accent mr-2 text-2xl">
+											[
+										</div>
+										<h1 className="uppercase">
 											{pretitle}
-										</Pretitle>
+										</h1>
+										<div className="text-accent mr-2 text-2xl">
+											]
+										</div>
 									</div>
 								)}
 							</div>
