@@ -74,19 +74,19 @@ export default function Hero({
 							<div className="anim-fade-to-r flex items-center">
 								{pretitle && (
 									<div className="flex items-center">
-										<div className="text-accent mr-2 text-2xl">
+										<div className="text-accent text-md mr-2">
 											[
 										</div>
-										<h1 className="uppercase">
+										<h1 className="text-sm uppercase">
 											{pretitle}
 										</h1>
-										<div className="text-accent mr-2 text-2xl">
+										<div className="text-accent ml-2 text-2xl">
 											]
 										</div>
 									</div>
 								)}
 							</div>
-							<div className="richtext">
+							<div className="richtext md:headings:text-4xl headings:text-3xl lg:headings:text-6xl headings:font-normal">
 								<PortableText
 									value={content}
 									components={{
