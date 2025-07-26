@@ -72,7 +72,8 @@ export default async function MediaCarousel({
 	const originalOrder = items?.map((item: any) => item._ref || item._id)
 	const allItems = originalOrder
 		? fetchedItems.sort(
-				(a, b) => originalOrder.indexOf(a._id) - originalOrder.indexOf(b._id),
+				(a, b) =>
+					originalOrder.indexOf(a._id) - originalOrder.indexOf(b._id),
 			)
 		: fetchedItems
 

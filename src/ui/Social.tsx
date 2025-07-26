@@ -33,6 +33,7 @@ export default async function Social({ className }: ComponentProps<'div'>) {
 									aria-label={item.label}
 									className="h-[20px] w-[20px] text-white"
 								/>
+								<span className="sr-only">{item.label}</span>
 							</CTA>
 						)
 
