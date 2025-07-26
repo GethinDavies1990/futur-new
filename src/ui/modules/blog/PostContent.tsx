@@ -20,7 +20,7 @@ export default function PostContent({
 	return (
 		<article {...moduleProps(props)}>
 			<header className="section headings:text-black space-y-6 py-30 text-center text-gray-500">
-				<h1 className="h1 text-balance">{post.metadata.title}</h1>
+				<h2 className="h2 text-balance">{post.metadata.title}</h2>
 				<div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs">
 					<Date value={post.publishDate} />
 					<Categories
