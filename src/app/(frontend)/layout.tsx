@@ -22,7 +22,7 @@ const krona = Inter({
 
 const figtree = Figtree({
 	subsets: ['latin'],
-	weight: ['300', '400', '500', '600', '700', '800', '900'],
+	weight: ['400', '500', '600', '700', '800', '900'],
 	preload: true,
 })
 
