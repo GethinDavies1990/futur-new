@@ -35,18 +35,18 @@ export default async function RootLayout({
 		<>
 			<head>
 				{/* Google Tag Manager */}
-				{/* <GoogleTagManager gtmId="GTM-WCK4ZDHC" /> */}
+				<GoogleTagManager gtmId="GTM-WCK4ZDHC" />
 			</head>
 			<Root>
 				<body className={figtree.className + ' ' + krona.variable}>
-					{/* <noscript>
+					<noscript>
 						<iframe
 							src="https://www.googletagmanager.com/ns.html?id=GTM-WCK4ZDHC"
 							height="0"
 							width="0"
 							style={{ display: 'none', visibility: 'hidden' }}
 						></iframe>
-					</noscript> */}
+					</noscript>
 					<NuqsAdapter>
 						<SkipToContent />
 						<Announcement />
