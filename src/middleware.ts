@@ -1,3 +1,4 @@
+// middleware.ts
 import {
 	NextResponse,
 	type NextRequest,
@@ -6,44 +7,64 @@ import {
 import { getTranslations } from './sanity/lib/queries'
 import { DEFAULT_LANG } from './lib/i18n'
 
-export default async function (request: NextRequest) {
+export default async function middleware(request: NextRequest) {
 	const { pathname } = request.nextUrl
-	const lang = request.cookies.get('lang')?.value
 
+	// ✅ Let Googlebot (and all bots) pass through with no redirects
+	const ua = request.headers.get('user-agent')?.toLowerCase() || ''
+	if (
+		ua.includes('googlebot') ||
+		ua.includes('bingbot') ||
+		ua.includes('slurp')
+	) {
+		return NextResponse.next()
+	}
+
+	// ✅ Skip Next.js internals, API, admin etc
+	if (
+		pathname.startsWith('/_next') ||
+		pathname.startsWith('/api') ||
+		pathname.startsWith('/admin') ||
+		pathname === '/favicon.ico'
+	) {
+		return NextResponse.next()
+	}
+
+	const langCookie = request.cookies.get('lang')?.value
 	const T = await getTranslations()
 
-	const isPrefixed = !!T.find((t) =>
-		t.translations?.some(({ slug }) => slug === pathname),
-	)
+	// ✅ If no translations, skip
+	if (!T?.length) return NextResponse.next()
 
-	if (!request.cookies.has('lang') && !isPrefixed) return NextResponse.next()
-
-	const available = T?.find((t) =>
+	// Is this path one of the translated slugs?
+	const available = T.find((t) =>
 		[t.slug, ...(t.translations?.map(({ slug }) => slug) ?? [])].includes(
 			pathname,
 		),
 	)
+
 	if (!available) return NextResponse.next()
 
 	const cookieMatchesCurrentPrefix =
-		// cookie matches current prefix
-		lang ===
+		langCookie ===
 			available.translations?.find((t) =>
 				[t.slugBlogAlt, t.slug].includes(pathname),
 			)?.language ||
-		// default language and current path is the base path
-		(lang === DEFAULT_LANG && pathname === available.slug)
+		(langCookie === DEFAULT_LANG && pathname === available.slug)
 
 	if (!cookieMatchesCurrentPrefix) {
-		const target = available.translations?.find((t) => t.language === lang)
-		// use base path for default language
+		const target = available.translations?.find(
+			(t) => t.language === langCookie,
+		)
+
 		const url =
 			target?.language === DEFAULT_LANG
 				? available.slug
 				: (target?.slugBlogAlt ?? target?.slug)
-		if (!url) return NextResponse.next()
 
-		return NextResponse.redirect(new URL(url, request.url))
+		if (url) {
+			return NextResponse.redirect(new URL(url, request.url))
+		}
 	}
 
 	return NextResponse.next()
