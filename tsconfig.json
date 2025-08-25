@@ -29,7 +29,9 @@
 		"**/*.ts",
 		"**/*.tsx",
 		".next/types/**/*.ts",
-		"src/app/api/send/route.js"
-, "next.config.js"	],
+		"src/app/api/send/route.js",
+		"next.config.js",
+		"src/app/(frontend)/[[...slug]]/page.jsx"
+	],
 	"exclude": ["node_modules"]
 }

@@ -1,4 +1,4 @@
-// src/app/(frontend)/[[...slug]]/page.tsx
+// src/app/(frontend)/[[...slug]]/page.jsx
 import { notFound } from 'next/navigation'
 import { draftMode } from 'next/headers'
 import { groq } from 'next-sanity'
@@ -14,52 +14,38 @@ import {
 } from '@/sanity/lib/queries'
 import { languages } from '@/lib/i18n'
 
-// ---- Route segment config: FORCE SSR
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
 export const fetchCache = 'force-no-store'
 export const dynamicParams = true
 
-// ---- Page
-export default async function Page({
-	params,
-}: {
-	params: { slug?: string[] }
-}) {
+export default async function Page({ params }) {
 	const page = await getPage(params)
 	if (!page) notFound()
 	return <Modules modules={page.modules} page={page} />
 }
 
-// ---- Metadata
-export async function generateMetadata({
-	params,
-}: {
-	params: { slug?: string[] }
-}) {
+export async function generateMetadata({ params }) {
 	const page = await getPage(params)
 	if (!page) notFound()
 	return processMetadata(page)
 }
 
-// ---- Data fetching
-async function getPage(params: { slug?: string[] }) {
+async function getPage(params) {
 	const { slug, lang } = processSlug(params)
-
-	const { isEnabled } = await draftMode()
+	const { isEnabled } = draftMode()
 
 	if (isEnabled) {
-		return fetchSanityLive<any>({
+		return fetchSanityLive({
 			query: PAGE_QUERY(lang),
 			params: { slug },
 		})
 	}
 
-	return client.fetch<any>(PAGE_QUERY(lang), { slug })
+	return client.fetch(PAGE_QUERY(lang), { slug })
 }
 
-// ---- GROQ
-const PAGE_QUERY = (lang?: string) => groq`*[
+const PAGE_QUERY = (lang) => groq`*[
   _type == 'page' &&
   metadata.slug.current == $slug
   ${lang ? `&& language == '${lang}'` : ''}
@@ -80,8 +66,7 @@ const PAGE_QUERY = (lang?: string) => groq`*[
   ${TRANSLATIONS_QUERY},
 }`
 
-// ---- Helpers
-function processSlug(params: { slug?: string[] }) {
+function processSlug(params) {
 	const lang =
 		params.slug && languages.includes(params.slug[0])
 			? params.slug[0]
