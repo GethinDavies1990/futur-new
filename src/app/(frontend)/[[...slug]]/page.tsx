@@ -12,12 +12,9 @@ import {
 import { languages } from '@/lib/i18n'
 import errors from '@/lib/errors'
 
-// ✅ Make this route static/ISR so it ships HTML like your blogs.
-export const dynamic = 'force-static' // pre-render at build
-export const revalidate = 60 * 60 // ISR every 1h (tweak as you like)
-
-// IMPORTANT: ensure "@/ui/modules" is a **Server Component** (NO "use client" at the top).
-// If it currently has "use client", move interactive bits into tiny child components instead.
+// 👇 literals only (no expressions)
+export const dynamic = 'force-static'
+export const revalidate = 3600 // 1 hour
 
 type Params = { slug?: string[] }
 type Props = { params: Promise<Params> }
@@ -67,7 +64,6 @@ async function getPage(params: Params) {
   }`
 
 	const page = await client.fetch<Sanity.Page>(PAGE_QUERY(lang), { slug })
-
 	if (slug === 'index' && !page) throw new Error(errors.missingHomepage)
 	return page
 }
@@ -77,11 +73,7 @@ function processSlug(params: Params) {
 		params.slug && languages.includes(params.slug[0])
 			? params.slug[0]
 			: undefined
-
-	if (params.slug === undefined) {
-		return { slug: 'index', lang }
-	}
-
+	if (params.slug === undefined) return { slug: 'index', lang }
 	const joined = params.slug.join('/')
 	if (lang) {
 		const processed = joined.replace(new RegExp(`^${lang}/?`), '')
