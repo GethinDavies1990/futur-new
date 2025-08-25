@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://futurmedia.co.uk/sitemap.xml
+Sitemap: https://www.futurmedia.co.uk/sitemap.xml
