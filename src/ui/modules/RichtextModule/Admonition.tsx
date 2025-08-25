@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils'
-import { PortableText } from 'next-sanity'
+import { PortableText } from '@portabletext/react'
 import { VscInfo, VscLightbulb, VscReport, VscWarning } from 'react-icons/vsc'
 
 export default function Admonition({
@@ -18,9 +18,11 @@ export default function Admonition({
 	const color = tone
 		? {
 				note: 'border-blue-500 bg-blue-500/5 [&_svg]:text-blue-600',
-				important: 'border-purple-500 bg-purple-500/5 [&_svg]:text-purple-600',
+				important:
+					'border-purple-500 bg-purple-500/5 [&_svg]:text-purple-600',
 				tip: 'border-green-500 bg-green-500/5 [&_svg]:text-green-600',
-				warning: 'border-yellow-500 bg-yellow-500/5 [&_svg]:text-yellow-500',
+				warning:
+					'border-yellow-500 bg-yellow-500/5 [&_svg]:text-yellow-500',
 				caution: 'border-red-500 bg-red-500/5 [&_svg]:text-red-500',
 			}[tone]
 		: 'border-neutral-400 bg-neutral-500/5'

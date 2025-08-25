@@ -1,6 +1,6 @@
 import { BLOG_DIR, WORK_DIR } from './env'
 import { DEFAULT_LANG } from './i18n'
-import { stegaClean } from 'next-sanity'
+import { stegaClean } from '@sanity/client/stega'
 
 export default function resolveUrl(
 	page?: Sanity.PageBase,

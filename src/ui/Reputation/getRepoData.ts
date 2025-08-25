@@ -1,5 +1,5 @@
 import { Octokit } from 'octokit'
-import { stegaClean } from 'next-sanity'
+import { stegaClean } from '@sanity/client/stega'
 import { unstable_cache } from 'next/cache'
 
 const octokit = new Octokit({
@@ -17,7 +17,9 @@ export async function getRepoData(reputation?: Sanity.Reputation) {
 		const { data: { stargazers_count = 0, forks_count = 0 } = {} } =
 			await octokit.rest.repos
 				.get({ owner, repo })
-				.catch(() => ({ data: { stargazers_count: 0, forks_count: 0 } }))
+				.catch(() => ({
+					data: { stargazers_count: 0, forks_count: 0 },
+				}))
 
 		// get stargazers avatars
 		let page = Math.ceil(stargazers_count / limit)

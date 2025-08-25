@@ -3,7 +3,7 @@ import { getImageDimensions } from '@sanity/asset-utils'
 import { urlFor } from '@/sanity/lib/image'
 import NextImage, { type ImageProps } from 'next/image'
 import type { ComponentProps } from 'react'
-import { stegaClean } from 'next-sanity'
+import { stegaClean } from '@sanity/client/stega'
 
 type ImgProps = { alt?: string } & Omit<ImageProps, 'src' | 'alt'>
 

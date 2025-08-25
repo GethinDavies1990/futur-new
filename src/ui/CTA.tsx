@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils'
-import { stegaClean } from 'next-sanity'
+import { stegaClean } from '@sanity/client/stega'
 import Link from 'next/link'
 import resolveUrl from '@/lib/resolveUrl'
 import type { ComponentProps, ReactNode } from 'react'
@@ -16,12 +16,18 @@ export default function CTA({
 }: Sanity.CTA & { icon?: ReactNode } & ComponentProps<'a'>) {
 	const props = {
 		className:
-			cn('inline-flex items-center gap-2', stegaClean(style), className) ||
-			undefined, // 👈 added flex styling
+			cn(
+				'inline-flex items-center gap-2',
+				stegaClean(style),
+				className,
+			) || undefined, // 👈 added flex styling
 		children: (
 			<>
 				{/* 👈 render icon if it exists */}
-				{children || link?.label || link?.internal?.title || link?.external}
+				{children ||
+					link?.label ||
+					link?.internal?.title ||
+					link?.external}
 				{Icon && <span className="text-lg">{Icon}</span>}{' '}
 			</>
 		),

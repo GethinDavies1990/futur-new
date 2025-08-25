@@ -103,15 +103,15 @@ export default function Modules({
 			{modules?.map((module) => {
 				if (!module) return null
 
-				const Component = MODULE_MAP[module._type as keyof typeof MODULE_MAP]
+				const Component =
+					MODULE_MAP[module._type as keyof typeof MODULE_MAP]
 				if (!Component) return null
 
 				return (
 					<Component
 						key={module._key}
 						{...module}
-						{...getAdditionalProps(module)} // Pass correct props here
-						currentPage={post || page} // Decide which one to pass as currentPage
+						{...getAdditionalProps(module)} // handles breadcrumbs only
 						data-sanity={
 							!!page?._id &&
 							createDataAttribute({

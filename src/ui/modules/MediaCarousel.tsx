@@ -1,5 +1,5 @@
 import { fetchSanityLive } from '@/sanity/lib/fetch'
-import { PortableText } from 'next-sanity'
+import { PortableText } from '@portabletext/react'
 import Pretitle from '@/ui/Pretitle'
 import { cn } from '@/lib/utils'
 import css from './MediaCarousel.module.css'

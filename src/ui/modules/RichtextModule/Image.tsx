@@ -1,5 +1,5 @@
 import { Img } from '@/ui/Img'
-import { stegaClean } from 'next-sanity'
+import { stegaClean } from '@sanity/client/stega'
 
 export default function Image({
 	value,
@@ -29,7 +29,10 @@ export default function Image({
 					{value.source && (
 						<>
 							{' ('}
-							<a href={value.source} className="image-source link">
+							<a
+								href={value.source}
+								className="image-source link"
+							>
 								Source
 							</a>
 							{')'}

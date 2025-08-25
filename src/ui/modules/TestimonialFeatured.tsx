@@ -1,4 +1,4 @@
-import { PortableText } from 'next-sanity'
+import { PortableText } from '@portabletext/react'
 import { VscQuote, VscSurroundWith } from 'react-icons/vsc'
 import { Img } from '@/ui/Img'
 

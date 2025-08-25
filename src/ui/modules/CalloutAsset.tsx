@@ -1,4 +1,4 @@
-import { PortableText } from 'next-sanity'
+import { PortableText } from '@portabletext/react'
 import CTAList from '@/ui/CTAList'
 import Code from './RichtextModule/Code'
 import Reputation from '@/ui/Reputation'

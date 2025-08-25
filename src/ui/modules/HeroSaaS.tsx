@@ -1,5 +1,5 @@
 import moduleProps from '@/lib/moduleProps'
-import { PortableText } from 'next-sanity'
+import { PortableText } from '@portabletext/react'
 import Pretitle from '@/ui/Pretitle'
 import Code from './RichtextModule/Code'
 import CustomHTML from './CustomHTML'

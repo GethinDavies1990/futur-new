@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react'
 import { cn, slug } from '@/lib/utils'
-import { stegaClean } from 'next-sanity'
+import { stegaClean } from '@sanity/client/stega'
 import css from './TableOfContents.module.css'
 
 export default function TableOfContents({

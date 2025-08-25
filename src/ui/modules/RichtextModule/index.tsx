@@ -2,7 +2,7 @@ import moduleProps from '@/lib/moduleProps'
 import TableOfContents from './TableOfContents'
 import Content from './Content'
 import { cn } from '@/lib/utils'
-import { stegaClean } from 'next-sanity'
+import { stegaClean } from '@sanity/client/stega'
 
 export default function RichtextModule({
 	content,
@@ -29,7 +29,9 @@ export default function RichtextModule({
 			className={cn(
 				'section grid gap-8',
 				tableOfContents &&
-					(tocRight ? 'lg:grid-cols-[1fr_auto]' : 'lg:grid-cols-[auto_1fr]'),
+					(tocRight
+						? 'lg:grid-cols-[1fr_auto]'
+						: 'lg:grid-cols-[auto_1fr]'),
 			)}
 			{...moduleProps(props)}
 		>
@@ -47,7 +49,8 @@ export default function RichtextModule({
 			<Content
 				value={content}
 				className={cn(
-					!tableOfContents && (stretch ? 'max-w-screen-lg' : 'max-w-screen-md'),
+					!tableOfContents &&
+						(stretch ? 'max-w-screen-lg' : 'max-w-screen-md'),
 				)}
 			/>
 		</section>

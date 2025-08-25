@@ -1,6 +1,6 @@
 import { getSite } from '@/sanity/lib/queries'
 import CTA from '@/ui/CTA'
-import { stegaClean } from 'next-sanity'
+import { stegaClean } from '@sanity/client/stega'
 import { BsArrowDownLeftCircle } from 'react-icons/bs'
 
 export default async function Menu() {

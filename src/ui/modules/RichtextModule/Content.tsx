@@ -1,4 +1,4 @@
-import { PortableText } from 'next-sanity'
+import { PortableText } from '@portabletext/react'
 import AnchoredHeading from './AnchoredHeading'
 import { cn } from '@/lib/utils'
 

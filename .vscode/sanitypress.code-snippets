@@ -202,7 +202,7 @@
 		"prefix": ["component-module", "module-component"],
 		"scope": "typescriptreact",
 		"body": [
-			"import { PortableText } from 'next-sanity'\n",
+			"import { PortableText } from "@portabletext/react"\n",
 			"export default function ${TM_FILENAME_BASE}({ intro }: Partial<{ intro: any }>) {",
 			"\treturn (",
 			"\t\t<section className=\"section\">",

@@ -1,5 +1,5 @@
 import Pretitle from '@/ui/Pretitle'
-import { PortableText } from 'next-sanity'
+import { PortableText } from '@portabletext/react'
 import TabList from './TabList'
 import Wrapper from './Wrapper'
 import CTAList from '@/ui/CTAList'
@@ -45,8 +45,10 @@ export default function TabbedContent({
 							<figure
 								className={cn(
 									'anim-fade-to-r',
-									tab.assetOnRight && 'md:anim-fade-to-l md:order-last',
-									tab.assetBelowContent && 'max-md:order-last',
+									tab.assetOnRight &&
+										'md:anim-fade-to-l md:order-last',
+									tab.assetBelowContent &&
+										'max-md:order-last',
 								)}
 							>
 								<Asset asset={tab.assets?.[0]} />

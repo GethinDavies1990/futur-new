@@ -1,7 +1,7 @@
 import moduleProps from '@/lib/moduleProps'
 import CSS from './CSS'
 import WithScript from './WithScript'
-import { stegaClean } from 'next-sanity'
+import { stegaClean } from '@sanity/client/stega'
 import type { ComponentProps } from 'react'
 
 export default function CustomHTML({
@@ -30,7 +30,9 @@ export default function CustomHTML({
 				) : (
 					<section
 						className={stegaClean(className)}
-						dangerouslySetInnerHTML={{ __html: stegaClean(html.code) }}
+						dangerouslySetInnerHTML={{
+							__html: stegaClean(html.code),
+						}}
 						{...moduleProps(props)}
 					/>
 				))}

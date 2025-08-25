@@ -2,7 +2,7 @@ import { codeToHtml, splitLines, bundledThemes } from 'shiki'
 import ClickToCopy from '@/ui/ClickToCopy'
 import css from './Code.module.css'
 import { cn } from '@/lib/utils'
-import { stegaClean } from 'next-sanity'
+import { stegaClean } from '@sanity/client/stega'
 import type { ComponentProps } from 'react'
 
 export default async function Code({
@@ -21,7 +21,8 @@ export default async function Code({
 		decorations: value.highlightedLines
 			?.map((row) => ({
 				row,
-				characters: stegaClean(splitLines(value.code)[row - 1]?.[0])?.length,
+				characters: stegaClean(splitLines(value.code)[row - 1]?.[0])
+					?.length,
 			}))
 			?.filter(({ characters }) => characters > 0)
 			?.map(({ row, characters }) => ({
@@ -43,7 +44,9 @@ export default async function Code({
 			{value.filename && (
 				<div className="text-canvas sticky top-0 z-1 -mb-1 rounded-t bg-[#323232] p-1 pb-0 font-mono text-xs">
 					<span className="inline-block rounded-t border-b border-blue-400 bg-[#1E1E1E] px-3 py-2">
-						{path && <span className="text-canvas/50">{path}/</span>}
+						{path && (
+							<span className="text-canvas/50">{path}/</span>
+						)}
 						<span>{filename}</span>
 					</span>
 				</div>
@@ -65,7 +68,10 @@ export default async function Code({
 				</div>
 
 				<div
-					className={cn(css.code, '[--highlight-color:var(--color-green-400)]')}
+					className={cn(
+						css.code,
+						'[--highlight-color:var(--color-green-400)]',
+					)}
 					dangerouslySetInnerHTML={{ __html: html }}
 				/>
 			</div>
