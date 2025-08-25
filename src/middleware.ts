@@ -1,75 +1,20 @@
 // middleware.ts
-import {
-	NextResponse,
-	type NextRequest,
-	type MiddlewareConfig,
-} from 'next/server'
-import { getTranslations } from './sanity/lib/queries'
-import { DEFAULT_LANG } from './lib/i18n'
+import { NextResponse, type NextRequest } from 'next/server'
 
-export default async function middleware(request: NextRequest) {
-	const { pathname } = request.nextUrl
+// Known crawlers + social bots. If it's a bot, DO NOTHING.
+const BOT_RE =
+	/(googlebot|bingbot|slurp|duckduckgo|baiduspider|yandex|facebookexternalhit|twitterbot|linkedinbot|whatsapp|telegram)/i
 
-	// ✅ Let Googlebot (and all bots) pass through with no redirects
-	const ua = request.headers.get('user-agent')?.toLowerCase() || ''
-	if (
-		ua.includes('googlebot') ||
-		ua.includes('bingbot') ||
-		ua.includes('slurp')
-	) {
-		return NextResponse.next()
-	}
+export default function middleware(req: NextRequest) {
+	const ua = req.headers.get('user-agent') || ''
+	if (BOT_RE.test(ua)) return NextResponse.next()
 
-	// ✅ Skip Next.js internals, API, admin etc
-	if (
-		pathname.startsWith('/_next') ||
-		pathname.startsWith('/api') ||
-		pathname.startsWith('/admin') ||
-		pathname === '/favicon.ico'
-	) {
-		return NextResponse.next()
-	}
-
-	const langCookie = request.cookies.get('lang')?.value
-	const T = await getTranslations()
-
-	// ✅ If no translations, skip
-	if (!T?.length) return NextResponse.next()
-
-	// Is this path one of the translated slugs?
-	const available = T.find((t) =>
-		[t.slug, ...(t.translations?.map(({ slug }) => slug) ?? [])].includes(
-			pathname,
-		),
-	)
-
-	if (!available) return NextResponse.next()
-
-	const cookieMatchesCurrentPrefix =
-		langCookie ===
-			available.translations?.find((t) =>
-				[t.slugBlogAlt, t.slug].includes(pathname),
-			)?.language ||
-		(langCookie === DEFAULT_LANG && pathname === available.slug)
-
-	if (!cookieMatchesCurrentPrefix) {
-		const target = available.translations?.find(
-			(t) => t.language === langCookie,
-		)
-
-		const url =
-			target?.language === DEFAULT_LANG
-				? available.slug
-				: (target?.slugBlogAlt ?? target?.slug)
-
-		if (url) {
-			return NextResponse.redirect(new URL(url, request.url))
-		}
-	}
-
+	// ⚠️ TEMP: Disable all redirects/re-writes for humans too while we stabilise indexing.
+	// If you *must* keep your language redirect, put it back later—after pages are indexed.
 	return NextResponse.next()
 }
 
-export const config: MiddlewareConfig = {
-	matcher: ['/((?!favicon.ico|_next|api|admin).*)'],
+// Only run on real pages, not assets/API.
+export const config = {
+	matcher: ['/((?!_next/|api/|admin|favicon.ico|robots.txt|sitemap.xml).*)'],
 }

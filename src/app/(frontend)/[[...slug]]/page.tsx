@@ -1,11 +1,9 @@
+// src/app/(frontend)/[[...slug]]/page.tsx
 import { notFound } from 'next/navigation'
-import { draftMode } from 'next/headers'
-
 import Modules from '@/ui/modules'
 import processMetadata from '@/lib/processMetadata'
 import { client } from '@/sanity/lib/client'
 import { groq } from 'next-sanity'
-import { fetchSanityLive } from '@/sanity/lib/fetch'
 import {
 	MODULES_QUERY,
 	GLOBAL_MODULE_PATH_QUERY,
@@ -14,9 +12,15 @@ import {
 import { languages } from '@/lib/i18n'
 import errors from '@/lib/errors'
 
-// ✅ Force this route to always be SSR (Server Side Rendering)
-export const dynamic = 'force-dynamic'
-export const revalidate = 0
+// ✅ Make this route static/ISR so it ships HTML like your blogs.
+export const dynamic = 'force-static' // pre-render at build
+export const revalidate = 60 * 60 // ISR every 1h (tweak as you like)
+
+// IMPORTANT: ensure "@/ui/modules" is a **Server Component** (NO "use client" at the top).
+// If it currently has "use client", move interactive bits into tiny child components instead.
+
+type Params = { slug?: string[] }
+type Props = { params: Promise<Params> }
 
 export default async function Page({ params }: Props) {
 	const page = await getPage(await params)
@@ -36,57 +40,36 @@ export async function generateStaticParams() {
       _type == 'page' &&
       defined(metadata.slug.current) &&
       !(metadata.slug.current in ['index'])
-    ]{
-      'slug': metadata.slug.current
-    }`,
+    ]{ 'slug': metadata.slug.current }`,
 	)
-
 	return slugs.map(({ slug }) => ({ slug: slug.split('/') }))
 }
 
 async function getPage(params: Params) {
 	const { slug, lang } = processSlug(params)
 
-	// ✅ SSR-friendly fetch
-	const { isEnabled } = await draftMode()
-
-	if (isEnabled) {
-		// Live preview
-		return fetchSanityLive<Sanity.Page>({
-			query: PAGE_QUERY(lang),
-			params: { slug },
-		})
-	} else {
-		// Server-side fetch for production
-		return client.fetch<Sanity.Page>(PAGE_QUERY(lang), { slug })
-	}
-}
-
-const PAGE_QUERY = (lang?: string) => groq`*[
-  _type == 'page' &&
-  metadata.slug.current == $slug
-  ${lang ? `&& language == '${lang}'` : ''}
-][0]{
-  ...,
-  'modules': (
-    *[_type == 'global-module' && path == '*'].before[]{ ${MODULES_QUERY} }
-    + *[_type == 'global-module' && path != '*' && ${GLOBAL_MODULE_PATH_QUERY}].before[]{ ${MODULES_QUERY} }
-    + modules[]{ ${MODULES_QUERY} }
-    + *[_type == 'global-module' && path != '*' && ${GLOBAL_MODULE_PATH_QUERY}].after[]{ ${MODULES_QUERY} }
-    + *[_type == 'global-module' && path == '*'].after[]{ ${MODULES_QUERY} }
-  ),
-  parent[]->{ metadata { slug } },
-  metadata {
+	const PAGE_QUERY = (l?: string) => groq`*[
+    _type == 'page' &&
+    metadata.slug.current == $slug
+    ${l ? `&& language == '${l}'` : ''}
+  ][0]{
     ...,
-    'ogimage': image.asset->url + '?w=1200'
-  },
-  ${TRANSLATIONS_QUERY},
-}`
+    'modules': (
+      *[_type == 'global-module' && path == '*'].before[]{ ${MODULES_QUERY} }
+      + *[_type == 'global-module' && path != '*' && ${GLOBAL_MODULE_PATH_QUERY}].before[]{ ${MODULES_QUERY} }
+      + modules[]{ ${MODULES_QUERY} }
+      + *[_type == 'global-module' && path != '*' && ${GLOBAL_MODULE_PATH_QUERY}].after[]{ ${MODULES_QUERY} }
+      + *[_type == 'global-module' && path == '*'].after[]{ ${MODULES_QUERY} }
+    ),
+    parent[]->{ metadata { slug } },
+    metadata { ...,'ogimage': image.asset->url + '?w=1200' },
+    ${TRANSLATIONS_QUERY},
+  }`
 
-type Params = { slug?: string[] }
+	const page = await client.fetch<Sanity.Page>(PAGE_QUERY(lang), { slug })
 
-type Props = {
-	params: Promise<Params>
+	if (slug === 'index' && !page) throw new Error(errors.missingHomepage)
+	return page
 }
 
 function processSlug(params: Params) {
@@ -95,22 +78,14 @@ function processSlug(params: Params) {
 			? params.slug[0]
 			: undefined
 
-	if (params.slug === undefined)
-		return {
-			slug: 'index',
-			lang,
-		}
-
-	const slug = params.slug.join('/')
-
-	if (lang) {
-		const processed = slug.replace(new RegExp(`^${lang}/?`), '')
-
-		return {
-			slug: processed === '' ? 'index' : processed,
-			lang,
-		}
+	if (params.slug === undefined) {
+		return { slug: 'index', lang }
 	}
 
-	return { slug }
+	const joined = params.slug.join('/')
+	if (lang) {
+		const processed = joined.replace(new RegExp(`^${lang}/?`), '')
+		return { slug: processed === '' ? 'index' : processed, lang }
+	}
+	return { slug: joined }
 }
