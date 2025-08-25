@@ -20,33 +20,32 @@ export const revalidate = 0
 export const fetchCache = 'force-no-store'
 export const dynamicParams = true
 
-// Types
-interface Params {
-	slug?: string[]
-}
-interface PageProps {
-	params: Params
-}
-
-// Page
-export default async function Page({ params }: PageProps) {
+// ---- Page
+export default async function Page({
+	params,
+}: {
+	params: { slug?: string[] }
+}) {
 	const page = await getPage(params)
 	if (!page) notFound()
 	return <Modules modules={page.modules} page={page} />
 }
 
-// Metadata
-export async function generateMetadata({ params }: PageProps) {
+// ---- Metadata
+export async function generateMetadata({
+	params,
+}: {
+	params: { slug?: string[] }
+}) {
 	const page = await getPage(params)
 	if (!page) notFound()
 	return processMetadata(page)
 }
 
 // ---- Data fetching
-async function getPage(params: Params) {
+async function getPage(params: { slug?: string[] }) {
 	const { slug, lang } = processSlug(params)
 
-	// ✅ In Next 15, draftMode is async
 	const { isEnabled } = await draftMode()
 
 	if (isEnabled) {
@@ -82,7 +81,7 @@ const PAGE_QUERY = (lang?: string) => groq`*[
 }`
 
 // ---- Helpers
-function processSlug(params: Params) {
+function processSlug(params: { slug?: string[] }) {
 	const lang =
 		params.slug && languages.includes(params.slug[0])
 			? params.slug[0]
