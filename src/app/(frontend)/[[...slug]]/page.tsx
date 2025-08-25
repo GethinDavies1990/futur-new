@@ -14,12 +14,13 @@ import {
 } from '@/sanity/lib/queries'
 import { languages } from '@/lib/i18n'
 
-// ---- Route segment config: FORCE SSR (must be literals in Next 15)
+// ---- Route segment config: FORCE SSR (Next.js 15 needs literals here)
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
 export const fetchCache = 'force-no-store'
 export const dynamicParams = true
 
+// Types
 type Params = { slug?: string[] }
 type PageProps = { params: Params }
 
@@ -41,8 +42,8 @@ export async function generateMetadata({ params }: PageProps) {
 async function getPage(params: Params) {
 	const { slug, lang } = processSlug(params)
 
-	// draftMode() is synchronous
-	const { isEnabled } = draftMode()
+	// ✅ In Next.js 15, draftMode() is async
+	const { isEnabled } = await draftMode()
 
 	if (isEnabled) {
 		return fetchSanityLive<any>({
@@ -54,6 +55,7 @@ async function getPage(params: Params) {
 	return client.fetch<any>(PAGE_QUERY(lang), { slug })
 }
 
+// ---- GROQ
 const PAGE_QUERY = (lang?: string) => groq`*[
   _type == 'page' &&
   metadata.slug.current == $slug
