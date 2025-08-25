@@ -14,6 +14,10 @@ import {
 import { languages } from '@/lib/i18n'
 import errors from '@/lib/errors'
 
+// ✅ Force this route to always be SSR (Server Side Rendering)
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 export default async function Page({ params }: Props) {
 	const page = await getPage(await params)
 	if (!page) notFound()
@@ -43,17 +47,17 @@ export async function generateStaticParams() {
 async function getPage(params: Params) {
 	const { slug, lang } = processSlug(params)
 
-	// ✅ Check if Draft Mode is enabled
+	// ✅ SSR-friendly fetch
 	const { isEnabled } = await draftMode()
 
 	if (isEnabled) {
-		// Use live mode for Sanity Preview
+		// Live preview
 		return fetchSanityLive<Sanity.Page>({
 			query: PAGE_QUERY(lang),
 			params: { slug },
 		})
 	} else {
-		// Use static client fetch for production
+		// Server-side fetch for production
 		return client.fetch<Sanity.Page>(PAGE_QUERY(lang), { slug })
 	}
 }
