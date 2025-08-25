@@ -1,4 +1,6 @@
-import { notFound, draftMode } from 'next/navigation'
+import { notFound } from 'next/navigation'
+import { draftMode } from 'next/headers'
+
 import Modules from '@/ui/modules'
 import processMetadata from '@/lib/processMetadata'
 import { client } from '@/sanity/lib/client'
