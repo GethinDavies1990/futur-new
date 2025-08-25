@@ -14,15 +14,19 @@ import {
 } from '@/sanity/lib/queries'
 import { languages } from '@/lib/i18n'
 
-// ---- Route segment config: FORCE SSR (Next.js 15 needs literals here)
+// ---- Route segment config: FORCE SSR
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
 export const fetchCache = 'force-no-store'
 export const dynamicParams = true
 
 // Types
-type Params = { slug?: string[] }
-type PageProps = { params: Params }
+interface Params {
+	slug?: string[]
+}
+interface PageProps {
+	params: Params
+}
 
 // Page
 export default async function Page({ params }: PageProps) {
@@ -42,7 +46,7 @@ export async function generateMetadata({ params }: PageProps) {
 async function getPage(params: Params) {
 	const { slug, lang } = processSlug(params)
 
-	// ✅ In Next.js 15, draftMode() is async
+	// ✅ In Next 15, draftMode is async
 	const { isEnabled } = await draftMode()
 
 	if (isEnabled) {
