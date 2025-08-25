@@ -15,7 +15,7 @@ import {
 } from '@/sanity/lib/queries'
 import { languages } from '@/lib/i18n'
 
-// Force SSR for this route
+// Force full SSR; prevents prerender headers
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
 export const runtime = 'nodejs'
@@ -37,11 +37,10 @@ export async function generateMetadata(
 	return processMetadata(page)
 }
 
-// — no generateStaticParams here —
+// — no generateStaticParams —
 
 async function getPage(params: Params) {
 	const { slug, lang } = processSlug(params)
-
 	const { isEnabled } = await draftMode()
 	if (isEnabled) {
 		return fetchSanityLive<Sanity.Page>({
@@ -66,10 +65,7 @@ const PAGE_QUERY = (lang?: string) => groq`*[
     + *[_type == 'global-module' && path == '*'].after[]{ ${MODULES_QUERY} }
   ),
   parent[]->{ metadata { slug } },
-  metadata {
-    ...,
-    'ogimage': image.asset->url + '?w=1200'
-  },
+  metadata { ..., 'ogimage': image.asset->url + '?w=1200' },
   ${TRANSLATIONS_QUERY},
 }`
 
@@ -78,15 +74,11 @@ function processSlug(params: Params) {
 		params.slug && languages.includes(params.slug[0])
 			? params.slug[0]
 			: undefined
-
 	if (params.slug === undefined) return { slug: 'index', lang }
-
 	const slug = params.slug.join('/')
-
 	if (lang) {
 		const processed = slug.replace(new RegExp(`^${lang}/?`), '')
 		return { slug: processed === '' ? 'index' : processed, lang }
 	}
-
 	return { slug }
 }
