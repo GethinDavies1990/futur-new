@@ -14,25 +14,30 @@ import {
 } from '@/sanity/lib/queries'
 import { languages } from '@/lib/i18n'
 
+// ✅ Force every request to render SSR, no prerender headers
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
 export const fetchCache = 'force-no-store'
-export const dynamicParams = true
 
+// ✅ Main Page
 export default async function Page({ params }) {
 	const page = await getPage(params)
 	if (!page) notFound()
 	return <Modules modules={page.modules} page={page} />
 }
 
+// ✅ Metadata (SEO)
 export async function generateMetadata({ params }) {
 	const page = await getPage(params)
 	if (!page) notFound()
 	return processMetadata(page)
 }
 
+// ✅ Fetch Page Data
 async function getPage(params) {
 	const { slug, lang } = processSlug(params)
+
+	// draftMode() is sync, no await
 	const { isEnabled } = draftMode()
 
 	if (isEnabled) {
@@ -45,6 +50,7 @@ async function getPage(params) {
 	return client.fetch(PAGE_QUERY(lang), { slug })
 }
 
+// ✅ GROQ query
 const PAGE_QUERY = (lang) => groq`*[
   _type == 'page' &&
   metadata.slug.current == $slug
@@ -66,13 +72,14 @@ const PAGE_QUERY = (lang) => groq`*[
   ${TRANSLATIONS_QUERY},
 }`
 
+// ✅ Slug handling
 function processSlug(params) {
 	const lang =
-		params.slug && languages.includes(params.slug[0])
+		params?.slug && languages.includes(params.slug[0])
 			? params.slug[0]
 			: undefined
 
-	if (!params.slug) return { slug: 'index', lang }
+	if (!params?.slug) return { slug: 'index', lang }
 
 	const slug = params.slug.join('/')
 
