@@ -1,6 +1,5 @@
 import { createClient, groq } from 'next-sanity'
 import { projectId, dataset, apiVersion } from '@/sanity/lib/env'
-// import { token } from '@/lib/sanity/token'
 import { BLOG_DIR } from '@/lib/env'
 import { supportedLanguages } from '@/lib/i18n'
 import type { NextConfig } from 'next'
@@ -8,7 +7,6 @@ import type { NextConfig } from 'next'
 const client = createClient({
 	projectId,
 	dataset,
-	// token, // for private datasets
 	apiVersion,
 	useCdn: true,
 })
@@ -30,17 +28,17 @@ export default {
 
 	async redirects() {
 		return await client.fetch(groq`*[_type == 'redirect']{
-			source,
-			'destination': select(
-				destination.type == 'internal' =>
-					select(
-						destination.internal->._type == 'blog.post' => '/${BLOG_DIR}/',
-						'/'
-					) + destination.internal->.metadata.slug.current,
-				destination.external
-			),
-			permanent
-		}`)
+      source,
+      'destination': select(
+        destination.type == 'internal' =>
+          select(
+            destination.internal->._type == 'blog.post' => '/${BLOG_DIR}/',
+            '/'
+          ) + destination.internal->.metadata.slug.current,
+        destination.external
+      ),
+      permanent
+    }`)
 	},
 
 	async rewrites() {
@@ -58,9 +56,10 @@ export default {
 		SC_DISABLE_SPEEDY: 'false',
 	},
 
-	// logging: {
-	// 	fetches: {
-	// 		fullUrl: true,
-	// 	},
-	// },
+	headers: async () => [
+		{
+			source: '/:path*',
+			headers: [{ key: 'Cache-Control', value: 'no-store' }],
+		},
+	],
 } satisfies NextConfig
