@@ -1,10 +1,11 @@
+// src/app/(frontend)/[[...slug]]/page.tsx
 import { notFound } from 'next/navigation'
 import { draftMode } from 'next/headers'
+import { groq } from 'next-sanity'
 
 import Modules from '@/ui/modules'
 import processMetadata from '@/lib/processMetadata'
 import { client } from '@/sanity/lib/client'
-import { groq } from 'next-sanity'
 import { fetchSanityLive } from '@/sanity/lib/fetch'
 import {
 	MODULES_QUERY,
@@ -13,43 +14,44 @@ import {
 } from '@/sanity/lib/queries'
 import { languages } from '@/lib/i18n'
 
-// ✳️ Force true SSR (no static files, no ISR caches)
+// ---- Route segment config: FORCE SSR (must be literals in Next 15)
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
-export const fetchCache = 'default-no-store'
+export const fetchCache = 'force-no-store'
+export const dynamicParams = true
 
-// ✅ Correct typing – Next passes a plain object, not a Promise
 type Params = { slug?: string[] }
-type Props = { params: Params }
+type PageProps = { params: Params }
 
-export default async function Page({ params }: Props) {
+// Page
+export default async function Page({ params }: PageProps) {
 	const page = await getPage(params)
 	if (!page) notFound()
 	return <Modules modules={page.modules} page={page} />
 }
 
-export async function generateMetadata({ params }: Props) {
+// Metadata
+export async function generateMetadata({ params }: PageProps) {
 	const page = await getPage(params)
 	if (!page) notFound()
 	return processMetadata(page)
 }
 
-// ❌ IMPORTANT: REMOVE generateStaticParams for this catch-all route.
-// Leaving it in will keep `x-nextjs-prerender: 1` and you’ll get SSG again.
-// If you need static params for blog only, move that into the blog segment.
-
+// ---- Data fetching
 async function getPage(params: Params) {
 	const { slug, lang } = processSlug(params)
-	const { isEnabled } = await draftMode()
+
+	// draftMode() is synchronous
+	const { isEnabled } = draftMode()
 
 	if (isEnabled) {
-		return fetchSanityLive<Sanity.Page>({
+		return fetchSanityLive<any>({
 			query: PAGE_QUERY(lang),
 			params: { slug },
 		})
 	}
 
-	return client.fetch<Sanity.Page>(PAGE_QUERY(lang), { slug })
+	return client.fetch<any>(PAGE_QUERY(lang), { slug })
 }
 
 const PAGE_QUERY = (lang?: string) => groq`*[
@@ -73,6 +75,7 @@ const PAGE_QUERY = (lang?: string) => groq`*[
   ${TRANSLATIONS_QUERY},
 }`
 
+// ---- Helpers
 function processSlug(params: Params) {
 	const lang =
 		params.slug && languages.includes(params.slug[0])

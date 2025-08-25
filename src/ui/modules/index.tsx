@@ -1,3 +1,4 @@
+// src/ui/modules/index.tsx  (server component — do NOT add "use client")
 import AccordionList from './AccordionList'
 import BlogFrontpage from './blog/BlogFrontpage'
 import BlogList from './blog/BlogList'
@@ -33,6 +34,12 @@ import AssetBlock from './AssetBlock'
 import dynamic from 'next/dynamic'
 import { createDataAttribute } from 'next-sanity'
 
+// Explicit SSR=true so crawlers get HTML for these, too
+const CreativeModule = dynamic(() => import('./CreativeModule'), { ssr: true })
+const PersonList = dynamic(() => import('./PersonList'), { ssr: true })
+const PricingList = dynamic(() => import('./PricingList'), { ssr: true })
+const ServicesList = dynamic(() => import('./ServicesList'), { ssr: true })
+
 const MODULE_MAP = {
 	'accordion-list': AccordionList,
 	'blog-frontpage': BlogFrontpage,
@@ -46,16 +53,16 @@ const MODULE_MAP = {
 	'callout-asset': CalloutAsset,
 	'card-list': CardList,
 	'content.section': ContentSection,
-	'creative-module': dynamic(() => import('./CreativeModule')),
+	'creative-module': CreativeModule,
 	'custom-html': CustomHTML,
 	'flag-list': FlagList,
 	hero: Hero,
 	'hero.split': HeroSplit,
 	'hero.saas': HeroSaaS,
 	'logo-list': LogoList,
-	'person-list': dynamic(() => import('./PersonList')),
-	'pricing-list': dynamic(() => import('./PricingList')),
-	'services.list': dynamic(() => import('./ServicesList')),
+	'person-list': PersonList,
+	'pricing-list': PricingList,
+	'services.list': ServicesList,
 	'richtext-module': RichtextModule,
 	'schedule-module': ScheduleModule,
 	'search-module': SearchModule,
@@ -85,13 +92,10 @@ export default function Modules({
 	const getAdditionalProps = (module: Sanity.Module) => {
 		switch (module._type) {
 			case 'blog-post-content':
-				// Only passing `post` for blog-related modules
 				return { post }
 			case 'work-post-content':
-				// Only passing `casePost` for case-related modules
 				return { workPost }
 			case 'breadcrumbs':
-				// Make sure that we pass the right `currentPage` based on the available types
 				return { currentPage: post || page }
 			default:
 				return {}
@@ -102,7 +106,6 @@ export default function Modules({
 		<>
 			{modules?.map((module) => {
 				if (!module) return null
-
 				const Component =
 					MODULE_MAP[module._type as keyof typeof MODULE_MAP]
 				if (!Component) return null
@@ -111,7 +114,7 @@ export default function Modules({
 					<Component
 						key={module._key}
 						{...module}
-						{...getAdditionalProps(module)} // handles breadcrumbs only
+						{...getAdditionalProps(module)}
 						data-sanity={
 							!!page?._id &&
 							createDataAttribute({
